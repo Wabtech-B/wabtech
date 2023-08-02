@@ -28,7 +28,7 @@
 - **TypeScript Components**: Enhance your projects with type-safe and efficient TypeScript components.
 - **UI/UX Services**: Designing intuitive user interfaces and optimizing user experiences.
 - **Educative Blogs and Tutorials**: Empowering you with knowledge through insightful blogs and tutorials.
-- **Premium Templates**: Elevate your projects with our collection of professional and elegant templates.
+- **Free & Premium Templates**: Elevate your projects with our collection of professional and elegant templates both free and premium.
 
 ## Getting Started
 
