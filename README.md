@@ -5,7 +5,6 @@
 
 # Welcome to Your Wabtech
 
-
 ## Services 🚀
 
 #### Explore a range of services to elevate your digital presence:
@@ -19,8 +18,6 @@
 ![Educative Blogs and Tutorials](https://img.shields.io/badge/Educative%20Blogs%20and%20Tutorials-Informative-yellow)
 ![Free Templates](https://img.shields.io/badge/Premium%20Templates-Professional%20Design-green)
 ![Premium Templates](https://img.shields.io/badge/Premium%20Templates-Elegant%20Design-red)
-
-
 
 - **Web Design**: Crafting beautiful and user-centric website designs tailored to your needs.
 - **Web Application Development**: Building robust and scalable web applications to power your business.
@@ -42,7 +39,7 @@ Follow these steps to get started with our services:
 
 ## Contributing
 
-We welcome contributions from the community! If you'd like to contribute to our components, templates, or tutorials, please review our [contribution guidelines](CONTRIBUTING.md) and submit a pull request.
+We welcome contributions from the community! If you'd like to contribute to our components, templates, or tutorials, please review our [contribution guidelines](contributing.md) and submit a pull request.
 
 ## Contact
 
