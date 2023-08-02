@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/public/logo.png" alt="Your Logo">
+  <img src="/public/logo.png" alt="Your Logo" width="60" height="60">
 </p>
 
 # Welcome to Your Wabtech
