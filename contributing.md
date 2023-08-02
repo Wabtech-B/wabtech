@@ -1,1 +1,1 @@
-# Still in development, No contributions are allowed yet
+#  No contributions are allowed yet, Still in development!
