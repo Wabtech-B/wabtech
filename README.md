@@ -1,4 +1,6 @@
-![Logo](logo.png)
+<p align="center">
+  <img src="/public/logo.png" alt="Your Logo">
+</p>
 
 # Welcome to Your Wabtech
 
@@ -14,6 +16,7 @@
 ![TypeScript Components](https://img.shields.io/badge/TypeScript%20Components-Type%20Safe-blue)
 ![UI/UX Services](https://img.shields.io/badge/UI%2FUX%20Services-Intuitive%20Design-orange)
 ![Educative Blogs and Tutorials](https://img.shields.io/badge/Educative%20Blogs%20and%20Tutorials-Informative-yellow)
+![Free Templates](https://img.shields.io/badge/Premium%20Templates-Professional%20Design-green)
 ![Premium Templates](https://img.shields.io/badge/Premium%20Templates-Elegant%20Design-red)
 
 
