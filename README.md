@@ -1,16 +1,22 @@
-<p align="center">
-  <img src="/logo.png" alt="Your Logo">
-</p>
+![Logo](logo.png)
 
-# Welcome to Your Personal Website
+# Welcome to Your Wabtech
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yourusername/your-website-repo/blob/main/LICENSE)
 
-🚀 Providing Web Design, Web Application Development, Free Reusable React.js, Tailwind CSS and TypeScript Components, UI/UX Services, Educative Blogs, Tutorials, and Professional Elegant Free and Premium Templates.
+## Services 🚀
 
-## Services
+#### Explore a range of services to elevate your digital presence:
 
-Explore a range of services to elevate your digital presence:
+![Web Design](https://img.shields.io/badge/Web%20Design-Beautiful%20Designs-lightgrey)
+![Web Application Development](https://img.shields.io/badge/Web%20Application%20Development-Robust%20Apps-green)
+![React.js Components](https://img.shields.io/badge/React.js%20Components-Reusable%20Code-blue)
+![Tailwind CSS Components](https://img.shields.io/badge/Tailwind%20CSS%20Components-Stylish%20UI-blueviolet)
+![TypeScript Components](https://img.shields.io/badge/TypeScript%20Components-Type%20Safe-blue)
+![UI/UX Services](https://img.shields.io/badge/UI%2FUX%20Services-Intuitive%20Design-orange)
+![Educative Blogs and Tutorials](https://img.shields.io/badge/Educative%20Blogs%20and%20Tutorials-Informative-yellow)
+![Premium Templates](https://img.shields.io/badge/Premium%20Templates-Elegant%20Design-red)
+
+
 
 - **Web Design**: Crafting beautiful and user-centric website designs tailored to your needs.
 - **Web Application Development**: Building robust and scalable web applications to power your business.
