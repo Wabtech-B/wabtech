@@ -17,8 +17,14 @@ body {
   color: #f2f2f2;
 }
 
+/* --------------------------------------------------General Styles-------------------------------------------------------- */
 .gradient-bg {
   @apply fixed -z-10 top-1/2 left-1/2 flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial  before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic  after:blur-2xl after:content-[''] before:from-transparent before:dark:to-blue-700 before:opacity-10 after:from-sky-900 after:via-[#0141ff] after:opacity-40 before:lg:h-[360px];
+}
+
+.bg-image {
+  @apply fixed top-0 left-0 !bg-no-repeat !bg-right-top w-screen h-screen -z-10 !bg-fixed;
+  background-size: 800px !important;
 }
 
 ::-webkit-scrollbar {
@@ -37,95 +43,44 @@ svg {
 }
 
 .iconbox {
-  @apply h-20 w-20 grid place-items-center rounded-full;
+  @apply grid w-20 h-20 rounded-full place-items-center;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-.postSk {
-  animation: skeleton 1s ease infinite alternate;
+.text-gradient {
+  background: linear-gradient(to right, #01680f 30%, #f9c51b, #f9c51b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-@keyframes skeleton {
-  to {
-    opacity: 0.5;
-  }
+.gradient-box {
+  --border-width: 3px;
+  --border-radius: 5px;
+  background: linear-gradient(to right, #01680f, #f9c51b);
+  padding: 0.4rem 2rem;
+  position: relative;
+  border-radius: var(--border-radius);
+  z-index: 1;
 }
 
-.postSkImg {
-  background-color: #313131;
-  width: 100%;
-  height: 153px;
+.gradient-box::before {
+  content: "";
+  display: block;
+  height: calc(100% - calc(var(--border-width) * 2));
+  width: calc(100% - calc(var(--border-width) * 2));
+  background: #18181b;
+  position: absolute;
+  top: var(--border-width);
+  left: var(--border-width);
+  border-radius: var(--border-radius);
+  z-index: -1;
 }
 
-.postSkInfo {
-  display: flex;
-  margin-top: 15px;
-}
-
-.postSkAvatar {
-  flex-shrink: 0;
-  background-color: #313131;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.postSkDetail {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.postSkText {
-  background-color: #313131;
-  width: 90%;
-  height: 20px;
-  margin-bottom: 5px;
-}
-
-.postSkText.sm {
-  width: 50%;
-}
-
-.topSk {
-  flex: 3;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  animation: skeleton 1s ease infinite alternate;
-}
-
-.topSkIcon {
-  margin-right: 20px;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background-color: #313131;
-}
-
-.topSkImg {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-right: 40px;
-  background-color: #313131;
-}
-
-.menuSk {
-  animation: skeleton 1s ease infinite alternate;
-}
-
-.menuSkItem {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #313131;
-  margin-top: 40px;
-}
+/* Tooltip */
 
 .tooltip-enter {
   opacity: 0;
@@ -143,18 +98,6 @@ svg {
 .tooltip-exit-active {
   opacity: 0;
   transition: opacity 500ms;
-}
-
-.wizard-step:not(.wizard-step:last-child) {
-  border-right: 1px solid #52525b;
-}
-
-.wizard-step:last-child:before {
-  display: none;
-}
-
-.tran-all {
-  transition: all 0.1s linear;
 }
 
 @keyframes scroll {
