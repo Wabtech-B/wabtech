@@ -51,7 +51,7 @@ svg {
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #01680f 30%, #f9c51b, #f9c51b);
+  background: linear-gradient(to right, #0bab7c 30%, #f9c51b, #f9c51b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -60,7 +60,7 @@ svg {
 .gradient-box {
   --border-width: 3px;
   --border-radius: 5px;
-  background: linear-gradient(to right, #01680f, #f9c51b);
+  background: linear-gradient(to right, #0bab7c, #f9c51b);
   padding: 0.4rem 2rem;
   position: relative;
   border-radius: var(--border-radius);

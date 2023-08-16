@@ -27,7 +27,7 @@ module.exports = {
         questrial: "Questrial",
       },
       colors: {
-        primary: "#2B5BBA",
+        primary: "#0bab7c",
       },
       gridTemplateColumns: {
         "250-auto": "250px calc(100% - 250px)",
