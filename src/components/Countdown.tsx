@@ -4,7 +4,11 @@
 import React, { useEffect, useState } from "react";
 
 const Countdown: React.FC = () => {
-  const [countdown, setCountdown] = useState<number>(43 * 24 * 60 * 60); // 40 days in seconds
+  const targetDate = new Date("2023-09-30T23:59:00"); // September 30th, 2023, 11:59 PM
+
+  const [countdown, setCountdown] = useState<number>(
+    Math.floor((targetDate.getTime() - Date.now()) / 1000)
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,9 +23,8 @@ const Countdown: React.FC = () => {
   const minutes = Math.floor((countdown % (60 * 60)) / 60);
   const seconds = countdown % 60;
 
-  const addLeadingZero = (number: number): string => {
-    return number < 10 ? `0${number}` : `${number}`;
-  };
+  const addLeadingZero = (number: number): string =>
+    number < 10 ? `0${number}` : `${number}`;
 
   return (
     <>
