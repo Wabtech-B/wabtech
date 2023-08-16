@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
@@ -6,13 +7,18 @@ import React, { useEffect, useState } from "react";
 const Countdown: React.FC = () => {
   const targetDate = new Date("2023-09-30T23:59:00"); // September 30th, 2023, 11:59 PM
 
-  const [countdown, setCountdown] = useState<number>(
-    Math.floor((targetDate.getTime() - Date.now()) / 1000)
-  );
+  const [countdown, setCountdown] = useState<number>(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCountdown((prevCountdown) => prevCountdown - 1);
+      const currentTime = new Date().getTime();
+      const timeDifference = targetDate.getTime() - currentTime;
+      if (timeDifference > 0) {
+        setCountdown(Math.floor(timeDifference / 1000));
+      } else {
+        clearInterval(interval);
+        setCountdown(0);
+      }
     }, 1000);
 
     return () => clearInterval(interval);
