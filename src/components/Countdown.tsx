@@ -3,11 +3,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import useDarkMode from "@/components/wabtech/hooks/useDarkmode/useDarkMode";
 
 const Countdown: React.FC = () => {
   const targetDate = new Date("2023-09-30T23:59:00"); // September 30th, 2023, 11:59 PM
 
   const [countdown, setCountdown] = useState<number>(0);
+  const { mode, handleModeChange } = useDarkMode("darkModePreference");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,9 +35,9 @@ const Countdown: React.FC = () => {
     number < 10 ? `0${number}` : `${number}`;
 
   return (
-    <>
+    <div>
       <div className="bg-image" style={{ background: `url('/bg.png')` }} />
-      <div className="bg-zinc-900/60 backdrop-blur-[20px] fixed w-full h-full -z-10" />
+      <div className="bg-white/60 dark:bg-zinc-900/60 backdrop-blur-[20px] fixed w-full h-full -z-10" />
       <div className="container min-h-screen px-3 py-8 mx-auto text-center flex-center-center">
         {/* <div className="gradient-bg" /> */}
         <div>
@@ -49,25 +51,25 @@ const Countdown: React.FC = () => {
           </blockquote>
           <h1 className="mt-5 text-3xl">We're Launching in:</h1>
           <div className="flex-col gap-8 mt-8 text-2xl flex-center-center sm:flex-row">
-            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-zinc-800/40 backdrop-blur-lg border-zinc-600 shadow-primary/40">
+            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg dark:border-zinc-600 shadow-primary/40">
               <h1 className="text-4xl font-bold md:text-8xl">
                 {addLeadingZero(days)}
               </h1>
               <span>Days</span>
             </div>
-            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-zinc-800/40 backdrop-blur-lg border-zinc-600 shadow-primary/40">
+            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg dark:border-zinc-600 shadow-primary/40">
               <h1 className="text-4xl font-bold md:text-8xl">
                 {addLeadingZero(hours)}
               </h1>
               <span>Hours</span>
             </div>
-            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-zinc-800/40 backdrop-blur-lg border-zinc-600 shadow-primary/40">
+            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg dark:border-zinc-600 shadow-primary/40">
               <h1 className="text-4xl font-bold md:text-8xl">
                 {addLeadingZero(minutes)}
               </h1>
               <span>Minutes</span>
             </div>
-            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-zinc-800/40 backdrop-blur-lg border-zinc-600 shadow-primary/40">
+            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg dark:border-zinc-600 shadow-primary/40">
               <h1 className="text-4xl font-bold md:text-8xl">
                 {addLeadingZero(seconds)}
               </h1>
@@ -76,7 +78,7 @@ const Countdown: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

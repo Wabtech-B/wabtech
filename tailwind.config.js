@@ -7,6 +7,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     screens: {
       sm: "600px",
@@ -15,15 +16,8 @@ module.exports = {
       xl: "1280px",
       "2xl": "1536px",
     },
-
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
       fontFamily: {
-        poppins: "poppins",
         questrial: "Questrial",
       },
       colors: {
@@ -31,8 +25,14 @@ module.exports = {
       },
       gridTemplateColumns: {
         "250-auto": "250px calc(100% - 250px)",
-        "60-auto": "60px calc(100% - 60px)",
+        "200-auto": "200px calc(100% - 200px)",
+        "auto-200": "calc(100% - 200px) 200px",
         "minmax-uto-200": "repeat(auto-fit, minmax(200px, 1fr))",
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
   },
