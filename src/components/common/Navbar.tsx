@@ -31,7 +31,7 @@ const Navbar = () => {
   const navbarLinks = [
     {
       linkText: "Components",
-      url: "getting-started",
+      url: "/components/getting-started",
     },
     {
       linkText: "Hooks",
