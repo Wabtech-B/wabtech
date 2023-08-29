@@ -31,7 +31,7 @@ const MobileComponentSidebar = () => {
                 <Link
                   href={link.url}
                   className={`block py-1 text-muted hover:opacity-100 hover:text-zinc-950 dark:hover:text-white ${
-                    isActive ? "!text-primary" : ""
+                    isActive ? "active" : ""
                   }`}
                   onClick={() => setIsDrawerOpen(false)}
                 >
