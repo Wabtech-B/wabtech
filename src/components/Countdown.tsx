@@ -3,7 +3,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import useDarkMode from "./wabtech/hooks/useDarkMode/useDarkMode";
+import useDarkMode from "./wabtech/hooks/useDarkmode/useDarkMode";
 
 const Countdown: React.FC = () => {
   const targetDate = new Date("2023-09-30T23:59:00"); // September 30th, 2023, 11:59 PM

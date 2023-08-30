@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import DarkModeSnippet from "@/components/wabtech/hooks/useDarkMode/DarkModeSnippet";
+import DarkModeSnippet from "@/components/wabtech/hooks/useDarkmode/DarkModeSnippet";
 import React from "react";
 
 const page = () => {
