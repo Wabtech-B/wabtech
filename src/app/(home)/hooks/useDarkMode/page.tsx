@@ -39,7 +39,8 @@ const page = () => {
       <div className="mt-8">
         <h1 className="text-2xl md:text-3xl font-bold">Example & Usage</h1>
         <p className="mt-2">
-          This shows an example of using this hook with respective code snippets
+          This shows an example of using this hook with respective code
+          snippets.
         </p>
         <div className="my-8">
           <DarkModeSnippet />
