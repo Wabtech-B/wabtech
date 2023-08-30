@@ -41,7 +41,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
       <div className="relative">
         <div className="relative">
           <div className="flex justify-between items-center bg-slate-200 dark:bg-zinc-800">
-            <div className="flex relative max-w-[200px] sm:max-w-fit overflow-x-auto hide-scrollbar">
+            <div className="flex relative max-w-[180px] sm:max-w-fit overflow-x-auto hide-scrollbar">
               {tabs.map((tab, index) => (
                 <button
                   key={index}
@@ -107,7 +107,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
                   <div className="flex-shrink-0">
                     <Tooltip text={copied ? "Copied!" : "Copy"} position="left">
                       <div
-                        className="w-8 h-8 -mt-[5px] bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-700/80 border border-zinc-400 dark:border-zinc-600 grid place-items-center rounded-md cursor-pointer"
+                        className="w-8 h-8 -mt-[7px] bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-700/80 border border-zinc-400 dark:border-zinc-600 grid place-items-center rounded-md cursor-pointer"
                         onClick={() =>
                           copyToClipboard(
                             tabs[activeTab].contentToCopy as string
