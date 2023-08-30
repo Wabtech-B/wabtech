@@ -55,7 +55,7 @@ a.btn-primary {
 }
 
 p {
-  @apply text-muted;
+  @apply text-muted leading-7;
 }
 
 svg {
@@ -116,8 +116,10 @@ svg {
 }
 
 .component-sidebar a.active,
-.component-drawer a.active {
-  @apply text-primary relative before:absolute before:h-full before:w-[2px] before:bg-primary before:top-0 before:-left-2;
+.component-drawer a.active,
+.hooks-sidebar a.active,
+.hooks-drawer a.active {
+  @apply !text-primary relative before:absolute before:h-full before:w-[2px] before:bg-primary before:top-0 before:-left-2;
 }
 .component-sidebar,
 .right-sidebar {

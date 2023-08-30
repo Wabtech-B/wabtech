@@ -37,7 +37,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
   };
 
   return (
-    <div className="w-full overflow-hidden bg-white/70 dark:!bg-zinc-900/60 rounded-2xl border-2 border-neutral-300 dark:border-neutral-700 shadow relative">
+    <div className="w-full overflow-hidden bg-white/70 dark:!bg-zinc-900/60 rounded-2xl border-2 border-neutral-300 dark:border-neutral-700 shadow-sm relative">
       <div className="relative">
         <div className="relative">
           <div className="flex justify-between items-center bg-slate-200 dark:bg-zinc-800">
@@ -89,7 +89,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
                         className={`border-2 dark:border-zinc-600 rounded cursor-pointer bg-zinc-700 p-1  ${
                           isNextJs
                             ? "!border-[#0bab7c] shadow-md shadow-[#0bab7c]/40"
-                            : "0"
+                            : ""
                         }`}
                         onClick={() => {
                           setIsNextJs(true);
@@ -107,7 +107,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
                   <div className="flex-shrink-0">
                     <Tooltip text={copied ? "Copied!" : "Copy"} position="left">
                       <div
-                        className="w-8 h-8 -mt-[7px] bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-700/80 border border-zinc-400 dark:border-zinc-600 grid place-items-center rounded-md cursor-pointer"
+                        className="w-8 h-8 -mt-[7px] bg-slate-300 dark:bg-zinc-700 hover:bg-slate-400 dark:hover:bg-zinc-700/80 border border-zinc-400 dark:border-zinc-600 grid place-items-center rounded-md cursor-pointer"
                         onClick={() =>
                           copyToClipboard(
                             tabs[activeTab].contentToCopy as string
@@ -126,7 +126,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
 
                 <div className="flex items-center gap-x-3 absolute top-16 right-8">
                   <div
-                    className={`border-2 dark:border-zinc-600 rounded cursor-pointer bg-zinc-700  ${
+                    className={`border-2 border-zinc-600 rounded cursor-pointer bg-zinc-700  ${
                       isTypeScript
                         ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40"
                         : "0"
@@ -141,7 +141,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
                     />
                   </div>
                   <div
-                    className={`border-2 dark:border-zinc-600 rounded cursor-pointer bg-zinc-700  ${
+                    className={`border-2 border-zinc-600 rounded cursor-pointer bg-zinc-700  ${
                       !isTypeScript
                         ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40"
                         : ""

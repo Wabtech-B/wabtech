@@ -1,12 +1,10 @@
-import ComponentSearchDialog from "@/components/common/ComponentSearchDialog";
-import ComponentSidebar from "@/components/common/ComponentSidebar";
-import MobileComponentSidebar from "@/components/common/MobileComponentSidebar";
+import HooksSidebar from "@/components/common/HooksSidebar";
+import MobileHooksSidebar from "@/components/common/MobileHooksSidebar";
 
 const Component = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <MobileComponentSidebar />
-      <ComponentSearchDialog />
+      <MobileHooksSidebar />
       <div
         className="bg-image"
         style={{ background: `url('/bg-pattern.png')` }}
@@ -15,7 +13,7 @@ const Component = ({ children }: { children: React.ReactNode }) => {
       <div className="grid grid-cols-1 lg:grid-cols-250-auto">
         {/* Sidebar */}
         <div>
-          <ComponentSidebar />
+          <HooksSidebar />
         </div>
 
         {/* Main Content */}

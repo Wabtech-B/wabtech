@@ -26607,3 +26607,2471 @@ const App = () => {
 
 export default App;
 `;
+
+// -----------------------------------------------------CUSTOM HOOKS--------------------------------------------------------
+
+// ----------------------------------------------------useClipboard---------------------------------------------------------
+export const useClipboardCodeTS = `import { useState, useCallback } from "react";
+
+const useClipboard = () => {
+  const [copied, setCopied] = useState < boolean > false;
+
+  const copyToClipboard = useCallback((text: string) => {
+    setCopied(true);
+    navigator.clipboard.writeText(text);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
+  }, []);
+
+  return { copied, copyToClipboard };
+};
+
+export default useClipboard;
+`;
+export const useClipboardCodeJS = `import { useState, useCallback } from "react";
+
+const useClipboard = () => {
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = useCallback((text) => {
+    setCopied(true);
+    navigator.clipboard.writeText(text);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
+  }, []);
+
+  return { copied, copyToClipboard };
+};
+
+export default useClipboard;
+`;
+export const useClipboardPreviewCodeTS = `import React from "react";
+import useClipboard from "./useClipboard";
+
+const App = () => {
+  const { copied, copyToClipboard } = useClipboard();
+  return (
+    <div>
+      <button
+        className="px-6 py-2 text-white bg-[#0bab7c] hover:bg-[#0bab7c]/80 rounded-md"
+        onClick={() => copyToClipboard("Copy me")}
+      >
+        Copy me
+      </button>
+      {copied && <p className="mt-2">Text copied!</p>}
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useClipboardPreviewCodeJS = `import React from "react";
+import useClipboard from "./useClipboard";
+
+const App = () => {
+  const { copied, copyToClipboard } = useClipboard();
+  return (
+    <div>
+      <button
+        className="px-6 py-2 text-white bg-[#0bab7c] hover:bg-[#0bab7c]/80 rounded-md"
+        onClick={() => copyToClipboard("Copy me")}
+      >
+        Copy me
+      </button>
+      {copied && <p className="mt-2">Text copied!</p>}
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useClipboardCodeTSNextjs = `"use client";
+
+import { useState, useCallback } from "react";
+
+const useClipboard = () => {
+  const [copied, setCopied] = useState<boolean>(false);
+
+  const copyToClipboard = useCallback((text: string) => {
+    setCopied(true);
+    navigator.clipboard.writeText(text);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
+  }, []);
+
+  return { copied, copyToClipboard };
+};
+
+export default useClipboard;
+`;
+export const useClipboardCodeJSNextjs = `"use client";
+
+import { useState, useCallback } from "react";
+
+const useClipboard = () => {
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = useCallback((text) => {
+    setCopied(true);
+    navigator.clipboard.writeText(text);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
+  }, []);
+
+  return { copied, copyToClipboard };
+};
+
+export default useClipboard;
+`;
+export const useClipboardPreviewCodeTSNextjs = `"use client"
+
+import React from "react";
+import useClipboard from "./useClipboard";
+
+const App = () => {
+  const { copied, copyToClipboard } = useClipboard();
+  return (
+    <div>
+      <button
+        className="px-6 py-2 text-white bg-[#0bab7c] hover:bg-[#0bab7c]/80 rounded-md"
+        onClick={() => copyToClipboard("Copy me")}
+      >
+        Copy me
+      </button>
+      {copied && <p className="mt-2">Text copied!</p>}
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useClipboardPreviewCodeJSNextjs = `"use client"
+
+import React from "react";
+import useClipboard from "./useClipboard";
+
+const App = () => {
+  const { copied, copyToClipboard } = useClipboard();
+  return (
+    <div>
+      <button
+        className="px-6 py-2 text-white bg-[#0bab7c] hover:bg-[#0bab7c]/80 rounded-md"
+        onClick={() => copyToClipboard("Copy me")}
+      >
+        Copy me
+      </button>
+      {copied && <p className="mt-2">Text copied!</p>}
+    </div>
+  );
+};
+
+export default App;
+`;
+// ----------------------------------------------------useDarkMode---------------------------------------------------------
+export const useDarkModeCodeTS = `import { useEffect, useState } from "react";
+
+type Mode = "dark" | "light" | "system";
+
+const useDarkMode = (
+  localStorageKey: string
+): { mode: Mode; handleModeChange: (newMode: Mode) => void } => {
+  const [mode, setMode] = useState<Mode>(
+    (localStorage.getItem(localStorageKey) as Mode) || "system"
+  );
+
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, mode);
+    const prefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    if (mode === "system") {
+      if (prefersDarkMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    } else if (mode === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [mode, localStorageKey]);
+
+  const handleModeChange = (newMode: Mode): void => {
+    setMode(newMode);
+  };
+
+  return { mode, handleModeChange };
+};
+
+export default useDarkMode;
+`;
+export const useDarkModeCodeJS = `import { useEffect, useState } from "react";
+
+const useDarkMode = (localStorageKey) => {
+  const [mode, setMode] = useState(
+    localStorage.getItem(localStorageKey) || "system"
+  );
+
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, mode);
+    const prefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    if (mode === "system") {
+      if (prefersDarkMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    } else if (mode === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [mode, localStorageKey]);
+
+  const handleModeChange = (newMode) => {
+    setMode(newMode);
+  };
+
+  return { mode, handleModeChange };
+};
+
+export default useDarkMode;
+`;
+export const useDarkModePreviewCodeTS = `import React from "react";
+import useDarkMode from "./useDarkMode";
+import { FiMonitor, FiMoon, FiSun } from "react-icons/fi";
+
+const App = () => {
+  const { mode, handleModeChange } = useDarkMode("darkModePreference");
+  return (
+    <>
+      <div className="mt-3 flex items-center gap-3">
+        {/* Dark */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "dark"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("dark")}
+        >
+          <div>
+            <FiMoon />
+          </div>
+          Dark
+        </button>
+
+        {/* Light */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "light"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("light")}
+        >
+          <div>
+            <FiSun />
+          </div>
+          Light
+        </button>
+
+        {/* System */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "system"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("system")}
+        >
+          <div>
+            <FiMonitor />
+          </div>
+          System
+        </button>
+      </div>
+    </>
+  );
+};
+
+export default App;
+`;
+export const useDarkModePreviewCodeJS = `import React from "react";
+import useDarkMode from "./useDarkMode";
+import { FiMonitor, FiMoon, FiSun } from "react-icons/fi";
+
+const App = () => {
+  const { mode, handleModeChange } = useDarkMode("darkModePreference");
+  return (
+    <>
+      <div className="mt-3 flex items-center gap-3">
+        {/* Dark */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "dark"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("dark")}
+        >
+          <div>
+            <FiMoon />
+          </div>
+          Dark
+        </button>
+
+        {/* Light */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "light"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("light")}
+        >
+          <div>
+            <FiSun />
+          </div>
+          Light
+        </button>
+
+        {/* System */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "system"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("system")}
+        >
+          <div>
+            <FiMonitor />
+          </div>
+          System
+        </button>
+      </div>
+    </>
+  );
+};
+
+export default App;`;
+export const useDarkModeCodeTSNextjs = `"use client";
+
+import { useEffect, useState } from "react";
+
+type Mode = "dark" | "light" | "system";
+
+const useDarkMode = (
+  localStorageKey: string
+): { mode: Mode; handleModeChange: (newMode: Mode) => void } => {
+  const [mode, setMode] = useState<Mode>(
+    (localStorage.getItem(localStorageKey) as Mode) || "system"
+  );
+
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, mode);
+    const prefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    if (mode === "system") {
+      if (prefersDarkMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    } else if (mode === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [mode, localStorageKey]);
+
+  const handleModeChange = (newMode: Mode): void => {
+    setMode(newMode);
+  };
+
+  return { mode, handleModeChange };
+};
+
+export default useDarkMode;
+`;
+export const useDarkModeCodeJSNextjs = `"use client";
+
+import { useEffect, useState } from "react";
+
+const useDarkMode = (localStorageKey) => {
+  const [mode, setMode] = useState(
+    localStorage.getItem(localStorageKey) || "system"
+  );
+
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, mode);
+    const prefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    if (mode === "system") {
+      if (prefersDarkMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    } else if (mode === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [mode, localStorageKey]);
+
+  const handleModeChange = (newMode) => {
+    setMode(newMode);
+  };
+
+  return { mode, handleModeChange };
+};
+
+export default useDarkMode;
+`;
+export const useDarkModePreviewCodeTSNextjs = `"use client"
+
+import React from "react";
+import useDarkMode from "./useDarkMode";
+import { FiMonitor, FiMoon, FiSun } from "react-icons/fi";
+
+const App = () => {
+  const { mode, handleModeChange } = useDarkMode("darkModePreference");
+  return (
+    <>
+      <div className="mt-3 flex items-center gap-3">
+        {/* Dark */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "dark"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("dark")}
+        >
+          <div>
+            <FiMoon />
+          </div>
+          Dark
+        </button>
+
+        {/* Light */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "light"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("light")}
+        >
+          <div>
+            <FiSun />
+          </div>
+          Light
+        </button>
+
+        {/* System */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "system"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("system")}
+        >
+          <div>
+            <FiMonitor />
+          </div>
+          System
+        </button>
+      </div>
+    </>
+  );
+};
+
+export default App;`;
+export const useDarkModePreviewCodeJSNextjs = `"use client"
+
+import React from "react";
+import useDarkMode from "./useDarkMode";
+import { FiMonitor, FiMoon, FiSun } from "react-icons/fi";
+
+const App = () => {
+  const { mode, handleModeChange } = useDarkMode("darkModePreference");
+  return (
+    <>
+      <div className="mt-3 flex items-center gap-3">
+        {/* Dark */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "dark"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("dark")}
+        >
+          <div>
+            <FiMoon />
+          </div>
+          Dark
+        </button>
+
+        {/* Light */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "light"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("light")}
+        >
+          <div>
+            <FiSun />
+          </div>
+          Light
+        </button>
+
+        {/* System */}
+        <button
+          className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
+            mode === "system"
+              ? "!bg-[#0bab7c] hover:!bg-[#0bab7c]/80 !text-white"
+              : ""
+          }\`}
+          onClick={() => handleModeChange("system")}
+        >
+          <div>
+            <FiMonitor />
+          </div>
+          System
+        </button>
+      </div>
+    </>
+  );
+};
+
+export default App;`;
+// ----------------------------------------------------useFetch---------------------------------------------------------
+export const useFetchCodeTS = `import { useState, useEffect } from "react";
+
+interface FetchState<Data> {
+  data: Data | null;
+  error: Error | null;
+  loading: boolean;
+}
+
+const useFetch = <Data,>(url: string): FetchState<Data> => {
+  const [data, setData] = useState<Data | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const responseData: Data = await response.json();
+        setData(responseData);
+        setError(null);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setError(error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { data, error, loading };
+};
+
+export default useFetch;
+`;
+export const useFetchCodeJS = `import { useState, useEffect } from "react";
+
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const responseData = await response.json();
+        setData(responseData);
+        setError(null);
+      } catch (error) {
+        if (error) {
+          setError(error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { data, error, loading };
+};
+
+export default useFetch;
+`;
+export const useFetchPreviewCodeTS = `import React from "react";
+import useFetch from "./useFetch";
+
+interface Post {
+  id: string;
+  title: string;
+  body: string;
+}
+
+const App: React.FC = () => {
+  const {
+    data: posts,
+    error,
+    loading,
+  } = useFetch<Post[]>("https://jsonplaceholder.typicode.com/posts");
+
+  if (loading) {
+    return (
+      <div>
+        <h1 className="text-3xl font-bold">Loading...</h1>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <h1 className="text-3xl text-red-500">Error: {error.message}</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <ul>
+        {posts?.map((post) => (
+          <div
+            key={post.id}
+            className="p-4 rounded-lg border dark:border-zinc-600"
+          >
+            <h1 className="text-2xl font-semibold">{post.title}</h1>
+            <p className="mt-2">{post.body}</p>
+          </div>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useFetchPreviewCodeJS = `import React from "react";
+import useFetch from "./useFetch";
+
+const App = () => {
+  const {
+    data: posts,
+    error,
+    loading,
+  } = useFetch("https://jsonplaceholder.typicode.com/posts");
+
+  if (loading) {
+    return (
+      <div>
+        <h1 className="text-3xl font-bold">Loading...</h1>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <h1 className="text-3xl text-red-500">Error: {error.message}</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <ul>
+        {posts?.map((post) => (
+          <div
+            key={post.id}
+            className="p-4 rounded-lg border dark:border-zinc-600"
+          >
+            <h1 className="text-2xl font-semibold">{post.title}</h1>
+            <p className="mt-2">{post.body}</p>
+          </div>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useFetchCodeTSNextjs = `"use client";
+
+import { useState, useEffect } from "react";
+
+interface FetchState<Data> {
+  data: Data | null;
+  error: Error | null;
+  loading: boolean;
+}
+
+const useFetch = <Data,>(url: string): FetchState<Data> => {
+  const [data, setData] = useState<Data | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const responseData: Data = await response.json();
+        setData(responseData);
+        setError(null);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setError(error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { data, error, loading };
+};
+
+export default useFetch;
+`;
+export const useFetchCodeJSNextjs = `"use client";
+
+import { useState, useEffect } from "react";
+
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const responseData = await response.json();
+        setData(responseData);
+        setError(null);
+      } catch (error) {
+        if (error) {
+          setError(error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { data, error, loading };
+};
+
+export default useFetch;
+`;
+export const useFetchPreviewCodeTSNextjs = `"use client";
+
+import React from "react";
+import useFetch from "./useFetch";
+
+interface Post {
+  id: string;
+  title: string;
+  body: string;
+}
+
+const App: React.FC = () => {
+  const {
+    data: posts,
+    error,
+    loading,
+  } = useFetch<Post[]>("https://jsonplaceholder.typicode.com/posts");
+
+  if (loading) {
+    return (
+      <div>
+        <h1 className="text-3xl font-bold">Loading...</h1>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <h1 className="text-3xl text-red-500">Error: {error.message}</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <ul>
+        {posts?.map((post) => (
+          <div
+            key={post.id}
+            className="p-4 rounded-lg border dark:border-zinc-600"
+          >
+            <h1 className="text-2xl font-semibold">{post.title}</h1>
+            <p className="mt-2">{post.body}</p>
+          </div>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useFetchPreviewCodeJSNextjs = `"use client";
+
+import React from "react";
+import useFetch from "./useFetch";
+
+const App = () => {
+  const {
+    data: posts,
+    error,
+    loading,
+  } = useFetch("https://jsonplaceholder.typicode.com/posts");
+
+  if (loading) {
+    return (
+      <div>
+        <h1 className="text-3xl font-bold">Loading...</h1>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <h1 className="text-3xl text-red-500">Error: {error.message}</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <ul>
+        {posts?.map((post) => (
+          <div
+            key={post.id}
+            className="p-4 rounded-lg border dark:border-zinc-600"
+          >
+            <h1 className="text-2xl font-semibold">{post.title}</h1>
+            <p className="mt-2">{post.body}</p>
+          </div>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
+`;
+// ----------------------------------------------------useHover---------------------------------------------------------
+export const useHoverCodeTS = `import { useState, useCallback } from "react";
+
+const useHover = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+  }, []);
+
+  return { isHovered, handleMouseEnter, handleMouseLeave };
+};
+
+export default useHover;
+`;
+export const useHoverCodeJS = `import { useState, useCallback } from "react";
+
+const useHover = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+  }, []);
+
+  return { isHovered, handleMouseEnter, handleMouseLeave };
+};
+
+export default useHover;
+`;
+export const useHoverPreviewCodeTS = `import React from "react";
+import useHover from "./useHover";
+
+const App = () => {
+  const { isHovered, handleMouseEnter, handleMouseLeave } = useHover();
+  return (
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={\`w-[150px] h-[100px] mt-5 text-white \${
+        isHovered ? "bg-[#0bab7c]" : "bg-red-500"
+      } flex items-center justify-center\`}
+    >
+      {isHovered ? "Hovered!" : "Hover over me"}
+    </div>
+  );
+};
+
+export default App;`;
+export const useHoverPreviewCodeJS = `import React from "react";
+import useHover from "./useHover";
+
+const App = () => {
+  const { isHovered, handleMouseEnter, handleMouseLeave } = useHover();
+  return (
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={\`w-[150px] h-[100px] mt-5 text-white \${
+        isHovered ? "bg-[#0bab7c]" : "bg-red-500"
+      } flex items-center justify-center\`}
+    >
+      {isHovered ? "Hovered!" : "Hover over me"}
+    </div>
+  );
+};
+
+export default App;`;
+export const useHoverCodeTSNextjs = `"use client";
+
+import { useState, useCallback } from "react";
+
+const useHover = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+  }, []);
+
+  return { isHovered, handleMouseEnter, handleMouseLeave };
+};
+
+export default useHover;
+`;
+export const useHoverCodeJSNextjs = `"use client";
+
+import { useState, useCallback } from "react";
+
+const useHover = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+  }, []);
+
+  return { isHovered, handleMouseEnter, handleMouseLeave };
+};
+
+export default useHover;
+`;
+export const useHoverPreviewCodeTSNextjs = `"use client";
+
+import React from "react";
+import useHover from "./useHover";
+
+const App = () => {
+  const { isHovered, handleMouseEnter, handleMouseLeave } = useHover();
+  return (
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={\`w-[150px] h-[100px] mt-5 text-white \${
+        isHovered ? "bg-[#0bab7c]" : "bg-red-500"
+      } flex items-center justify-center\`}
+    >
+      {isHovered ? "Hovered!" : "Hover over me"}
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useHoverPreviewCodeJSNextjs = `"use client";
+
+import React from "react";
+import useHover from "./useHover";
+
+const App = () => {
+  const { isHovered, handleMouseEnter, handleMouseLeave } = useHover();
+  return (
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={\`w-[150px] h-[100px] mt-5 text-white \${
+        isHovered ? "bg-[#0bab7c]" : "bg-red-500"
+      } flex items-center justify-center\`}
+    >
+      {isHovered ? "Hovered!" : "Hover over me"}
+    </div>
+  );
+};
+
+export default App;
+`;
+// ----------------------------------------------------useKeyPress---------------------------------------------------------
+export const useKeyPressCodeTS = `import { useState, useEffect } from "react";
+
+const useKeyPress = (targetKey: string) => {
+  const [keyPressed, setKeyPressed] = useState(false);
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === targetKey) {
+      setKeyPressed(true);
+    }
+  };
+
+  const handleKeyUp = (event: KeyboardEvent) => {
+    if (event.key === targetKey) {
+      setKeyPressed(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [targetKey]);
+
+  return keyPressed;
+};
+
+export default useKeyPress;
+`;
+export const useKeyPressCodeJS = `import { useState, useEffect } from "react";
+
+const useKeyPress = (targetKey) => {
+  const [keyPressed, setKeyPressed] = useState(false);
+
+  const handleKeyDown = (event) => {
+    if (event.key === targetKey) {
+      setKeyPressed(true);
+    }
+  };
+
+  const handleKeyUp = (event) => {
+    if (event.key === targetKey) {
+      setKeyPressed(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [targetKey]);
+
+  return keyPressed;
+};
+
+export default useKeyPress;
+`;
+export const useKeyPressPreviewCodeTS = `import React from "react";
+import useKeyPress from "./useKeyPress";
+
+const App = () => {
+  const isKeyPressed = useKeyPress("Enter");
+
+  return (
+    <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      {isKeyPressed ? <p>Enter key pressed</p> : <p>Press Enter key</p>}
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useKeyPressPreviewCodeJS = `import React from "react";
+import useKeyPress from "./useKeyPress";
+
+const App = () => {
+  const isKeyPressed = useKeyPress("Enter");
+
+  return (
+    <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      {isKeyPressed ? <p>Enter key pressed</p> : <p>Press Enter key</p>}
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useKeyPressCodeTSNextjs = `/* eslint-disable react-hooks/exhaustive-deps */
+"use client";
+
+import { useState, useEffect } from "react";
+
+const useKeyPress = (targetKey: string) => {
+  const [keyPressed, setKeyPressed] = useState(false);
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === targetKey) {
+      setKeyPressed(true);
+    }
+  };
+
+  const handleKeyUp = (event: KeyboardEvent) => {
+    if (event.key === targetKey) {
+      setKeyPressed(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [targetKey]);
+
+  return keyPressed;
+};
+
+export default useKeyPress;
+`;
+export const useKeyPressCodeJSNextjs = `/* eslint-disable react-hooks/exhaustive-deps */
+"use client";
+
+import { useState, useEffect } from "react";
+
+const useKeyPress = (targetKey) => {
+  const [keyPressed, setKeyPressed] = useState(false);
+
+  const handleKeyDown = (event) => {
+    if (event.key === targetKey) {
+      setKeyPressed(true);
+    }
+  };
+
+  const handleKeyUp = (event) => {
+    if (event.key === targetKey) {
+      setKeyPressed(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [targetKey]);
+
+  return keyPressed;
+};
+
+export default useKeyPress;
+`;
+export const useKeyPressPreviewCodeTSNextjs = `"use client";
+
+import React from "react";
+import useKeyPress from "./useKeyPress";
+
+const App = () => {
+  const isKeyPressed = useKeyPress("Enter");
+
+  return (
+    <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      {isKeyPressed ? <p>Enter key pressed</p> : <p>Press Enter key</p>}
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useKeyPressPreviewCodeJSNextjs = `"use client";
+
+import React from "react";
+import useKeyPress from "./useKeyPress";
+
+const App = () => {
+  const isKeyPressed = useKeyPress("Enter");
+
+  return (
+    <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      {isKeyPressed ? <p>Enter key pressed</p> : <p>Press Enter key</p>}
+    </div>
+  );
+};
+
+export default App;
+`;
+// ----------------------------------------------------useLocalStorage---------------------------------------------------------
+export const useLocalStorageCodeTS = `import { useState } from "react";
+
+const useLocalStorage = <T,>(key: string, initialValue: T) => {
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value: T) => {
+    try {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { value: storedValue, setValue };
+};
+
+export default useLocalStorage;
+`;
+export const useLocalStorageCodeJS = `import { useState } from "react";
+
+const useLocalStorage = (key, initialValue) => {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value) => {
+    try {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { value: storedValue, setValue };
+};
+
+export default useLocalStorage;
+`;
+export const useLocalStoragePreviewCodeTS = `import React from "react";
+import useLocalStorage from "./useLocalStorage";
+
+interface UserData {
+  username: string;
+  email: string;
+  token: string;
+  role: string;
+}
+
+const App = () => {
+  const { value: userData, setValue: setUserData } = useLocalStorage<UserData>(
+    "userKey",
+    {
+      username: "",
+      email: "",
+      token: "",
+      role: "",
+    }
+  );
+
+  const saveUser = () => {
+    setUserData({
+      username: "Brian",
+      email: "brian@gmail.com",
+      token: "fGHe752bhf",
+      role: "admin",
+    });
+  };
+
+  console.log(userData);
+
+  // Another example
+  // const { value, setValue } = useLocalStorage<string>(
+  //   "myKey",
+  //   "default value"
+  // );
+
+  return (
+    <div>
+      <button
+        className="px-6 py-2 text-white bg-[#0bab7c] hover:bg-[#0bab7c]/80 rounded-md"
+        onClick={saveUser}
+      >
+        Save user
+      </button>
+      <p className="mt-2">
+        click the above button and then check your local Storage and console
+      </p>
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useLocalStoragePreviewCodeJS = `import React from "react";
+import useLocalStorage from "./useLocalStorage";
+
+const App = () => {
+  const { value: userData, setValue: setUserData } = useLocalStorage(
+    "userKey",
+    {
+      username: "",
+      email: "",
+      token: "",
+      role: "",
+    }
+  );
+
+  const saveUser = () => {
+    setUserData({
+      username: "Brian",
+      email: "brian@gmail.com",
+      token: "fGHe752bhf",
+      role: "admin",
+    });
+  };
+
+  console.log(userData);
+
+  // Another example
+  // const { value, setValue } = useLocalStorage(
+  //   "myKey",
+  //   "default value"
+  // );
+
+  return (
+    <div>
+      <button
+        className="px-6 py-2 text-white bg-[#0bab7c] hover:bg-[#0bab7c]/80 rounded-md"
+        onClick={saveUser}
+      >
+        Save user
+      </button>
+      <p className="mt-2">
+        click the above button and then check your local Storage and console
+      </p>
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useLocalStorageCodeTSNextjs = `"use client";
+
+import { useState } from "react";
+
+const useLocalStorage = <T,>(key: string, initialValue: T) => {
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value: T) => {
+    try {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { value: storedValue, setValue };
+};
+
+export default useLocalStorage;
+`;
+export const useLocalStorageCodeJSNextjs = `"use client";
+
+import { useState } from "react";
+
+const useLocalStorage = (key, initialValue) => {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value) => {
+    try {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { value: storedValue, setValue };
+};
+
+export default useLocalStorage;
+`;
+export const useLocalStoragePreviewCodeTSNextjs = `"use client";
+
+import React from "react";
+import useLocalStorage from "./useLocalStorage";
+
+interface UserData {
+  username: string;
+  email: string;
+  token: string;
+  role: string;
+}
+
+const App = () => {
+  const { value: userData, setValue: setUserData } = useLocalStorage<UserData>(
+    "userKey",
+    {
+      username: "",
+      email: "",
+      token: "",
+      role: "",
+    }
+  );
+
+  const saveUser = () => {
+    setUserData({
+      username: "Brian",
+      email: "brian@gmail.com",
+      token: "fGHe752bhf",
+      role: "admin",
+    });
+  };
+
+  console.log(userData);
+
+  // Another example
+  // const { value, setValue } = useLocalStorage<string>(
+  //   "myKey",
+  //   "default value"
+  // );
+
+  return (
+    <div>
+      <button
+        className="px-6 py-2 text-white bg-[#0bab7c] hover:bg-[#0bab7c]/80 rounded-md"
+        onClick={saveUser}
+      >
+        Save user
+      </button>
+      <p className="mt-2">
+        click the above button and then check your local Storage and console
+      </p>
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useLocalStoragePreviewCodeJSNextjs = `"use client";
+
+import React from "react";
+import useLocalStorage from "./useLocalStorage";
+
+const App = () => {
+  const { value: userData, setValue: setUserData } = useLocalStorage(
+    "userKey",
+    {
+      username: "",
+      email: "",
+      token: "",
+      role: "",
+    }
+  );
+
+  const saveUser = () => {
+    setUserData({
+      username: "Brian",
+      email: "brian@gmail.com",
+      token: "fGHe752bhf",
+      role: "admin",
+    });
+  };
+
+  console.log(userData);
+
+  // Another example
+  // const { value, setValue } = useLocalStorage(
+  //   "myKey",
+  //   "default value"
+  // );
+
+  return (
+    <div>
+      <button
+        className="px-6 py-2 text-white bg-[#0bab7c] hover:bg-[#0bab7c]/80 rounded-md"
+        onClick={saveUser}
+      >
+        Save user
+      </button>
+      <p className="mt-2">
+        click the above button and then check your local Storage and console
+      </p>
+    </div>
+  );
+};
+
+export default App;
+`;
+// ----------------------------------------------------useMediaQuery---------------------------------------------------------
+export const useMediaQueryCodeTS = `import { useState, useEffect } from "react";
+
+const useMediaQuery = (query: string): boolean => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    const handleChange = (event: MediaQueryListEvent) => {
+      setMatches(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    setMatches(mediaQuery.matches);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, [query]);
+
+  return matches;
+};
+
+export default useMediaQuery;
+`;
+export const useMediaQueryCodeJS = `import { useState, useEffect } from "react";
+
+const useMediaQuery = (query) => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    const handleChange = (event) => {
+      setMatches(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    setMatches(mediaQuery.matches);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, [query]);
+
+  return matches;
+};
+
+export default useMediaQuery;
+`;
+export const useMediaQueryPreviewCodeTS = `import React from "react";
+import useMediaQuery from "./useMediaQuery";
+
+const App = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  return (
+    <>
+      <div className="w-fit px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-200 text-yellow-700">
+        {isMobile ? "Mobile view" : "Desktop view"}
+      </div>
+      <p className="mt2">Resize your browser and watch the label</p>
+    </>
+  );
+};
+
+export default App;
+`;
+export const useMediaQueryPreviewCodeJS = `import React from "react";
+import useMediaQuery from "./useMediaQuery";
+
+const App = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  return (
+    <>
+      <div className="w-fit px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-200 text-yellow-700">
+        {isMobile ? "Mobile view" : "Desktop view"}
+      </div>
+      <p className="mt2">Resize your browser and watch the label</p>
+    </>
+  );
+};
+
+export default App;
+`;
+export const useMediaQueryCodeTSNextjs = `"use client";
+
+import { useState, useEffect } from "react";
+
+const useMediaQuery = (query: string): boolean => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    const handleChange = (event: MediaQueryListEvent) => {
+      setMatches(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    setMatches(mediaQuery.matches);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, [query]);
+
+  return matches;
+};
+
+export default useMediaQuery;
+`;
+export const useMediaQueryCodeJSNextjs = `"use client";
+
+import { useState, useEffect } from "react";
+
+const useMediaQuery = (query) => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    const handleChange = (event) => {
+      setMatches(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    setMatches(mediaQuery.matches);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, [query]);
+
+  return matches;
+};
+
+export default useMediaQuery;
+`;
+export const useMediaQueryPreviewCodeTSNextjs = `"use client";
+
+import React from "react";
+import useMediaQuery from "./useMediaQuery";
+
+const App = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  return (
+    <>
+      <div className="w-fit px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-200 text-yellow-700">
+        {isMobile ? "Mobile view" : "Desktop view"}
+      </div>
+      <p className="mt2">Resize your browser and watch the label</p>
+    </>
+  );
+};
+
+export default App;
+`;
+export const useMediaQueryPreviewCodeJSNextjs = `"use client";
+
+import React from "react";
+import useMediaQuery from "./useMediaQuery";
+
+const App = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  return (
+    <>
+      <div className="w-fit px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-200 text-yellow-700">
+        {isMobile ? "Mobile view" : "Desktop view"}
+      </div>
+      <p className="mt2">Resize your browser and watch the label</p>
+    </>
+  );
+};
+
+export default App;
+`;
+// ----------------------------------------------------useOnClickOutside---------------------------------------------------------
+export const useOnClickOutsideCodeTS = `import { useEffect } from "react";
+
+const useOnClickOutside = (
+  ref: React.RefObject<HTMLElement>,
+  handler: (event: MouseEvent | TouchEvent) => void
+) => {
+  useEffect(() => {
+    const listener = (event: MouseEvent | TouchEvent) => {
+      if (!ref.current || ref.current.contains(event.target as Node)) {
+        return;
+      }
+      handler(event);
+    };
+
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
+
+    return () => {
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
+  }, [ref, handler]);
+};
+
+export default useOnClickOutside;
+`;
+export const useOnClickOutsideCodeJS = `import { useEffect } from "react";
+
+const useOnClickOutside = (ref, handler) => {
+  useEffect(() => {
+    const listener = (event) => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
+      }
+      handler(event);
+    };
+
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
+
+    return () => {
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
+  }, [ref, handler]);
+};
+
+export default useOnClickOutside;
+`;
+export const useOnClickOutsidePreviewCodeTS = `import React from "react";
+import { useRef } from "react";
+import useOnClickOutside from "./useOnClickOutside";
+
+const App = () => {
+  const handleClickOutside = () => {
+    console.log("Clicked outside");
+  };
+
+  const ref = useRef(null);
+  useOnClickOutside(ref, handleClickOutside);
+
+  return (
+    <div ref={ref} className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      Click outside me and watch the console
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useOnClickOutsidePreviewCodeJS = `import React from "react";
+import { useRef } from "react";
+import useOnClickOutside from "./useOnClickOutside";
+
+const App = () => {
+  const handleClickOutside = () => {
+    console.log("Clicked outside");
+  };
+
+  const ref = useRef(null);
+  useOnClickOutside(ref, handleClickOutside);
+
+  return (
+    <div ref={ref} className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      Click outside me and watch the console
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useOnClickOutsideCodeTSNextjs = `"use client";
+
+import { useEffect } from "react";
+
+const useOnClickOutside = (
+  ref: React.RefObject<HTMLElement>,
+  handler: (event: MouseEvent | TouchEvent) => void
+) => {
+  useEffect(() => {
+    const listener = (event: MouseEvent | TouchEvent) => {
+      if (!ref.current || ref.current.contains(event.target as Node)) {
+        return;
+      }
+      handler(event);
+    };
+
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
+
+    return () => {
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
+  }, [ref, handler]);
+};
+
+export default useOnClickOutside;
+`;
+export const useOnClickOutsideCodeJSNextjs = `"use client";
+
+import { useEffect } from "react";
+
+const useOnClickOutside = (ref, handler) => {
+  useEffect(() => {
+    const listener = (event) => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
+      }
+      handler(event);
+    };
+
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
+
+    return () => {
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
+  }, [ref, handler]);
+};
+
+export default useOnClickOutside;
+`;
+export const useOnClickOutsidePreviewCodeTSNextjs = `"use client";
+
+import React from "react";
+import { useRef } from "react";
+import useOnClickOutside from "./useOnClickOutside";
+
+const App = () => {
+  const handleClickOutside = () => {
+    console.log("Clicked outside");
+  };
+
+  const ref = useRef(null);
+  useOnClickOutside(ref, handleClickOutside);
+
+  return (
+    <div ref={ref} className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      Click outside me and watch the console
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useOnClickOutsidePreviewCodeJSNextjs = `"use client";
+
+import React from "react";
+import { useRef } from "react";
+import useOnClickOutside from "./useOnClickOutside";
+
+const App = () => {
+  const handleClickOutside = () => {
+    console.log("Clicked outside");
+  };
+
+  const ref = useRef(null);
+  useOnClickOutside(ref, handleClickOutside);
+
+  return (
+    <div ref={ref} className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      Click outside me and watch the console
+    </div>
+  );
+};
+
+export default App;
+`;
+// ----------------------------------------------------useScroll---------------------------------------------------------
+export const useScrollCodeTS = `import { useState, useEffect } from "react";
+
+const useScroll = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const [scrollX, setScrollX] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+    setScrollX(window.scrollX);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return { scrollY, scrollX };
+};
+
+export default useScroll;
+`;
+export const useScrollCodeJS = `import { useState, useEffect } from "react";
+
+const useScroll = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const [scrollX, setScrollX] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+    setScrollX(window.scrollX);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return { scrollY, scrollX };
+};
+
+export default useScroll;
+`;
+export const useScrollPreviewCodeTS = `import React from "react";
+import useScroll from "./useScroll";
+
+const App = () => {
+  const { scrollY, scrollX } = useScroll();
+  return (
+    <>
+      <div className="fixed p-4 right-0 top-16 bg-white border dark:border-zinc-600 dark:bg-zinc-700 z-40">
+        <div>
+          <p>Scroll Y: {scrollY}</p>
+          <p>Scroll X: {scrollX}</p>
+        </div>
+      </div>
+      <p>
+        Try scrolling and watch the box in the right corner of the browser
+        window
+      </p>
+    </>
+  );
+};
+
+export default App;
+`;
+export const useScrollPreviewCodeJS = `import React from "react";
+import useScroll from "./useScroll";
+
+const App = () => {
+  const { scrollY, scrollX } = useScroll();
+  return (
+    <>
+      <div className="fixed p-4 right-0 top-16 bg-white border dark:border-zinc-600 dark:bg-zinc-700 z-40">
+        <div>
+          <p>Scroll Y: {scrollY}</p>
+          <p>Scroll X: {scrollX}</p>
+        </div>
+      </div>
+      <p>
+        Try scrolling and watch the box in the right corner of the browser
+        window
+      </p>
+    </>
+  );
+};
+
+export default App;
+`;
+export const useScrollCodeTSNextjs = `"use client"
+
+import { useState, useEffect } from "react";
+
+const useScroll = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const [scrollX, setScrollX] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+    setScrollX(window.scrollX);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return { scrollY, scrollX };
+};
+
+export default useScroll;
+`;
+export const useScrollCodeJSNextjs = `"use client"
+
+import { useState, useEffect } from "react";
+
+const useScroll = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const [scrollX, setScrollX] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+    setScrollX(window.scrollX);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return { scrollY, scrollX };
+};
+
+export default useScroll;
+`;
+export const useScrollPreviewCodeTSNextjs = `"use client";
+
+import React from "react";
+import useScroll from "./useScroll";
+
+const App = () => {
+  const { scrollY, scrollX } = useScroll();
+  return (
+    <>
+      <div className="fixed p-4 right-0 top-16 bg-white border dark:border-zinc-600 dark:bg-zinc-700 z-40">
+        <div>
+          <p>Scroll Y: {scrollY}</p>
+          <p>Scroll X: {scrollX}</p>
+        </div>
+      </div>
+      <p>
+        Try scrolling and watch the box in the right corner of the browser
+        window
+      </p>
+    </>
+  );
+};
+
+export default App;
+`;
+export const useScrollPreviewCodeJSNextjs = `"use client";
+
+import React from "react";
+import useScroll from "./useScroll";
+
+const App = () => {
+  const { scrollY, scrollX } = useScroll();
+  return (
+    <>
+      <div className="fixed p-4 right-0 top-16 bg-white border dark:border-zinc-600 dark:bg-zinc-700 z-40">
+        <div>
+          <p>Scroll Y: {scrollY}</p>
+          <p>Scroll X: {scrollX}</p>
+        </div>
+      </div>
+      <p>
+        Try scrolling and watch the box in the right corner of the browser
+        window
+      </p>
+    </>
+  );
+};
+
+export default App;
+`;
+// ----------------------------------------------------useToggle---------------------------------------------------------
+export const useToggleCodeTS = `import { useState, useCallback } from "react";
+
+type Item = Record<string, any>;
+
+function useToggle<T extends Item>(
+  list: T[],
+  initialValue: T | null = null,
+  activePropertyName: string = "isActive"
+) {
+  const [items, setItems] = useState(
+    list.map((item) => ({
+      ...item,
+      [activePropertyName]: item === initialValue,
+    }))
+  );
+
+  const toggleActiveState = useCallback(
+    (itemToActivate: T) => {
+      setItems((prevItems) => {
+        const newItems = prevItems.map((item) => ({
+          ...item,
+          [activePropertyName]: item === itemToActivate,
+        }));
+        return newItems;
+      });
+    },
+    [activePropertyName]
+  );
+
+  const selectedItem = items.find((item) => item[activePropertyName]);
+
+  return [items, toggleActiveState, selectedItem] as const;
+}
+
+export default useToggle;
+`;
+export const useToggleCodeJS = `import { useState, useCallback } from "react";
+
+function useToggle(list, initialValue, activePropertyName = "isActive") {
+  const [items, setItems] = useState(
+    list.map((item) => ({
+      ...item,
+      [activePropertyName]: item === initialValue,
+    }))
+  );
+
+  const toggleActiveState = useCallback(
+    (itemToActivate) => {
+      setItems((prevItems) => {
+        const newItems = prevItems.map((item) => ({
+          ...item,
+          [activePropertyName]: item === itemToActivate,
+        }));
+        return newItems;
+      });
+    },
+    [activePropertyName]
+  );
+
+  const selectedItem = items.find((item) => item[activePropertyName]);
+
+  return [items, toggleActiveState, selectedItem];
+}
+
+export default useToggle;
+`;
+export const useTogglePreviewCodeTS = `import React from "react";
+import useToggle from "./useToggle";
+
+const items = [
+  { id: 1, label: "Option 1" },
+  { id: 2, label: "Option 2" },
+  { id: 3, label: "Option 3" },
+];
+
+const App = () => {
+  const [itemsList, toggleActiveState, selectedItem] = useToggle(
+    items,
+    items[0]
+  );
+
+  // Custom "active" property
+  //  const [itemsList2, toggleActive, selected] = useToggle(
+  //    items,
+  //    items[0],
+  //    "active"
+  //  );
+
+  return (
+    <div>
+      <ul className="flex items-center gap-3">
+        {itemsList.map((item) => (
+          <div
+            key={item.id}
+            onClick={() => toggleActiveState(item)}
+            className={\`w-20 h-20 flex items-center justify-center drop-shadow-md bg-white dark:bg-zinc-700 rounded-lg cursor-pointer \${
+              item.isActive ? "!bg-[#0bab7c] text-white" : ""
+            }\`}
+          >
+            {item.label}
+          </div>
+        ))}
+      </ul>
+      {selectedItem && (
+        <p className="mt-2">Selected item: {selectedItem.label}</p>
+      )}
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useTogglePreviewCodeJS = `import React from "react";
+import useToggle from "./useToggle";
+
+const items = [
+  { id: 1, label: "Option 1" },
+  { id: 2, label: "Option 2" },
+  { id: 3, label: "Option 3" },
+];
+
+const App = () => {
+  const [itemsList, toggleActiveState, selectedItem] = useToggle(
+    items,
+    items[0]
+  );
+
+  // Custom "active" property
+  //  const [itemsList2, toggleActive, selected] = useToggle(
+  //    items,
+  //    items[0],
+  //    "active"
+  //  );
+
+  return (
+    <div>
+      <ul className="flex items-center gap-3">
+        {itemsList.map((item) => (
+          <div
+            key={item.id}
+            onClick={() => toggleActiveState(item)}
+            className={\`w-20 h-20 flex items-center justify-center drop-shadow-md bg-white dark:bg-zinc-700 rounded-lg cursor-pointer \${
+              item.isActive ? "!bg-[#0bab7c] text-white" : ""
+            }\`}
+          >
+            {item.label}
+          </div>
+        ))}
+      </ul>
+      {selectedItem && (
+        <p className="mt-2">Selected item: {selectedItem.label}</p>
+      )}
+    </div>
+  );
+};
+
+export default App;`;
+export const useToggleCodeTSNextjs = `"use client";
+
+import { useState, useCallback } from "react";
+
+type Item = Record<string, any>;
+
+function useToggle<T extends Item>(
+  list: T[],
+  initialValue: T | null = null,
+  activePropertyName: string = "isActive"
+) {
+  const [items, setItems] = useState(
+    list.map((item) => ({
+      ...item,
+      [activePropertyName]: item === initialValue,
+    }))
+  );
+
+  const toggleActiveState = useCallback(
+    (itemToActivate: T) => {
+      setItems((prevItems) => {
+        const newItems = prevItems.map((item) => ({
+          ...item,
+          [activePropertyName]: item === itemToActivate,
+        }));
+        return newItems;
+      });
+    },
+    [activePropertyName]
+  );
+
+  const selectedItem = items.find((item) => item[activePropertyName]);
+
+  return [items, toggleActiveState, selectedItem] as const;
+}
+
+export default useToggle;
+`;
+export const useToggleCodeJSNextjs = `"use client";
+
+import { useState, useCallback } from "react";
+
+function useToggle(list, initialValue, activePropertyName = "isActive") {
+  const [items, setItems] = useState(
+    list.map((item) => ({
+      ...item,
+      [activePropertyName]: item === initialValue,
+    }))
+  );
+
+  const toggleActiveState = useCallback(
+    (itemToActivate) => {
+      setItems((prevItems) => {
+        const newItems = prevItems.map((item) => ({
+          ...item,
+          [activePropertyName]: item === itemToActivate,
+        }));
+        return newItems;
+      });
+    },
+    [activePropertyName]
+  );
+
+  const selectedItem = items.find((item) => item[activePropertyName]);
+
+  return [items, toggleActiveState, selectedItem];
+}
+
+export default useToggle;
+`;
+export const useTogglePreviewCodeTSNextjs = `"use client";
+
+import React from "react";
+import useToggle from "./useToggle";
+
+const items = [
+  { id: 1, label: "Option 1" },
+  { id: 2, label: "Option 2" },
+  { id: 3, label: "Option 3" },
+];
+
+const App = () => {
+  const [itemsList, toggleActiveState, selectedItem] = useToggle(
+    items,
+    items[0]
+  );
+
+  // Custom "active" property
+  //  const [itemsList2, toggleActive, selected] = useToggle(
+  //    items,
+  //    items[0],
+  //    "active"
+  //  );
+
+  return (
+    <div>
+      <ul className="flex items-center gap-3">
+        {itemsList.map((item) => (
+          <div
+            key={item.id}
+            onClick={() => toggleActiveState(item)}
+            className={\`w-20 h-20 flex items-center justify-center drop-shadow-md bg-white dark:bg-zinc-700 rounded-lg cursor-pointer \${
+              item.isActive ? "!bg-[#0bab7c] text-white" : ""
+            }\`}
+          >
+            {item.label}
+          </div>
+        ))}
+      </ul>
+      {selectedItem && (
+        <p className="mt-2">Selected item: {selectedItem.label}</p>
+      )}
+    </div>
+  );
+};
+
+export default App;
+`;
+export const useTogglePreviewCodeJSNextjs = `"use client";
+
+import React from "react";
+import useToggle from "./useToggle";
+
+const items = [
+  { id: 1, label: "Option 1" },
+  { id: 2, label: "Option 2" },
+  { id: 3, label: "Option 3" },
+];
+
+const App = () => {
+  const [itemsList, toggleActiveState, selectedItem] = useToggle(
+    items,
+    items[0]
+  );
+
+  // Custom "active" property
+  //  const [itemsList2, toggleActive, selected] = useToggle(
+  //    items,
+  //    items[0],
+  //    "active"
+  //  );
+
+  return (
+    <div>
+      <ul className="flex items-center gap-3">
+        {itemsList.map((item) => (
+          <div
+            key={item.id}
+            onClick={() => toggleActiveState(item)}
+            className={\`w-20 h-20 flex items-center justify-center drop-shadow-md bg-white dark:bg-zinc-700 rounded-lg cursor-pointer \${
+              item.isActive ? "!bg-[#0bab7c] text-white" : ""
+            }\`}
+          >
+            {item.label}
+          </div>
+        ))}
+      </ul>
+      {selectedItem && (
+        <p className="mt-2">Selected item: {selectedItem.label}</p>
+      )}
+    </div>
+  );
+};
+
+export default App;`;

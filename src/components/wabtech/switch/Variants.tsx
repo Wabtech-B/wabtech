@@ -12,7 +12,7 @@ const Variants = () => {
   console.log(isChecked);
 
   return (
-    <div className="flex items-center gap-x-4 flex-wrap">
+    <div className="flex items-center gap-4 flex-wrap">
       <Switch checked={isChecked} onChange={handleSwitchChange} />
       <Switch
         checked={isChecked}

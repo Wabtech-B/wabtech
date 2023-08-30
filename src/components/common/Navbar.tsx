@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import Dropdown from "@/components/wabtech/dropdown/Dropdown";
 import Button from "@/components/wabtech/button/Button";
-import useDarkMode from "@/components/wabtech/hooks/useDarkmode/useDarkMode";
+import useDarkMode from "@/components/wabtech/hooks/useDarkMode/useDarkMode";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -32,7 +32,7 @@ const Navbar = () => {
       url: "/components/getting-started",
     },
     {
-      linkText: "Hooks",
+      linkText: "Custom Hooks",
       url: "/hooks",
     },
     {

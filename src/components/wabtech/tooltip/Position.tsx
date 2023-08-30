@@ -2,7 +2,7 @@ import Tooltip from "./Tooltip";
 
 const Position = () => {
   return (
-    <div className="flex items-center gap-x-4 flex-wrap">
+    <div className="flex items-center gap-4 flex-wrap">
       <Tooltip text="Tooltip Text!">
         <button className="px-4 py-2 bg-[#0bab7c] text-white rounded-md">
           Top
