@@ -135,7 +135,10 @@ const Navbar = () => {
             </Dropdown>
 
             {/* Sign in button */}
-            <a href="#" className="btn btn-primary flex-align-center gap-x-2">
+            <a
+              href="#"
+              className="hidden btn btn-primary md:flex-align-center gap-x-2"
+            >
               <span> Sign in</span>
               <FiArrowRight />
             </a>
