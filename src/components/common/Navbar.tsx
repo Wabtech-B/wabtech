@@ -54,7 +54,7 @@ const Navbar = () => {
     visible: { opacity: 1, y: 0 },
   };
   return (
-    <nav className="fixed w-full top-0 left-0 bg-white/80 border-b dark:border-b-zinc-800 dark:bg-zinc-900/80 backdrop-blur-sm px-4 md:px-8 h-14 z-20">
+    <nav className="fixed w-full top-0 left-0 bg-white/80 border-b dark:border-b-zinc-800 dark:bg-zinc-900/80 backdrop-blur-sm px-2 md:px-8 h-14 z-20">
       <div className="flex-center-between">
         <Link href="/" className="my-4 flex-align-center">
           <Image src="/logo.png" alt="" width={40} height={40} />
