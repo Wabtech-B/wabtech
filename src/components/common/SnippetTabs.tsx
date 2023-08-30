@@ -61,7 +61,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
             </div>
             {showToolbar && (
               <>
-                <div className="flex items-center gap-x-1 sm:gap-x-3 mr-3 sm:mr-5">
+                <div className="flex items-center gap-x-1 mt-[3px] sm:gap-x-3 mr-3 sm:mr-5">
                   <div className="flex-shrink-0">
                     <Tooltip text="React.js" position="left">
                       <div
