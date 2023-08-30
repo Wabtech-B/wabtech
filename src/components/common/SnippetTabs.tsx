@@ -41,7 +41,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
       <div className="relative">
         <div className="relative">
           <div className="flex justify-between items-center bg-slate-200 dark:bg-zinc-800">
-            <div className="flex relative max-w-[220px] sm:max-w-fit overflow-x-auto hide-scrollbar">
+            <div className="flex relative max-w-[200px] sm:max-w-fit overflow-x-auto hide-scrollbar">
               {tabs.map((tab, index) => (
                 <button
                   key={index}
@@ -61,7 +61,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
             </div>
             {showToolbar && (
               <>
-                <div className="flex items-center gap-x-3 mr-5">
+                <div className="flex items-center gap-x-1 sm:gap-x-3 mr-3 sm:mr-5">
                   <div className="flex-shrink-0">
                     <Tooltip text="React.js" position="left">
                       <div
@@ -77,8 +77,8 @@ const SnippetTabs: React.FC<TabsProps> = ({
                         <Image
                           src="/react.png"
                           alt="React.js"
-                          width={24}
-                          height={24}
+                          width={20}
+                          height={20}
                         />
                       </div>
                     </Tooltip>
@@ -98,8 +98,8 @@ const SnippetTabs: React.FC<TabsProps> = ({
                         <Image
                           src="/next.png"
                           alt="Next.js"
-                          width={24}
-                          height={24}
+                          width={20}
+                          height={20}
                         />
                       </div>
                     </Tooltip>
