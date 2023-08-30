@@ -9,14 +9,19 @@ import App from "./App";
 import Image from "next/image";
 import {
   accordionComponentCodeJS,
+  accordionComponentCodeJSNextjs,
   accordionComponentCodeTS,
+  accordionComponentCodeTSNextjs,
   accordionPreviewCodeJS,
+  accordionPreviewCodeJSNextjs,
   accordionPreviewCodeTS,
+  accordionPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const AccordionSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
   const codeTabs = [
     {
       title: (
@@ -54,10 +59,20 @@ const AccordionSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? accordionComponentCodeTS : accordionComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? accordionComponentCodeTSNextjs
+              : accordionComponentCodeJSNextjs
+            : isTypeScript
+            ? accordionComponentCodeTS
+            : accordionComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? accordionComponentCodeTSNextjs
+          : accordionComponentCodeJSNextjs
+        : isTypeScript
         ? accordionComponentCodeTS
         : accordionComponentCodeJS,
     },
@@ -84,10 +99,20 @@ const AccordionSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? accordionPreviewCodeTS : accordionPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? accordionPreviewCodeTSNextjs
+              : accordionPreviewCodeJSNextjs
+            : isTypeScript
+            ? accordionPreviewCodeTS
+            : accordionPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? accordionPreviewCodeTSNextjs
+          : accordionPreviewCodeJSNextjs
+        : isTypeScript
         ? accordionPreviewCodeTS
         : accordionPreviewCodeJS,
     },
@@ -96,6 +121,8 @@ const AccordionSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

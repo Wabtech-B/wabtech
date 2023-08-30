@@ -9,12 +9,16 @@ import Group from "./Group";
 import Image from "next/image";
 import {
   groupCheckboxesPreviewCodeJS,
+  groupCheckboxesPreviewCodeJSNextjs,
   groupCheckboxesPreviewCodeTS,
+  groupCheckboxesPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const GroupSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -52,12 +56,20 @@ const GroupSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? groupCheckboxesPreviewCodeTSNextjs
+              : groupCheckboxesPreviewCodeJSNextjs
+            : isTypeScript
             ? groupCheckboxesPreviewCodeTS
             : groupCheckboxesPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? groupCheckboxesPreviewCodeTSNextjs
+          : groupCheckboxesPreviewCodeJSNextjs
+        : isTypeScript
         ? groupCheckboxesPreviewCodeTS
         : groupCheckboxesPreviewCodeJS,
     },
@@ -66,6 +78,8 @@ const GroupSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

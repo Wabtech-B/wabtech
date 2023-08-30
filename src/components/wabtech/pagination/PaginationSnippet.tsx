@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   paginationComponentCodeJS,
+  paginationComponentCodeJSNextjs,
   paginationComponentCodeTS,
+  paginationComponentCodeTSNextjs,
   paginationPreviewCodeJS,
+  paginationPreviewCodeJSNextjs,
   paginationPreviewCodeTS,
+  paginationPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const PaginationSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const PaginationSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? paginationComponentCodeTS : paginationComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? paginationComponentCodeTSNextjs
+              : paginationComponentCodeJSNextjs
+            : isTypeScript
+            ? paginationComponentCodeTS
+            : paginationComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? paginationComponentCodeTSNextjs
+          : paginationComponentCodeJSNextjs
+        : isTypeScript
         ? paginationComponentCodeTS
         : paginationComponentCodeJS,
     },
@@ -84,10 +100,20 @@ const PaginationSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? paginationPreviewCodeTS : paginationPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? paginationPreviewCodeTSNextjs
+              : paginationPreviewCodeJSNextjs
+            : isTypeScript
+            ? paginationPreviewCodeTS
+            : paginationPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? paginationPreviewCodeTSNextjs
+          : paginationPreviewCodeJSNextjs
+        : isTypeScript
         ? paginationPreviewCodeTS
         : paginationPreviewCodeJS,
     },
@@ -96,6 +122,8 @@ const PaginationSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

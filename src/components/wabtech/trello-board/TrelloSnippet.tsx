@@ -9,18 +9,28 @@ import App from "./App";
 import Image from "next/image";
 import {
   trelloCardsComponentCodeJS,
+  trelloCardsComponentCodeJSNextjs,
   trelloCardsComponentCodeTS,
+  trelloCardsComponentCodeTSNextjs,
   trelloColumnComponentCodeJS,
+  trelloColumnComponentCodeJSNextjs,
   trelloColumnComponentCodeTS,
+  trelloColumnComponentCodeTSNextjs,
   trelloComponentCodeJS,
+  trelloComponentCodeJSNextjs,
   trelloComponentCodeTS,
+  trelloComponentCodeTSNextjs,
   trelloPreviewCodeJS,
+  trelloPreviewCodeJSNextjs,
   trelloPreviewCodeTS,
+  trelloPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const TrelloSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -58,10 +68,20 @@ const TrelloSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? trelloComponentCodeTS : trelloComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? trelloComponentCodeTSNextjs
+              : trelloComponentCodeJSNextjs
+            : isTypeScript
+            ? trelloComponentCodeTS
+            : trelloComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? trelloComponentCodeTSNextjs
+          : trelloComponentCodeJSNextjs
+        : isTypeScript
         ? trelloComponentCodeTS
         : trelloComponentCodeJS,
     },
@@ -88,12 +108,20 @@ const TrelloSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? trelloColumnComponentCodeTSNextjs
+              : trelloColumnComponentCodeJSNextjs
+            : isTypeScript
             ? trelloColumnComponentCodeTS
             : trelloColumnComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? trelloColumnComponentCodeTSNextjs
+          : trelloColumnComponentCodeJSNextjs
+        : isTypeScript
         ? trelloColumnComponentCodeTS
         : trelloColumnComponentCodeJS,
     },
@@ -120,12 +148,20 @@ const TrelloSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? trelloCardsComponentCodeTSNextjs
+              : trelloCardsComponentCodeJSNextjs
+            : isTypeScript
             ? trelloCardsComponentCodeTS
             : trelloCardsComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? trelloCardsComponentCodeTSNextjs
+          : trelloCardsComponentCodeJSNextjs
+        : isTypeScript
         ? trelloCardsComponentCodeTS
         : trelloCardsComponentCodeJS,
     },
@@ -152,16 +188,30 @@ const TrelloSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? trelloPreviewCodeTS : trelloPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? trelloPreviewCodeTSNextjs
+              : trelloPreviewCodeJSNextjs
+            : isTypeScript
+            ? trelloPreviewCodeTS
+            : trelloPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? trelloPreviewCodeTS : trelloPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? trelloPreviewCodeTSNextjs
+          : trelloPreviewCodeJSNextjs
+        : isTypeScript
+        ? trelloPreviewCodeTS
+        : trelloPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

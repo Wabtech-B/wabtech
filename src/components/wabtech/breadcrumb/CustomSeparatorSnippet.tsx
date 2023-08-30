@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CustomSeparator from "./CustomSeparator";
 import Image from "next/image";
-import { customSeparatorPreviewCode } from "@/data/codeSnippets";
+import {
+  customSeparatorPreviewCode,
+  customSeparatorPreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const CustomSeparatorSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,22 @@ const CustomSeparatorSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {customSeparatorPreviewCode}
+          {isNextJs
+            ? customSeparatorPreviewCodeNextjs
+            : customSeparatorPreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: customSeparatorPreviewCode,
+      contentToCopy: isNextJs
+        ? customSeparatorPreviewCodeNextjs
+        : customSeparatorPreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

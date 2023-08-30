@@ -9,16 +9,24 @@ import App from "./App";
 import Image from "next/image";
 import {
   draggableListComponentCodeJS,
+  draggableListComponentCodeJSNextjs,
   draggableListComponentCodeTS,
+  draggableListComponentCodeTSNextjs,
   draggableListItemComponentCodeJS,
+  draggableListItemComponentCodeJSNextjs,
   draggableListItemComponentCodeTS,
+  draggableListItemComponentCodeTSNextjs,
   draggableListPreviewCodeJS,
+  draggableListPreviewCodeJSNextjs,
   draggableListPreviewCodeTS,
+  draggableListPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const DraggableListSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -56,12 +64,20 @@ const DraggableListSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? draggableListComponentCodeTSNextjs
+              : draggableListComponentCodeJSNextjs
+            : isTypeScript
             ? draggableListComponentCodeTS
             : draggableListComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? draggableListComponentCodeTSNextjs
+          : draggableListComponentCodeJSNextjs
+        : isTypeScript
         ? draggableListComponentCodeTS
         : draggableListComponentCodeJS,
     },
@@ -88,12 +104,20 @@ const DraggableListSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? draggableListItemComponentCodeTSNextjs
+              : draggableListItemComponentCodeJSNextjs
+            : isTypeScript
             ? draggableListItemComponentCodeTS
             : draggableListItemComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? draggableListItemComponentCodeTSNextjs
+          : draggableListItemComponentCodeJSNextjs
+        : isTypeScript
         ? draggableListItemComponentCodeTS
         : draggableListItemComponentCodeJS,
     },
@@ -120,12 +144,20 @@ const DraggableListSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? draggableListPreviewCodeTSNextjs
+              : draggableListPreviewCodeJSNextjs
+            : isTypeScript
             ? draggableListPreviewCodeTS
             : draggableListPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? draggableListPreviewCodeTSNextjs
+          : draggableListPreviewCodeJSNextjs
+        : isTypeScript
         ? draggableListPreviewCodeTS
         : draggableListPreviewCodeJS,
     },
@@ -134,6 +166,8 @@ const DraggableListSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

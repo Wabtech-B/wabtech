@@ -9,7 +9,9 @@ import App from "./App";
 import Image from "next/image";
 import {
   alertComponentCodeJS,
+  alertComponentCodeJSNextjs,
   alertComponentCodeTS,
+  alertComponentCodeTSNextjs,
   alertPreviewCodeJS,
   alertPreviewCodeTS,
 } from "@/data/codeSnippets";
@@ -17,6 +19,8 @@ import SnippetTabs from "@/components/common/SnippetTabs";
 
 const AlertSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +58,22 @@ const AlertSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? alertComponentCodeTS : alertComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? alertComponentCodeTSNextjs
+              : alertComponentCodeJSNextjs
+            : isTypeScript
+            ? alertComponentCodeTS
+            : alertComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? alertComponentCodeTS : alertComponentCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? alertComponentCodeTSNextjs
+          : alertComponentCodeJSNextjs
+        : isTypeScript
+        ? alertComponentCodeTS
+        : alertComponentCodeJS,
     },
     {
       title: (
@@ -92,6 +108,8 @@ const AlertSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

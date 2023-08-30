@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import ExampleTwo from "./ExampleTwo";
 import Image from "next/image";
-import { toggleExampleTwoPreviewCode } from "@/data/codeSnippets";
+import {
+  toggleExampleTwoPreviewCode,
+  toggleExampleTwoPreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const ExampleTwoSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,22 @@ const ExampleTwoSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {toggleExampleTwoPreviewCode}
+          {isNextJs
+            ? toggleExampleTwoPreviewCodeNextjs
+            : toggleExampleTwoPreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: toggleExampleTwoPreviewCode,
+      contentToCopy: isNextJs
+        ? toggleExampleTwoPreviewCodeNextjs
+        : toggleExampleTwoPreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

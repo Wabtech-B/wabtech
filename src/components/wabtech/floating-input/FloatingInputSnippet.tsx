@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   floatingInputComponentCodeJS,
+  floatingInputComponentCodeJSNextjs,
   floatingInputComponentCodeTS,
+  floatingInputComponentCodeTSNextjs,
   floatingInputPreviewCodeJS,
+  floatingInputPreviewCodeJSNextjs,
   floatingInputPreviewCodeTS,
+  floatingInputPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const FloatingInputSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,12 +60,20 @@ const FloatingInputSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? floatingInputComponentCodeTSNextjs
+              : floatingInputComponentCodeJSNextjs
+            : isTypeScript
             ? floatingInputComponentCodeTS
             : floatingInputComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? floatingInputComponentCodeTSNextjs
+          : floatingInputComponentCodeJSNextjs
+        : isTypeScript
         ? floatingInputComponentCodeTS
         : floatingInputComponentCodeJS,
     },
@@ -86,12 +100,20 @@ const FloatingInputSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? floatingInputPreviewCodeTSNextjs
+              : floatingInputPreviewCodeJSNextjs
+            : isTypeScript
             ? floatingInputPreviewCodeTS
             : floatingInputPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? floatingInputPreviewCodeTSNextjs
+          : floatingInputPreviewCodeJSNextjs
+        : isTypeScript
         ? floatingInputPreviewCodeTS
         : floatingInputPreviewCodeJS,
     },
@@ -100,6 +122,8 @@ const FloatingInputSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

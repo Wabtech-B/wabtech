@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Custom from "./Custom";
 import Image from "next/image";
-import { customCardPreviewCode } from "@/data/codeSnippets";
+import {
+  customCardPreviewCode,
+  customCardPreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const CustomSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,20 @@ const CustomSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {customCardPreviewCode}
+          {isNextJs ? customCardPreviewCodeNextjs : customCardPreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: customCardPreviewCode,
+      contentToCopy: isNextJs
+        ? customCardPreviewCodeNextjs
+        : customCardPreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

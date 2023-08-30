@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Testimonial from "./Testimonial";
 import Image from "next/image";
-import { TestimonialExamplePreviewCode } from "@/data/codeSnippets";
+import {
+  TestimonialExamplePreviewCode,
+  TestimonialExamplePreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const TestimonialSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,22 @@ const TestimonialSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {TestimonialExamplePreviewCode}
+          {isNextJs
+            ? TestimonialExamplePreviewCodeNextjs
+            : TestimonialExamplePreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: TestimonialExamplePreviewCode,
+      contentToCopy: isNextJs
+        ? TestimonialExamplePreviewCodeNextjs
+        : TestimonialExamplePreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

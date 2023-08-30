@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   avatarComponentCodeJS,
+  avatarComponentCodeJSNextjs,
   avatarComponentCodeTS,
+  avatarComponentCodeTSNextjs,
   avatarPreviewCodeJS,
+  avatarPreviewCodeJSNextjs,
   avatarPreviewCodeTS,
+  avatarPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const AvatarSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const AvatarSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? avatarComponentCodeTS : avatarComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? avatarComponentCodeTSNextjs
+              : avatarComponentCodeJSNextjs
+            : isTypeScript
+            ? avatarComponentCodeTS
+            : avatarComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? avatarComponentCodeTSNextjs
+          : avatarComponentCodeJSNextjs
+        : isTypeScript
         ? avatarComponentCodeTS
         : avatarComponentCodeJS,
     },
@@ -84,16 +100,30 @@ const AvatarSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? avatarPreviewCodeTS : avatarPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? avatarPreviewCodeTSNextjs
+              : avatarPreviewCodeJSNextjs
+            : isTypeScript
+            ? avatarPreviewCodeTS
+            : avatarPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? avatarPreviewCodeTS : avatarPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? avatarPreviewCodeTSNextjs
+          : avatarPreviewCodeJSNextjs
+        : isTypeScript
+        ? avatarPreviewCodeTS
+        : avatarPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

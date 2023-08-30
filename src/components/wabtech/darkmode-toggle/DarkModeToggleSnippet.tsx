@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   darkmodeToggleComponentCodeJS,
+  darkmodeToggleComponentCodeJSNextjs,
   darkmodeToggleComponentCodeTS,
+  darkmodeToggleComponentCodeTSNextjs,
   darkmodeTogglePreviewCodeJS,
+  darkmodeTogglePreviewCodeJSNextjs,
   darkmodeTogglePreviewCodeTS,
+  darkmodeTogglePreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const DarkModeToggleSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,12 +60,20 @@ const DarkModeToggleSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? darkmodeToggleComponentCodeTSNextjs
+              : darkmodeToggleComponentCodeJSNextjs
+            : isTypeScript
             ? darkmodeToggleComponentCodeTS
             : darkmodeToggleComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? darkmodeToggleComponentCodeTSNextjs
+          : darkmodeToggleComponentCodeJSNextjs
+        : isTypeScript
         ? darkmodeToggleComponentCodeTS
         : darkmodeToggleComponentCodeJS,
     },
@@ -86,12 +100,20 @@ const DarkModeToggleSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? darkmodeTogglePreviewCodeTSNextjs
+              : darkmodeTogglePreviewCodeJSNextjs
+            : isTypeScript
             ? darkmodeTogglePreviewCodeTS
             : darkmodeTogglePreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? darkmodeTogglePreviewCodeTSNextjs
+          : darkmodeTogglePreviewCodeJSNextjs
+        : isTypeScript
         ? darkmodeTogglePreviewCodeTS
         : darkmodeTogglePreviewCodeJS,
     },
@@ -100,6 +122,8 @@ const DarkModeToggleSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

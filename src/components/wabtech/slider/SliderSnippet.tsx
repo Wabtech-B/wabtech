@@ -9,7 +9,9 @@ import App from "./App";
 import Image from "next/image";
 import {
   sliderComponentCodeJS,
+  sliderComponentCodeJSNextjs,
   sliderComponentCodeTS,
+  sliderComponentCodeTSNextjs,
   sliderPreviewCodeJS,
   sliderPreviewCodeTS,
 } from "@/data/codeSnippets";
@@ -17,6 +19,8 @@ import SnippetTabs from "@/components/common/SnippetTabs";
 
 const SliderSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +58,20 @@ const SliderSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? sliderComponentCodeTS : sliderComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? sliderComponentCodeTSNextjs
+              : sliderComponentCodeJSNextjs
+            : isTypeScript
+            ? sliderComponentCodeTS
+            : sliderComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? sliderComponentCodeTSNextjs
+          : sliderComponentCodeJSNextjs
+        : isTypeScript
         ? sliderComponentCodeTS
         : sliderComponentCodeJS,
     },
@@ -94,6 +108,8 @@ const SliderSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

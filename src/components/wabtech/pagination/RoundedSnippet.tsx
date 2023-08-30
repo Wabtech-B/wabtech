@@ -7,11 +7,18 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Rounded from "./Rounded";
 import Image from "next/image";
-import { roundedPaginationPreviewCode } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
+import {
+  roundedPaginationPreviewCodeJS,
+  roundedPaginationPreviewCodeJSNextjs,
+  roundedPaginationPreviewCodeTS,
+  roundedPaginationPreviewCodeTSNextjs,
+} from "@/data/codeSnippets";
 
 const RoundedSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +56,30 @@ const RoundedSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {roundedPaginationPreviewCode}
+          {isNextJs
+            ? isTypeScript
+              ? roundedPaginationPreviewCodeTSNextjs
+              : roundedPaginationPreviewCodeJSNextjs
+            : isTypeScript
+            ? roundedPaginationPreviewCodeTS
+            : roundedPaginationPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: roundedPaginationPreviewCode,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? roundedPaginationPreviewCodeTSNextjs
+          : roundedPaginationPreviewCodeJSNextjs
+        : isTypeScript
+        ? roundedPaginationPreviewCodeTS
+        : roundedPaginationPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   drawerComponentCodeJS,
+  drawerComponentCodeJSNextjs,
   drawerComponentCodeTS,
+  drawerComponentCodeTSNextjs,
   drawerPreviewCodeJS,
+  drawerPreviewCodeJSNextjs,
   drawerPreviewCodeTS,
+  drawerPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const DrawerSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const DrawerSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? drawerComponentCodeTS : drawerComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? drawerComponentCodeTSNextjs
+              : drawerComponentCodeJSNextjs
+            : isTypeScript
+            ? drawerComponentCodeTS
+            : drawerComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? drawerComponentCodeTSNextjs
+          : drawerComponentCodeJSNextjs
+        : isTypeScript
         ? drawerComponentCodeTS
         : drawerComponentCodeJS,
     },
@@ -84,16 +100,30 @@ const DrawerSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? drawerPreviewCodeTS : drawerPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? drawerPreviewCodeTSNextjs
+              : drawerPreviewCodeJSNextjs
+            : isTypeScript
+            ? drawerPreviewCodeTS
+            : drawerPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? drawerPreviewCodeTS : drawerPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? drawerPreviewCodeTSNextjs
+          : drawerPreviewCodeJSNextjs
+        : isTypeScript
+        ? drawerPreviewCodeTS
+        : drawerPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

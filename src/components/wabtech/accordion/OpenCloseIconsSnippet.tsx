@@ -9,9 +9,12 @@ import OpenCloseIcons from "./OpenCloseIcons";
 import Image from "next/image";
 import { openCloseIconsPreviewCode } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
+import { openCloseIconsPreviewCodeNextjs } from "../../../data/codeSnippets";
 
 const OpenCloseIconsSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +52,22 @@ const OpenCloseIconsSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {openCloseIconsPreviewCode}
+          {isNextJs
+            ? openCloseIconsPreviewCodeNextjs
+            : openCloseIconsPreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: openCloseIconsPreviewCode,
+      contentToCopy: isNextJs
+        ? openCloseIconsPreviewCodeNextjs
+        : openCloseIconsPreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

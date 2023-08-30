@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   breadcrumbComponentCodeJS,
+  breadcrumbComponentCodeJSNextjs,
   breadcrumbComponentCodeTS,
+  breadcrumbComponentCodeTSNextjs,
   breadcrumbPreviewCodeJS,
+  breadcrumbPreviewCodeJSNextjs,
   breadcrumbPreviewCodeTS,
+  breadcrumbPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const BreadcrumbSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const BreadcrumbSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? breadcrumbComponentCodeTS : breadcrumbComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? breadcrumbComponentCodeTSNextjs
+              : breadcrumbComponentCodeJSNextjs
+            : isTypeScript
+            ? breadcrumbComponentCodeTS
+            : breadcrumbComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? breadcrumbComponentCodeTSNextjs
+          : breadcrumbComponentCodeJSNextjs
+        : isTypeScript
         ? breadcrumbComponentCodeTS
         : breadcrumbComponentCodeJS,
     },
@@ -84,10 +100,20 @@ const BreadcrumbSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? breadcrumbPreviewCodeTS : breadcrumbPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? breadcrumbPreviewCodeTSNextjs
+              : breadcrumbPreviewCodeJSNextjs
+            : isTypeScript
+            ? breadcrumbPreviewCodeTS
+            : breadcrumbPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? breadcrumbPreviewCodeTSNextjs
+          : breadcrumbPreviewCodeJSNextjs
+        : isTypeScript
         ? breadcrumbPreviewCodeTS
         : breadcrumbPreviewCodeJS,
     },
@@ -96,6 +122,8 @@ const BreadcrumbSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

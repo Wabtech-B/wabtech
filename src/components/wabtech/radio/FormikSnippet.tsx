@@ -7,11 +7,18 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import FormikExample from "./FormikExample";
 import Image from "next/image";
-import { radioWithFormikPreviewCode } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
+import {
+  radioWithFormikPreviewCodeJS,
+  radioWithFormikPreviewCodeJSNextjs,
+  radioWithFormikPreviewCodeTS,
+  radioWithFormikPreviewCodeTSNextjs,
+} from "@/data/codeSnippets";
 
 const FormikSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +56,30 @@ const FormikSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {radioWithFormikPreviewCode}
+          {isNextJs
+            ? isTypeScript
+              ? radioWithFormikPreviewCodeTSNextjs
+              : radioWithFormikPreviewCodeJSNextjs
+            : isTypeScript
+            ? radioWithFormikPreviewCodeTS
+            : radioWithFormikPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: radioWithFormikPreviewCode,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? radioWithFormikPreviewCodeTSNextjs
+          : radioWithFormikPreviewCodeJSNextjs
+        : isTypeScript
+        ? radioWithFormikPreviewCodeTS
+        : radioWithFormikPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

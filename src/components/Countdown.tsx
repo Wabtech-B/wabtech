@@ -51,25 +51,25 @@ const Countdown: React.FC = () => {
           </blockquote>
           <h1 className="mt-5 text-3xl">We're Launching in:</h1>
           <div className="flex-col gap-8 mt-8 text-2xl flex-center-center sm:flex-row">
-            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg dark:border-zinc-600 shadow-primary/40">
+            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg border-zinc-600 shadow-primary/40">
               <h1 className="text-4xl font-bold md:text-8xl">
                 {addLeadingZero(days)}
               </h1>
               <span>Days</span>
             </div>
-            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg dark:border-zinc-600 shadow-primary/40">
+            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg border-zinc-600 shadow-primary/40">
               <h1 className="text-4xl font-bold md:text-8xl">
                 {addLeadingZero(hours)}
               </h1>
               <span>Hours</span>
             </div>
-            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg dark:border-zinc-600 shadow-primary/40">
+            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg border-zinc-600 shadow-primary/40">
               <h1 className="text-4xl font-bold md:text-8xl">
                 {addLeadingZero(minutes)}
               </h1>
               <span>Minutes</span>
             </div>
-            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg dark:border-zinc-600 shadow-primary/40">
+            <div className="flex-col gap-2 py-4 w-[200px] border rounded-lg shadow-lg flex-center-center bg-white dark:bg-zinc-800/40 backdrop-blur-lg border-zinc-600 shadow-primary/40">
               <h1 className="text-4xl font-bold md:text-8xl">
                 {addLeadingZero(seconds)}
               </h1>

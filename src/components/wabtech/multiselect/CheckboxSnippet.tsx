@@ -8,10 +8,17 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import WithCheckbox from "./WithCheckbox";
 import Image from "next/image";
 import SnippetTabs from "@/components/common/SnippetTabs";
-import { multiselectWithCheckboxPreviewCode } from "@/data/codeSnippets";
+import {
+  multiselectWithCheckboxPreviewCodeJS,
+  multiselectWithCheckboxPreviewCodeJSNextjs,
+  multiselectWithCheckboxPreviewCodeTS,
+  multiselectWithCheckboxPreviewCodeTSNextjs,
+} from "@/data/codeSnippets";
 
 const CheckboxSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +56,30 @@ const CheckboxSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {multiselectWithCheckboxPreviewCode}
+          {isNextJs
+            ? isTypeScript
+              ? multiselectWithCheckboxPreviewCodeTSNextjs
+              : multiselectWithCheckboxPreviewCodeJSNextjs
+            : isTypeScript
+            ? multiselectWithCheckboxPreviewCodeTS
+            : multiselectWithCheckboxPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: multiselectWithCheckboxPreviewCode,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? multiselectWithCheckboxPreviewCodeTSNextjs
+          : multiselectWithCheckboxPreviewCodeJSNextjs
+        : isTypeScript
+        ? multiselectWithCheckboxPreviewCodeTS
+        : multiselectWithCheckboxPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

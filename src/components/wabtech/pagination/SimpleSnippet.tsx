@@ -7,11 +7,17 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Simple from "./Simple";
 import Image from "next/image";
-import { simplePaginationPreviewCode } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
+import {
+  simplePaginationPreviewCodeJS,
+  simplePaginationPreviewCodeJSNextjs,
+  simplePaginationPreviewCodeTS,
+  simplePaginationPreviewCodeTSNextjs,
+} from "@/data/codeSnippets";
 
 const SimpleSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
   const codeTabs = [
     {
       title: (
@@ -49,16 +55,30 @@ const SimpleSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {simplePaginationPreviewCode}
+          {isNextJs
+            ? isTypeScript
+              ? simplePaginationPreviewCodeTSNextjs
+              : simplePaginationPreviewCodeJSNextjs
+            : isTypeScript
+            ? simplePaginationPreviewCodeTS
+            : simplePaginationPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: simplePaginationPreviewCode,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? simplePaginationPreviewCodeTSNextjs
+          : simplePaginationPreviewCodeJSNextjs
+        : isTypeScript
+        ? simplePaginationPreviewCodeTS
+        : simplePaginationPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   multiselectComponentCodeJS,
+  multiselectComponentCodeJSNextjs,
   multiselectComponentCodeTS,
+  multiselectComponentCodeTSNextjs,
   multiselectPreviewCodeJS,
+  multiselectPreviewCodeJSNextjs,
   multiselectPreviewCodeTS,
+  multiselectPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const MultiSelectSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,12 +60,20 @@ const MultiSelectSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? multiselectComponentCodeTSNextjs
+              : multiselectComponentCodeJSNextjs
+            : isTypeScript
             ? multiselectComponentCodeTS
             : multiselectComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? multiselectComponentCodeTSNextjs
+          : multiselectComponentCodeJSNextjs
+        : isTypeScript
         ? multiselectComponentCodeTS
         : multiselectComponentCodeJS,
     },
@@ -86,10 +100,20 @@ const MultiSelectSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? multiselectPreviewCodeTS : multiselectPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? multiselectPreviewCodeTSNextjs
+              : multiselectPreviewCodeJSNextjs
+            : isTypeScript
+            ? multiselectPreviewCodeTS
+            : multiselectPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? multiselectPreviewCodeTSNextjs
+          : multiselectPreviewCodeJSNextjs
+        : isTypeScript
         ? multiselectPreviewCodeTS
         : multiselectPreviewCodeJS,
     },
@@ -98,6 +122,8 @@ const MultiSelectSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

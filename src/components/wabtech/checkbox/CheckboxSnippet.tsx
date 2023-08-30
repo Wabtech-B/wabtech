@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   checkboxComponentCodeJS,
+  checkboxComponentCodeJSNextjs,
   checkboxComponentCodeTS,
+  checkboxComponentCodeTSNextjs,
   checkboxPreviewCodeJS,
+  checkboxPreviewCodeJSNextjs,
   checkboxPreviewCodeTS,
+  checkboxPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const CheckboxSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const CheckboxSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? checkboxComponentCodeTS : checkboxComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? checkboxComponentCodeTSNextjs
+              : checkboxComponentCodeJSNextjs
+            : isTypeScript
+            ? checkboxComponentCodeTS
+            : checkboxComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? checkboxComponentCodeTSNextjs
+          : checkboxComponentCodeJSNextjs
+        : isTypeScript
         ? checkboxComponentCodeTS
         : checkboxComponentCodeJS,
     },
@@ -84,10 +100,20 @@ const CheckboxSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? checkboxPreviewCodeTS : checkboxPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? checkboxPreviewCodeTSNextjs
+              : checkboxPreviewCodeJSNextjs
+            : isTypeScript
+            ? checkboxPreviewCodeTS
+            : checkboxPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? checkboxPreviewCodeTSNextjs
+          : checkboxPreviewCodeJSNextjs
+        : isTypeScript
         ? checkboxPreviewCodeTS
         : checkboxPreviewCodeJS,
     },
@@ -96,6 +122,8 @@ const CheckboxSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

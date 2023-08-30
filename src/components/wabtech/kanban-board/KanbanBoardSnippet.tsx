@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   kanbanBoardComponentCodeJS,
+  kanbanBoardComponentCodeJSNextjs,
   kanbanBoardComponentCodeTS,
+  kanbanBoardComponentCodeTSNextjs,
   kanbanBoardPreviewCodeJS,
+  kanbanBoardPreviewCodeJSNextjs,
   kanbanBoardPreviewCodeTS,
+  kanbanBoardPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const KanbanBoardSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,12 +60,20 @@ const KanbanBoardSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? kanbanBoardComponentCodeTSNextjs
+              : kanbanBoardComponentCodeJSNextjs
+            : isTypeScript
             ? kanbanBoardComponentCodeTS
             : kanbanBoardComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? kanbanBoardComponentCodeTSNextjs
+          : kanbanBoardComponentCodeJSNextjs
+        : isTypeScript
         ? kanbanBoardComponentCodeTS
         : kanbanBoardComponentCodeJS,
     },
@@ -86,10 +100,20 @@ const KanbanBoardSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? kanbanBoardPreviewCodeTS : kanbanBoardPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? kanbanBoardPreviewCodeTSNextjs
+              : kanbanBoardPreviewCodeJSNextjs
+            : isTypeScript
+            ? kanbanBoardPreviewCodeTS
+            : kanbanBoardPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? kanbanBoardPreviewCodeTSNextjs
+          : kanbanBoardPreviewCodeJSNextjs
+        : isTypeScript
         ? kanbanBoardPreviewCodeTS
         : kanbanBoardPreviewCodeJS,
     },
@@ -98,6 +122,8 @@ const KanbanBoardSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

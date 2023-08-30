@@ -10,14 +10,20 @@ import Image from "next/image";
 import {
   scrollableCSS,
   scrollablePreviewCodeJS,
+  scrollablePreviewCodeJSNextjs,
   scrollablePreviewCodeTS,
+  scrollablePreviewCodeTSNextjs,
   scrollbaleComponentCodeJS,
+  scrollbaleComponentCodeJSNextjs,
   scrollbaleComponentCodeTS,
+  scrollbaleComponentCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const ScrollableSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -55,7 +61,13 @@ const ScrollableSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? scrollbaleComponentCodeTS : scrollbaleComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? scrollbaleComponentCodeTSNextjs
+              : scrollbaleComponentCodeJSNextjs
+            : isTypeScript
+            ? scrollbaleComponentCodeTS
+            : scrollbaleComponentCodeJS}
         </SyntaxHighlighter>
       ),
       contentToCopy: isTypeScript
@@ -113,10 +125,20 @@ const ScrollableSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? scrollablePreviewCodeTS : scrollablePreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? scrollablePreviewCodeTSNextjs
+              : scrollablePreviewCodeJSNextjs
+            : isTypeScript
+            ? scrollablePreviewCodeTS
+            : scrollablePreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? scrollablePreviewCodeTSNextjs
+          : scrollablePreviewCodeJSNextjs
+        : isTypeScript
         ? scrollablePreviewCodeTS
         : scrollablePreviewCodeJS,
     },
@@ -125,6 +147,8 @@ const ScrollableSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

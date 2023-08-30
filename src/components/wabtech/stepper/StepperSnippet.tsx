@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   stepperComponentCodeJS,
+  stepperComponentCodeJSNextjs,
   stepperComponentCodeTS,
+  stepperComponentCodeTSNextjs,
   stepperPreviewCodeJS,
+  stepperPreviewCodeJSNextjs,
   stepperPreviewCodeTS,
+  stepperPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const StepperSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const StepperSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? stepperComponentCodeTS : stepperComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? stepperComponentCodeTSNextjs
+              : stepperComponentCodeJSNextjs
+            : isTypeScript
+            ? stepperComponentCodeTS
+            : stepperComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? stepperComponentCodeTSNextjs
+          : stepperComponentCodeJSNextjs
+        : isTypeScript
         ? stepperComponentCodeTS
         : stepperComponentCodeJS,
     },
@@ -84,16 +100,30 @@ const StepperSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? stepperPreviewCodeTS : stepperPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? stepperPreviewCodeTSNextjs
+              : stepperPreviewCodeJSNextjs
+            : isTypeScript
+            ? stepperPreviewCodeTS
+            : stepperPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? stepperPreviewCodeTS : stepperPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? stepperPreviewCodeTSNextjs
+          : stepperPreviewCodeJSNextjs
+        : isTypeScript
+        ? stepperPreviewCodeTS
+        : stepperPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

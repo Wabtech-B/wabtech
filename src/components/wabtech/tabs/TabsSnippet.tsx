@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   tabsComponentCodeJS,
+  tabsComponentCodeJSNextjs,
   tabsComponentCodeTS,
+  tabsComponentCodeTSNextjs,
   tabsPreviewCodeJS,
+  tabsPreviewCodeJSNextjs,
   tabsPreviewCodeTS,
+  tabsPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const TabsSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,22 @@ const TabsSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? tabsComponentCodeTS : tabsComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? tabsComponentCodeTSNextjs
+              : tabsComponentCodeJSNextjs
+            : isTypeScript
+            ? tabsComponentCodeTS
+            : tabsComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? tabsComponentCodeTS : tabsComponentCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? tabsComponentCodeTSNextjs
+          : tabsComponentCodeJSNextjs
+        : isTypeScript
+        ? tabsComponentCodeTS
+        : tabsComponentCodeJS,
     },
     {
       title: (
@@ -82,16 +100,30 @@ const TabsSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? tabsPreviewCodeTS : tabsPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? tabsPreviewCodeTSNextjs
+              : tabsPreviewCodeJSNextjs
+            : isTypeScript
+            ? tabsPreviewCodeTS
+            : tabsPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? tabsPreviewCodeTS : tabsPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? tabsPreviewCodeTSNextjs
+          : tabsPreviewCodeJSNextjs
+        : isTypeScript
+        ? tabsPreviewCodeTS
+        : tabsPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

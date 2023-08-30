@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   gradientIconComponentCodeJS,
+  gradientIconComponentCodeJSNextjs,
   gradientIconComponentCodeTS,
+  gradientIconComponentCodeTSNextjs,
   gradientIconPreviewCodeJS,
+  gradientIconPreviewCodeJSNextjs,
   gradientIconPreviewCodeTS,
+  gradientIconPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const GradientIconSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,12 +60,20 @@ const GradientIconSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? gradientIconComponentCodeTSNextjs
+              : gradientIconComponentCodeJSNextjs
+            : isTypeScript
             ? gradientIconComponentCodeTS
             : gradientIconComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? gradientIconComponentCodeTSNextjs
+          : gradientIconComponentCodeJSNextjs
+        : isTypeScript
         ? gradientIconComponentCodeTS
         : gradientIconComponentCodeJS,
     },
@@ -86,10 +100,20 @@ const GradientIconSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? gradientIconPreviewCodeTS : gradientIconPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? gradientIconPreviewCodeTSNextjs
+              : gradientIconPreviewCodeJSNextjs
+            : isTypeScript
+            ? gradientIconPreviewCodeTS
+            : gradientIconPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? gradientIconPreviewCodeTSNextjs
+          : gradientIconPreviewCodeJSNextjs
+        : isTypeScript
         ? gradientIconPreviewCodeTS
         : gradientIconPreviewCodeJS,
     },
@@ -98,6 +122,8 @@ const GradientIconSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

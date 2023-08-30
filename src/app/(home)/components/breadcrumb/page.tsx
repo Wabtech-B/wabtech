@@ -89,7 +89,9 @@ const Breadcrumb = () => {
 
         <section id="with_rrd">
           <div className="mt-10">
-            <h1 className="text-xl mt-3">Breadcrumb with React Router DOM</h1>
+            <h1 className="text-xl mt-3">
+              Breadcrumb with React Router DOM & App Router (Next.js 13)
+            </h1>
             <p className="mt-2">
               This is an independent component from the Breadcrumb above which
               uses{" "}
@@ -99,12 +101,13 @@ const Breadcrumb = () => {
                 target="_blank"
               >
                 react router dom
-              </a>
-              . When using this component, you don't need any of the above code.
-              Just copy the code in{" "}
+              </a>{" "}
+              for React.js. When using this component, you don't need any of the
+              above code. Just copy the code in{" "}
               <span className="code">RouterBreadcrumb.tsx</span> and{" "}
               <span className="code">App.tsx</span> only. Make sure to install
-              react router dom.
+              react router dom when using React.js. Don't install anything for
+              Next.js
             </p>
             <div className="bg-zinc-950 border border-zinc-700 p-2 rounded-lg my-4 relative">
               <CodeSnippet snippet={installDeps} />

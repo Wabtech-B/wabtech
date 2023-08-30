@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   badgeComponentCodeJS,
+  badgeComponentCodeJSNextjs,
   badgeComponentCodeTS,
+  badgeComponentCodeTSNextjs,
   badgePreviewCodeJS,
+  badgePreviewCodeJSNextjs,
   badgePreviewCodeTS,
+  badgePreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const BadgeSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,22 @@ const BadgeSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? badgeComponentCodeTS : badgeComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? badgeComponentCodeTSNextjs
+              : badgeComponentCodeJSNextjs
+            : isTypeScript
+            ? badgeComponentCodeTS
+            : badgeComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? badgeComponentCodeTS : badgeComponentCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? badgeComponentCodeTSNextjs
+          : badgeComponentCodeJSNextjs
+        : isTypeScript
+        ? badgeComponentCodeTS
+        : badgeComponentCodeJS,
     },
     {
       title: (
@@ -82,16 +100,30 @@ const BadgeSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? badgePreviewCodeTS : badgePreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? badgePreviewCodeTSNextjs
+              : badgePreviewCodeJSNextjs
+            : isTypeScript
+            ? badgePreviewCodeTS
+            : badgePreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? badgePreviewCodeTS : badgePreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? badgePreviewCodeTSNextjs
+          : badgePreviewCodeJSNextjs
+        : isTypeScript
+        ? badgePreviewCodeTS
+        : badgePreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   draggableBoxComponentCodeJS,
+  draggableBoxComponentCodeJSNextjs,
   draggableBoxComponentCodeTS,
+  draggableBoxComponentCodeTSNextjs,
   draggableBoxPreviewCodeJS,
+  draggableBoxPreviewCodeJSNextjs,
   draggableBoxPreviewCodeTS,
+  draggableBoxPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const DraggableBoxesSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -56,12 +62,20 @@ const DraggableBoxesSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? draggableBoxComponentCodeTSNextjs
+              : draggableBoxComponentCodeJSNextjs
+            : isTypeScript
             ? draggableBoxComponentCodeTS
             : draggableBoxComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? draggableBoxComponentCodeTSNextjs
+          : draggableBoxComponentCodeJSNextjs
+        : isTypeScript
         ? draggableBoxComponentCodeTS
         : draggableBoxComponentCodeJS,
     },
@@ -88,10 +102,20 @@ const DraggableBoxesSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? draggableBoxPreviewCodeTS : draggableBoxPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? draggableBoxPreviewCodeTSNextjs
+              : draggableBoxPreviewCodeJSNextjs
+            : isTypeScript
+            ? draggableBoxPreviewCodeTS
+            : draggableBoxPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? draggableBoxPreviewCodeTSNextjs
+          : draggableBoxPreviewCodeJSNextjs
+        : isTypeScript
         ? draggableBoxPreviewCodeTS
         : draggableBoxPreviewCodeJS,
     },
@@ -100,6 +124,8 @@ const DraggableBoxesSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

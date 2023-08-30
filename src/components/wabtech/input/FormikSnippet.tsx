@@ -9,12 +9,16 @@ import FormikExample from "./FormikExample";
 import Image from "next/image";
 import {
   inputWithFormikPreviewCodeJS,
+  inputWithFormikPreviewCodeJSNextjs,
   inputWithFormikPreviewCodeTS,
+  inputWithFormikPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const FormikSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -52,12 +56,20 @@ const FormikSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? inputWithFormikPreviewCodeTSNextjs
+              : inputWithFormikPreviewCodeJSNextjs
+            : isTypeScript
             ? inputWithFormikPreviewCodeTS
             : inputWithFormikPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? inputWithFormikPreviewCodeTSNextjs
+          : inputWithFormikPreviewCodeJSNextjs
+        : isTypeScript
         ? inputWithFormikPreviewCodeTS
         : inputWithFormikPreviewCodeJS,
     },
@@ -66,6 +78,8 @@ const FormikSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

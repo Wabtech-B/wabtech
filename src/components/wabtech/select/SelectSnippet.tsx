@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   selectComponentCodeJS,
+  selectComponentCodeJSNextjs,
   selectComponentCodeTS,
+  selectComponentCodeTSNextjs,
   selectPreviewCodeJS,
+  selectPreviewCodeJSNextjs,
   selectPreviewCodeTS,
+  selectPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const SelectSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const SelectSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? selectComponentCodeTS : selectComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? selectComponentCodeTSNextjs
+              : selectComponentCodeJSNextjs
+            : isTypeScript
+            ? selectComponentCodeTS
+            : selectComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? selectComponentCodeTSNextjs
+          : selectComponentCodeJSNextjs
+        : isTypeScript
         ? selectComponentCodeTS
         : selectComponentCodeJS,
     },
@@ -84,16 +100,30 @@ const SelectSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? selectPreviewCodeTS : selectPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? selectPreviewCodeTSNextjs
+              : selectPreviewCodeJSNextjs
+            : isTypeScript
+            ? selectPreviewCodeTS
+            : selectPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? selectPreviewCodeTS : selectPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? selectPreviewCodeTSNextjs
+          : selectPreviewCodeJSNextjs
+        : isTypeScript
+        ? selectPreviewCodeTS
+        : selectPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

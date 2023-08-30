@@ -9,12 +9,16 @@ import DataFetching from "./DataFetching";
 import Image from "next/image";
 import {
   paginationWithDataFetchingPreviewCodeJS,
+  paginationWithDataFetchingPreviewCodeJSNextjs,
   paginationWithDataFetchingPreviewCodeTS,
+  paginationWithDataFetchingPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const DataFetchingSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -52,12 +56,20 @@ const DataFetchingSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? paginationWithDataFetchingPreviewCodeTSNextjs
+              : paginationWithDataFetchingPreviewCodeJSNextjs
+            : isTypeScript
             ? paginationWithDataFetchingPreviewCodeTS
             : paginationWithDataFetchingPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? paginationWithDataFetchingPreviewCodeTSNextjs
+          : paginationWithDataFetchingPreviewCodeJSNextjs
+        : isTypeScript
         ? paginationWithDataFetchingPreviewCodeTS
         : paginationWithDataFetchingPreviewCodeJS,
     },
@@ -66,6 +78,8 @@ const DataFetchingSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

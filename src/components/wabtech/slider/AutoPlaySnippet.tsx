@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import AutoPlay from "./AutoPlay";
 import Image from "next/image";
-import { sliderAutoPlayPreviewCode } from "@/data/codeSnippets";
+import {
+  sliderAutoPlayPreviewCode,
+  sliderAutoPlayPreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const AutoPlaySnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,22 @@ const AutoPlaySnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {sliderAutoPlayPreviewCode}
+          {isNextJs
+            ? sliderAutoPlayPreviewCodeNextjs
+            : sliderAutoPlayPreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: sliderAutoPlayPreviewCode,
+      contentToCopy: isNextJs
+        ? sliderAutoPlayPreviewCodeNextjs
+        : sliderAutoPlayPreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

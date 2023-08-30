@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   avatarGroupComponentCodeJS,
+  avatarGroupComponentCodeJSNextjs,
   avatarGroupComponentCodeTS,
+  avatarGroupComponentCodeTSNextjs,
   avatarGroupPreviewCodeJS,
+  avatarGroupPreviewCodeJSNextjs,
   avatarGroupPreviewCodeTS,
+  avatarGroupPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const AvatarGroupSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,12 +60,20 @@ const AvatarGroupSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? avatarGroupComponentCodeTSNextjs
+              : avatarGroupComponentCodeJSNextjs
+            : isTypeScript
             ? avatarGroupComponentCodeTS
             : avatarGroupComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? avatarGroupComponentCodeTSNextjs
+          : avatarGroupComponentCodeJSNextjs
+        : isTypeScript
         ? avatarGroupComponentCodeTS
         : avatarGroupComponentCodeJS,
     },
@@ -86,10 +100,20 @@ const AvatarGroupSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? avatarGroupPreviewCodeTS : avatarGroupPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? avatarGroupPreviewCodeTSNextjs
+              : avatarGroupPreviewCodeJSNextjs
+            : isTypeScript
+            ? avatarGroupPreviewCodeTS
+            : avatarGroupPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? avatarGroupPreviewCodeTSNextjs
+          : avatarGroupPreviewCodeJSNextjs
+        : isTypeScript
         ? avatarGroupPreviewCodeTS
         : avatarGroupPreviewCodeJS,
     },
@@ -98,6 +122,8 @@ const AvatarGroupSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

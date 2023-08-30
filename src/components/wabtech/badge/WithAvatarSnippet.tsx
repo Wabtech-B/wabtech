@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import WithAvatar from "./WithAvatar";
 import Image from "next/image";
-import { badgeWithAvatarPreviewCode } from "@/data/codeSnippets";
+import {
+  badgeWithAvatarPreviewCode,
+  badgeWithAvatarPreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const WithAvatarSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,22 @@ const WithAvatarSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {badgeWithAvatarPreviewCode}
+          {isNextJs
+            ? badgeWithAvatarPreviewCodeNextjs
+            : badgeWithAvatarPreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: badgeWithAvatarPreviewCode,
+      contentToCopy: isNextJs
+        ? badgeWithAvatarPreviewCodeNextjs
+        : badgeWithAvatarPreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

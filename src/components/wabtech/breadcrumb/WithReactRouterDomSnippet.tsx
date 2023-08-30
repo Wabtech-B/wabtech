@@ -9,13 +9,18 @@ import WithReactRouterDom from "./WithReactRouterDom";
 import Image from "next/image";
 import {
   breadcrumbWithReactRouterComponentCodeJS,
+  breadcrumbWithReactRouterComponentCodeJSNextjs,
   breadcrumbWithReactRouterComponentCodeTS,
+  breadcrumbWithReactRouterComponentCodeTSNextjs,
   routerBreadcrumbPreviewCode,
+  routerBreadcrumbPreviewCodeNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const WithReactRouterDomSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -55,12 +60,20 @@ const WithReactRouterDomSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript
+          {isNextJs
+            ? isTypeScript
+              ? breadcrumbWithReactRouterComponentCodeTSNextjs
+              : breadcrumbWithReactRouterComponentCodeJSNextjs
+            : isTypeScript
             ? breadcrumbWithReactRouterComponentCodeTS
             : breadcrumbWithReactRouterComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? breadcrumbWithReactRouterComponentCodeTSNextjs
+          : breadcrumbWithReactRouterComponentCodeJSNextjs
+        : isTypeScript
         ? breadcrumbWithReactRouterComponentCodeTS
         : breadcrumbWithReactRouterComponentCodeJS,
     },
@@ -87,16 +100,22 @@ const WithReactRouterDomSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {routerBreadcrumbPreviewCode}
+          {isNextJs
+            ? routerBreadcrumbPreviewCodeNextjs
+            : routerBreadcrumbPreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: routerBreadcrumbPreviewCode,
+      contentToCopy: isNextJs
+        ? routerBreadcrumbPreviewCodeNextjs
+        : routerBreadcrumbPreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

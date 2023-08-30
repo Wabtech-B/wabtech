@@ -10,14 +10,20 @@ import Image from "next/image";
 import {
   tooltipCSS,
   tooltipComponentCodeJS,
+  tooltipComponentCodeJSNextjs,
   tooltipComponentCodeTS,
+  tooltipComponentCodeTSNextjs,
   tooltipPreviewCodeJS,
+  tooltipPreviewCodeJSNextjs,
   tooltipPreviewCodeTS,
+  tooltipPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const TooltipSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -55,10 +61,20 @@ const TooltipSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? tooltipComponentCodeTS : tooltipComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? tooltipComponentCodeTSNextjs
+              : tooltipComponentCodeJSNextjs
+            : isTypeScript
+            ? tooltipComponentCodeTS
+            : tooltipComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? tooltipComponentCodeTSNextjs
+          : tooltipComponentCodeJSNextjs
+        : isTypeScript
         ? tooltipComponentCodeTS
         : tooltipComponentCodeJS,
     },
@@ -104,16 +120,30 @@ const TooltipSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? tooltipPreviewCodeTS : tooltipPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? tooltipPreviewCodeTSNextjs
+              : tooltipPreviewCodeJSNextjs
+            : isTypeScript
+            ? tooltipPreviewCodeTS
+            : tooltipPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? tooltipPreviewCodeTS : tooltipPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? tooltipPreviewCodeTSNextjs
+          : tooltipPreviewCodeJSNextjs
+        : isTypeScript
+        ? tooltipPreviewCodeTS
+        : tooltipPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   toggleComponentCodeJS,
+  toggleComponentCodeJSNextjs,
   toggleComponentCodeTS,
+  toggleComponentCodeTSNextjs,
   togglePreviewCodeJS,
+  togglePreviewCodeJSNextjs,
   togglePreviewCodeTS,
+  togglePreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const ToggleSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const ToggleSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? toggleComponentCodeTS : toggleComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? toggleComponentCodeTSNextjs
+              : toggleComponentCodeJSNextjs
+            : isTypeScript
+            ? toggleComponentCodeTS
+            : toggleComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? toggleComponentCodeTSNextjs
+          : toggleComponentCodeJSNextjs
+        : isTypeScript
         ? toggleComponentCodeTS
         : toggleComponentCodeJS,
     },
@@ -84,16 +100,30 @@ const ToggleSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? togglePreviewCodeTS : togglePreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? togglePreviewCodeTSNextjs
+              : togglePreviewCodeJSNextjs
+            : isTypeScript
+            ? togglePreviewCodeTS
+            : togglePreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? togglePreviewCodeTS : togglePreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? togglePreviewCodeTSNextjs
+          : togglePreviewCodeJSNextjs
+        : isTypeScript
+        ? togglePreviewCodeTS
+        : togglePreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Disabled from "./Disabled";
 import Image from "next/image";
-import { disabledButtonPreviewCode } from "@/data/codeSnippets";
+import {
+  disabledButtonPreviewCode,
+  disabledButtonPreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const DisableSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,22 @@ const DisableSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {disabledButtonPreviewCode}
+          {isNextJs
+            ? disabledButtonPreviewCodeNextjs
+            : disabledButtonPreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: disabledButtonPreviewCode,
+      contentToCopy: isNextJs
+        ? disabledButtonPreviewCodeNextjs
+        : disabledButtonPreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

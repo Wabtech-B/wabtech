@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   buttonComponentCodeJS,
+  buttonComponentCodeJSNextjs,
   buttonComponentCodeTS,
+  buttonComponentCodeTSNextjs,
   buttonPreviewCodeJS,
+  buttonPreviewCodeJSNextjs,
   buttonPreviewCodeTS,
+  buttonPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const ButtonSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const ButtonSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? buttonComponentCodeTS : buttonComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? buttonComponentCodeTSNextjs
+              : buttonComponentCodeJSNextjs
+            : isTypeScript
+            ? buttonComponentCodeTS
+            : buttonComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? buttonComponentCodeTSNextjs
+          : buttonComponentCodeJSNextjs
+        : isTypeScript
         ? buttonComponentCodeTS
         : buttonComponentCodeJS,
     },
@@ -84,16 +100,30 @@ const ButtonSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? buttonPreviewCodeTS : buttonPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? buttonPreviewCodeTSNextjs
+              : buttonPreviewCodeJSNextjs
+            : isTypeScript
+            ? buttonPreviewCodeTS
+            : buttonPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? buttonPreviewCodeTS : buttonPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? buttonPreviewCodeTSNextjs
+          : buttonPreviewCodeJSNextjs
+        : isTypeScript
+        ? buttonPreviewCodeTS
+        : buttonPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

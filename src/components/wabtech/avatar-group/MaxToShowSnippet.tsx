@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import MaxToShow from "./MaxToShow";
 import Image from "next/image";
-import { maxAvatarsPreviewCode } from "@/data/codeSnippets";
+import {
+  maxAvatarsPreviewCode,
+  maxAvatarsPreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const MaxToShowSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,20 @@ const MaxToShowSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {maxAvatarsPreviewCode}
+          {isNextJs ? maxAvatarsPreviewCodeNextjs : maxAvatarsPreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: maxAvatarsPreviewCode,
+      contentToCopy: isNextJs
+        ? maxAvatarsPreviewCodeNextjs
+        : maxAvatarsPreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

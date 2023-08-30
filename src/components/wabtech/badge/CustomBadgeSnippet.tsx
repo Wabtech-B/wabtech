@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Custom from "./Custom";
 import Image from "next/image";
-import { customBadgePreviewCode } from "@/data/codeSnippets";
+import {
+  customBadgePreviewCode,
+  customBadgePreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const CustomBadgeSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,20 @@ const CustomBadgeSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {customBadgePreviewCode}
+          {isNextJs ? customBadgePreviewCodeNextjs : customBadgePreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: customBadgePreviewCode,
+      contentToCopy: isNextJs
+        ? customBadgePreviewCodeNextjs
+        : customBadgePreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

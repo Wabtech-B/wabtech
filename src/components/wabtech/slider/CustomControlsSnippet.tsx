@@ -7,11 +7,18 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Custom from "./Custom";
 import Image from "next/image";
-import { customControlIconsPreviewCode } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
+import {
+  customControlIconsPreviewCodeJS,
+  customControlIconsPreviewCodeJSNextjs,
+  customControlIconsPreviewCodeTS,
+  customControlIconsPreviewCodeTSNextjs,
+} from "@/data/codeSnippets";
 
 const CustomControlsSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +56,30 @@ const CustomControlsSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {customControlIconsPreviewCode}
+          {isNextJs
+            ? isTypeScript
+              ? customControlIconsPreviewCodeTSNextjs
+              : customControlIconsPreviewCodeJSNextjs
+            : isTypeScript
+            ? customControlIconsPreviewCodeTS
+            : customControlIconsPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: customControlIconsPreviewCode,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? customControlIconsPreviewCodeTSNextjs
+          : customControlIconsPreviewCodeJSNextjs
+        : isTypeScript
+        ? customControlIconsPreviewCodeTS
+        : customControlIconsPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

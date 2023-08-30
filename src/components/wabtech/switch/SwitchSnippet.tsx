@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   switchComponentCodeJS,
+  switchComponentCodeJSNextjs,
   switchComponentCodeTS,
+  switchComponentCodeTSNextjs,
   switchPreviewCodeJS,
+  switchPreviewCodeJSNextjs,
   switchPreviewCodeTS,
+  switchPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const SwitchSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const SwitchSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? switchComponentCodeTS : switchComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? switchComponentCodeTSNextjs
+              : switchComponentCodeJSNextjs
+            : isTypeScript
+            ? switchComponentCodeTS
+            : switchComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? switchComponentCodeTSNextjs
+          : switchComponentCodeJSNextjs
+        : isTypeScript
         ? switchComponentCodeTS
         : switchComponentCodeJS,
     },
@@ -84,16 +100,30 @@ const SwitchSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? switchPreviewCodeTS : switchPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? switchPreviewCodeTSNextjs
+              : switchPreviewCodeJSNextjs
+            : isTypeScript
+            ? switchPreviewCodeTS
+            : switchPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? switchPreviewCodeTS : switchPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? switchPreviewCodeTSNextjs
+          : switchPreviewCodeJSNextjs
+        : isTypeScript
+        ? switchPreviewCodeTS
+        : switchPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

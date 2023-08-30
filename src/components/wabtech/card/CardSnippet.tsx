@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   cardComponentCodeJS,
+  cardComponentCodeJSNextjs,
   cardComponentCodeTS,
+  cardComponentCodeTSNextjs,
   cardPreviewCodeJS,
+  cardPreviewCodeJSNextjs,
   cardPreviewCodeTS,
+  cardPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const CardSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,22 @@ const CardSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? cardComponentCodeTS : cardComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? cardComponentCodeTSNextjs
+              : cardComponentCodeJSNextjs
+            : isTypeScript
+            ? cardComponentCodeTS
+            : cardComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? cardComponentCodeTS : cardComponentCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? cardComponentCodeTSNextjs
+          : cardComponentCodeJSNextjs
+        : isTypeScript
+        ? cardComponentCodeTS
+        : cardComponentCodeJS,
     },
     {
       title: (
@@ -82,16 +100,30 @@ const CardSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? cardPreviewCodeTS : cardPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? cardPreviewCodeTSNextjs
+              : cardPreviewCodeJSNextjs
+            : isTypeScript
+            ? cardPreviewCodeTS
+            : cardPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? cardPreviewCodeTS : cardPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? cardPreviewCodeTSNextjs
+          : cardPreviewCodeJSNextjs
+        : isTypeScript
+        ? cardPreviewCodeTS
+        : cardPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

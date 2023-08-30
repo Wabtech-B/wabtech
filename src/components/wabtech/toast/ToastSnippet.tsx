@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   toastComponentCodeJS,
+  toastComponentCodeJSNextjs,
   toastComponentCodeTS,
+  toastComponentCodeTSNextjs,
   toastPreviewCodeJS,
+  toastPreviewCodeJSNextjs,
   toastPreviewCodeTS,
+  toastPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const ToastSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,22 @@ const ToastSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? toastComponentCodeTS : toastComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? toastComponentCodeTSNextjs
+              : toastComponentCodeJSNextjs
+            : isTypeScript
+            ? toastComponentCodeTS
+            : toastComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? toastComponentCodeTS : toastComponentCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? toastComponentCodeTSNextjs
+          : toastComponentCodeJSNextjs
+        : isTypeScript
+        ? toastComponentCodeTS
+        : toastComponentCodeJS,
     },
     {
       title: (
@@ -82,16 +100,30 @@ const ToastSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? toastPreviewCodeTS : toastPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? toastPreviewCodeTSNextjs
+              : toastPreviewCodeJSNextjs
+            : isTypeScript
+            ? toastPreviewCodeTS
+            : toastPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? toastPreviewCodeTS : toastPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? toastPreviewCodeTSNextjs
+          : toastPreviewCodeJSNextjs
+        : isTypeScript
+        ? toastPreviewCodeTS
+        : toastPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

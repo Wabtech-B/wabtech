@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   radioComponentCodeJS,
+  radioComponentCodeJSNextjs,
   radioComponentCodeTS,
+  radioComponentCodeTSNextjs,
   radioPreviewCodeJS,
+  radioPreviewCodeJSNextjs,
   radioPreviewCodeTS,
+  radioPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const RadioSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,22 @@ const RadioSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? radioComponentCodeTS : radioComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? radioComponentCodeTSNextjs
+              : radioComponentCodeJSNextjs
+            : isTypeScript
+            ? radioComponentCodeTS
+            : radioComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? radioComponentCodeTS : radioComponentCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? radioComponentCodeTSNextjs
+          : radioComponentCodeJSNextjs
+        : isTypeScript
+        ? radioComponentCodeTS
+        : radioComponentCodeJS,
     },
     {
       title: (
@@ -82,16 +100,30 @@ const RadioSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? radioPreviewCodeTS : radioPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? radioPreviewCodeTSNextjs
+              : radioPreviewCodeJSNextjs
+            : isTypeScript
+            ? radioPreviewCodeTS
+            : radioPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript ? radioPreviewCodeTS : radioPreviewCodeJS,
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? radioPreviewCodeTSNextjs
+          : radioPreviewCodeJSNextjs
+        : isTypeScript
+        ? radioPreviewCodeTS
+        : radioPreviewCodeJS,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

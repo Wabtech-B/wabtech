@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Stroke from "./Stroke";
 import Image from "next/image";
-import { strokeGradientIconPreviewCode } from "@/data/codeSnippets";
+import {
+  strokeGradientIconPreviewCode,
+  strokeGradientIconPreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const StrokeSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,22 @@ const StrokeSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {strokeGradientIconPreviewCode}
+          {isNextJs
+            ? strokeGradientIconPreviewCodeNextjs
+            : strokeGradientIconPreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: strokeGradientIconPreviewCode,
+      contentToCopy: isNextJs
+        ? strokeGradientIconPreviewCodeNextjs
+        : strokeGradientIconPreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

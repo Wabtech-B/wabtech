@@ -7,11 +7,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Type from "./Type";
 import Image from "next/image";
-import { floatingInputTypePreviewCode } from "@/data/codeSnippets";
+import {
+  floatingInputTypePreviewCode,
+  floatingInputTypePreviewCodeNextjs,
+} from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const TypeSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -49,16 +54,22 @@ const TypeSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {floatingInputTypePreviewCode}
+          {isNextJs
+            ? floatingInputTypePreviewCodeNextjs
+            : floatingInputTypePreviewCode}
         </SyntaxHighlighter>
       ),
-      contentToCopy: floatingInputTypePreviewCode,
+      contentToCopy: isNextJs
+        ? floatingInputTypePreviewCodeNextjs
+        : floatingInputTypePreviewCode,
     },
   ];
   return (
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />

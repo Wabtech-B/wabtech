@@ -15,7 +15,7 @@ const CustomState = () => {
         Open
       </button>
       <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-        <h2 className="text-2xl font-semibold mb-2">Default Drawer</h2>
+        <h2 className="text-2xl font-semibold mb-2">Custom State Drawer</h2>
         <p>This is the content of the drawer.</p>
       </Drawer>
     </>

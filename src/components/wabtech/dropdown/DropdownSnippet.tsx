@@ -9,14 +9,20 @@ import App from "./App";
 import Image from "next/image";
 import {
   dropdownComponentCodeJS,
+  dropdownComponentCodeJSNextjs,
   dropdownComponentCodeTS,
+  dropdownComponentCodeTSNextjs,
   dropdownPreviewCodeJS,
+  dropdownPreviewCodeJSNextjs,
   dropdownPreviewCodeTS,
+  dropdownPreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
 
 const DropdownSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);
+  const [isNextJs, setIsNextJs] = useState(false);
+
   const codeTabs = [
     {
       title: (
@@ -54,10 +60,20 @@ const DropdownSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? dropdownComponentCodeTS : dropdownComponentCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? dropdownComponentCodeTSNextjs
+              : dropdownComponentCodeJSNextjs
+            : isTypeScript
+            ? dropdownComponentCodeTS
+            : dropdownComponentCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? dropdownComponentCodeTSNextjs
+          : dropdownComponentCodeJSNextjs
+        : isTypeScript
         ? dropdownComponentCodeTS
         : dropdownComponentCodeJS,
     },
@@ -84,10 +100,20 @@ const DropdownSnippet = () => {
           showLineNumbers={true}
           wrapLines={true}
         >
-          {isTypeScript ? dropdownPreviewCodeTS : dropdownPreviewCodeJS}
+          {isNextJs
+            ? isTypeScript
+              ? dropdownPreviewCodeTSNextjs
+              : dropdownPreviewCodeJSNextjs
+            : isTypeScript
+            ? dropdownPreviewCodeTS
+            : dropdownPreviewCodeJS}
         </SyntaxHighlighter>
       ),
-      contentToCopy: isTypeScript
+      contentToCopy: isNextJs
+        ? isTypeScript
+          ? dropdownPreviewCodeTSNextjs
+          : dropdownPreviewCodeJSNextjs
+        : isTypeScript
         ? dropdownPreviewCodeTS
         : dropdownPreviewCodeJS,
     },
@@ -96,6 +122,8 @@ const DropdownSnippet = () => {
     <>
       <SnippetTabs
         tabs={codeTabs}
+        isNextJs={isNextJs}
+        setIsNextJs={setIsNextJs}
         isTypeScript={isTypeScript}
         setIsTypeScript={setIsTypeScript}
       />
