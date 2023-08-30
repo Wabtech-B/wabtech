@@ -64,7 +64,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
                 <div className="flex items-center gap-x-3 mr-5">
                   <Tooltip text="React.js" position="left">
                     <div
-                      className={`cursor-pointer bg-zinc-700 p-1  ${
+                      className={`flex-shrink-0 cursor-pointer bg-zinc-700 p-1  ${
                         !isNextJs
                           ? "border-2 border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
                           : ""
@@ -77,13 +77,13 @@ const SnippetTabs: React.FC<TabsProps> = ({
                         src="/react.png"
                         alt="React.js"
                         width={24}
-                        height={25}
+                        height={24}
                       />
                     </div>
                   </Tooltip>
                   <Tooltip text="Next.js" position="left">
                     <div
-                      className={`cursor-pointer bg-zinc-700 p-1  ${
+                      className={`flex-shrink-0 cursor-pointer bg-zinc-700 p-1  ${
                         isNextJs
                           ? "border-2 border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
                           : "0"
@@ -102,7 +102,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
                   </Tooltip>
                   <Tooltip text={copied ? "Copied!" : "Copy"} position="left">
                     <div
-                      className="w-8 h-8 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-700/80 border border-zinc-400 dark:border-zinc-600 grid place-items-center rounded-md cursor-pointer"
+                      className="flex-shrink-0 w-8 h-8 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-700/80 border border-zinc-400 dark:border-zinc-600 grid place-items-center rounded-md cursor-pointer"
                       onClick={() =>
                         copyToClipboard(tabs[activeTab].contentToCopy as string)
                       }
