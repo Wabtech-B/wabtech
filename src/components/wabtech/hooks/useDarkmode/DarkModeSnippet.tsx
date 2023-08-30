@@ -5,7 +5,6 @@ import { FiEye } from "react-icons/fi";
 import { FaReact } from "react-icons/fa";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-import App from "./App";
 import Image from "next/image";
 import {
   useDarkModeCodeJS,
@@ -18,6 +17,7 @@ import {
   useDarkModePreviewCodeTSNextjs,
 } from "@/data/codeSnippets";
 import SnippetTabs from "@/components/common/SnippetTabs";
+import App from "./App";
 
 const DarkModeSnippet = () => {
   const [isTypeScript, setIsTypeScript] = useState(true);

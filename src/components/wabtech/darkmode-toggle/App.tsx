@@ -1,7 +1,7 @@
 "use client";
 
 import { FiMonitor, FiMoon, FiSun } from "react-icons/fi";
-import useDarkMode from "../hooks/useDarkMode/useDarkMode";
+import useDarkMode from "../hooks/useDarkmode/useDarkMode";
 
 const App = () => {
   const { mode, handleModeChange } = useDarkMode("darkModePreference");
