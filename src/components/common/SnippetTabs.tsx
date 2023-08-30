@@ -41,7 +41,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
       <div className="relative">
         <div className="relative">
           <div className="flex justify-between items-center bg-slate-200 dark:bg-zinc-800">
-            <div className="flex relative max-w-[300px] sm:max-w-fit overflow-x-auto hide-scrollbar">
+            <div className="flex relative max-w-[220px] sm:max-w-fit overflow-x-auto hide-scrollbar">
               {tabs.map((tab, index) => (
                 <button
                   key={index}
