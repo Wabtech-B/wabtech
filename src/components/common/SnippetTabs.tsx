@@ -65,9 +65,9 @@ const SnippetTabs: React.FC<TabsProps> = ({
                   <div className="flex-shrink-0">
                     <Tooltip text="React.js" position="left">
                       <div
-                        className={`border-2 dark:border-zinc-600 cursor-pointer bg-zinc-700 p-1  ${
+                        className={`border-2 dark:border-zinc-600 rounded cursor-pointer bg-zinc-700 p-1  ${
                           !isNextJs
-                            ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
+                            ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40"
                             : ""
                         }`}
                         onClick={() => {
@@ -86,9 +86,9 @@ const SnippetTabs: React.FC<TabsProps> = ({
                   <div className="flex-shrink-0">
                     <Tooltip text="Next.js" position="left">
                       <div
-                        className={`border-2 dark:border-zinc-600 cursor-pointer bg-zinc-700 p-1  ${
+                        className={`border-2 dark:border-zinc-600 rounded cursor-pointer bg-zinc-700 p-1  ${
                           isNextJs
-                            ? "!border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
+                            ? "!border-[#0bab7c] shadow-md shadow-[#0bab7c]/40"
                             : "0"
                         }`}
                         onClick={() => {
@@ -126,9 +126,9 @@ const SnippetTabs: React.FC<TabsProps> = ({
 
                 <div className="flex items-center gap-x-3 absolute top-16 right-8">
                   <div
-                    className={`border-2 dark:border-zinc-600 cursor-pointer bg-zinc-700  ${
+                    className={`border-2 dark:border-zinc-600 rounded cursor-pointer bg-zinc-700  ${
                       isTypeScript
-                        ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
+                        ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40"
                         : "0"
                     }`}
                     onClick={() => setIsTypeScript(true)}
@@ -141,9 +141,9 @@ const SnippetTabs: React.FC<TabsProps> = ({
                     />
                   </div>
                   <div
-                    className={`border-2 dark:border-zinc-600 cursor-pointer bg-zinc-700  ${
+                    className={`border-2 dark:border-zinc-600 rounded cursor-pointer bg-zinc-700  ${
                       !isTypeScript
-                        ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
+                        ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40"
                         : ""
                     }`}
                     onClick={() => setIsTypeScript(false)}
