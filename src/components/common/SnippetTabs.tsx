@@ -107,7 +107,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
                   <div className="flex-shrink-0">
                     <Tooltip text={copied ? "Copied!" : "Copy"} position="left">
                       <div
-                        className="w-8 h-8 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-700/80 border border-zinc-400 dark:border-zinc-600 grid place-items-center rounded-md cursor-pointer"
+                        className="w-8 h-8 -mt-1 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-700/80 border border-zinc-400 dark:border-zinc-600 grid place-items-center rounded-md cursor-pointer"
                         onClick={() =>
                           copyToClipboard(
                             tabs[activeTab].contentToCopy as string
