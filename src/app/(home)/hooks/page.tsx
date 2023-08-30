@@ -26,7 +26,7 @@ const HooksOverviewPage: React.FC = () => {
           <h1 className="text-xl font-semibold">Please note:</h1>
           <p className="mt-2">
             These hooks are supported in both pure React.js and Next.js
-            applications.
+            applications. See example.js for more information.
           </p>
         </Alert>
       </div>
