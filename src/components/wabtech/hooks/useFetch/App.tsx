@@ -38,7 +38,7 @@ const App: React.FC = () => {
         {posts?.map((post) => (
           <div
             key={post.id}
-            className="p-4 rounded-lg border dark:border-zinc-600"
+            className="p-4 rounded-lg border dark:border-zinc-600 my-2"
           >
             <h1 className="text-2xl font-semibold">{post.title}</h1>
             <p className="mt-2">{post.body}</p>
