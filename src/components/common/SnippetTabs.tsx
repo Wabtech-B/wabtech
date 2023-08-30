@@ -65,9 +65,9 @@ const SnippetTabs: React.FC<TabsProps> = ({
                   <div className="flex-shrink-0">
                     <Tooltip text="React.js" position="left">
                       <div
-                        className={`flex-shrink-0 cursor-pointer bg-zinc-700 p-1  ${
+                        className={`border-2 dark:border-zinc-600 cursor-pointer bg-zinc-700 p-1  ${
                           !isNextJs
-                            ? "border-2 border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
+                            ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
                             : ""
                         }`}
                         onClick={() => {
@@ -86,9 +86,9 @@ const SnippetTabs: React.FC<TabsProps> = ({
                   <div className="flex-shrink-0">
                     <Tooltip text="Next.js" position="left">
                       <div
-                        className={`flex-shrink-0 cursor-pointer bg-zinc-700 p-1  ${
+                        className={`border-2 dark:border-zinc-600 cursor-pointer bg-zinc-700 p-1  ${
                           isNextJs
-                            ? "border-2 border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
+                            ? "!border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
                             : "0"
                         }`}
                         onClick={() => {
@@ -107,7 +107,7 @@ const SnippetTabs: React.FC<TabsProps> = ({
                   <div className="flex-shrink-0">
                     <Tooltip text={copied ? "Copied!" : "Copy"} position="left">
                       <div
-                        className="flex-shrink-0 w-8 h-8 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-700/80 border border-zinc-400 dark:border-zinc-600 grid place-items-center rounded-md cursor-pointer"
+                        className="w-8 h-8 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-700/80 border border-zinc-400 dark:border-zinc-600 grid place-items-center rounded-md cursor-pointer"
                         onClick={() =>
                           copyToClipboard(
                             tabs[activeTab].contentToCopy as string
