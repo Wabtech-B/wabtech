@@ -20,7 +20,7 @@ const Component = ({ children }: { children: React.ReactNode }) => {
         </div>
 
         {/* Main Content */}
-        <div className="p-4 pt-24">{children}</div>
+        <div className="px-2 sm:px-4 pt-24">{children}</div>
       </div>
     </>
   );

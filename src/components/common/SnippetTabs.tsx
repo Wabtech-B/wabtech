@@ -126,9 +126,9 @@ const SnippetTabs: React.FC<TabsProps> = ({
 
                 <div className="flex items-center gap-x-3 absolute top-16 right-8">
                   <div
-                    className={`cursor-pointer bg-zinc-700  ${
+                    className={`border-2 dark:border-zinc-600 cursor-pointer bg-zinc-700  ${
                       isTypeScript
-                        ? "border-2 border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
+                        ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
                         : "0"
                     }`}
                     onClick={() => setIsTypeScript(true)}
@@ -141,9 +141,9 @@ const SnippetTabs: React.FC<TabsProps> = ({
                     />
                   </div>
                   <div
-                    className={`cursor-pointer bg-zinc-700  ${
+                    className={`border-2 dark:border-zinc-600 cursor-pointer bg-zinc-700  ${
                       !isTypeScript
-                        ? "border-2 border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
+                        ? " !border-[#0bab7c] shadow-md shadow-[#0bab7c]/40 rounded"
                         : ""
                     }`}
                     onClick={() => setIsTypeScript(false)}
