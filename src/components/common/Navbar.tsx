@@ -5,12 +5,12 @@ import { useRef } from "react";
 import { useState } from "react";
 import Dropdown from "@/components/wabtech/dropdown/Dropdown";
 import Button from "@/components/wabtech/button/Button";
-import useDarkMode from "@/components/wabtech/hooks/useDarkMode/useDarkMode";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { FiMenu } from "react-icons/fi";
+import useDarkMode from "../wabtech/hooks/useDarkMode/useDarkMode";
 
 const Navbar = () => {
   const { mode, handleModeChange } = useDarkMode("darkModePreference");
