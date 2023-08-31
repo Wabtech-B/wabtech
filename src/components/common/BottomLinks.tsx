@@ -11,7 +11,7 @@ const BottomLinks: React.FC<BottomLink> = ({ prevUrl = "", nextUrl = "" }) => {
   return (
     <div>
       <div
-        className={`flex-align-center px-4 ${
+        className={`flex-align-center flex-col sm:flex-row gap-4  px-4 ${
           nextUrl && prevUrl
             ? "justify-between"
             : prevUrl
