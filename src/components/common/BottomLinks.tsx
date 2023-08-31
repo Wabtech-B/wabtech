@@ -22,7 +22,7 @@ const BottomLinks: React.FC<BottomLink> = ({ prevUrl = "", nextUrl = "" }) => {
         {prevUrl && (
           <Link
             href={prevUrl}
-            className="p-3 rounded-lg border dark:border-zinc-700 group"
+            className="p-3 block w-full sm:w-fit rounded-lg border dark:border-zinc-700 group"
           >
             <div className="flex gap-x-2">
               <div className="group-hover:-translate-x-1 transition-a">
@@ -38,7 +38,7 @@ const BottomLinks: React.FC<BottomLink> = ({ prevUrl = "", nextUrl = "" }) => {
         {nextUrl && (
           <Link
             href={nextUrl}
-            className="p-3 rounded-lg border dark:border-zinc-700 group"
+            className="p-3 block w-full sm:w-fit rounded-lg border dark:border-zinc-700 group"
           >
             <div className="flex gap-x-2">
               <div>
