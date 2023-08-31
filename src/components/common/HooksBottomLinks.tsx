@@ -15,7 +15,11 @@ const HooksBottomLinks: React.FC<HooksBottomLink> = ({
     <div>
       <div
         className={`flex-align-center px-4 ${
-          nextUrl && prevUrl ? "justify-between" : "justify-end"
+          nextUrl && prevUrl
+            ? "justify-between"
+            : prevUrl
+            ? "justify-start"
+            : "justify-end"
         }`}
       >
         {prevUrl && (

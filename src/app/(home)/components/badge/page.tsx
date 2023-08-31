@@ -185,7 +185,7 @@ const Badge = () => {
           </div>
         </section>
         <div className="mt-6 mb-10">
-          <BottomLinks prevUrl="avatar-group" nextUrl="breadcrumb" />
+          <BottomLinks prevUrl="avatar_group" nextUrl="breadcrumb" />
         </div>
       </div>
       <RightSidebar sections={sections} />
