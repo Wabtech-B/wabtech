@@ -7,6 +7,7 @@ import IconsSnippet from "@/components/wabtech/multiselect/IconsSnippet";
 import ImagesSnippet from "@/components/wabtech/multiselect/ImagesSnippet";
 import FormikSnippet from "@/components/wabtech/multiselect/FormikSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const MultiSelect = () => {
   const sections = [
@@ -227,6 +228,9 @@ const MultiSelect = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="modal" nextUrl="pagination" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

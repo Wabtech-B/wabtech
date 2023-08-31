@@ -3,6 +3,7 @@ import CodeSnippet from "../installation/CodeSnippet";
 import Alert from "@/components/wabtech/alert/Alert";
 import DraggableListSnippet from "@/components/wabtech/draggable-list/DraggableListSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const DraggableList = () => {
   const sections = [
@@ -170,6 +171,9 @@ const DraggableList = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="draggable-boxes" nextUrl="drawer" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

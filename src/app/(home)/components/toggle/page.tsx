@@ -1,3 +1,4 @@
+import BottomLinks from "@/components/common/BottomLinks";
 import RightSidebar from "@/components/common/RightSidebar";
 import Alert from "@/components/wabtech/alert/Alert";
 import ExampleThreeSnippet from "@/components/wabtech/toggle/ExampleThreeSnippet";
@@ -136,6 +137,9 @@ const Toggle = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="toast" nextUrl="tooltip" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

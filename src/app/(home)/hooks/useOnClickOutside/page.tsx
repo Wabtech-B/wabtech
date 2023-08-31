@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import HooksBottomLinks from "@/components/common/HooksBottomLinks";
 import OnClickOutsideSnippet from "@/components/wabtech/hooks/useOnClickOutside/OnClickOutsideSnippet";
 import React from "react";
 
@@ -42,6 +43,12 @@ const page = () => {
         <div className="my-8">
           <OnClickOutsideSnippet />
         </div>
+      </div>
+      <div className="mt-6 mb-10">
+        <HooksBottomLinks
+          prevUrl="/hooks/useMediaQuery"
+          nextUrl="/hooks/useScroll"
+        />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import CodeSnippet from "../installation/CodeSnippet";
 import Alert from "@/components/wabtech/alert/Alert";
 import TrelloSnippet from "@/components/wabtech/trello-board/TrelloSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const TrelloBoards = () => {
   const sections = [
@@ -226,6 +227,9 @@ const TrelloBoards = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="tooltip" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

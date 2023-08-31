@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import BottomLinks from "@/components/common/BottomLinks";
 import RightSidebar from "@/components/common/RightSidebar";
 import Alert from "@/components/wabtech/alert/Alert";
 import AutoHideControlsSnippet from "@/components/wabtech/scrollable/AutoHideControlsSnippet";
@@ -199,6 +200,9 @@ const Scrollable = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="radio" nextUrl="select" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

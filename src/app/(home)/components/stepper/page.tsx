@@ -7,6 +7,7 @@ import StepperSnippet from "@/components/wabtech/stepper/StepperSnippet";
 import VariantsSnippet from "@/components/wabtech/stepper/VariantsSnippet";
 import IconsSnippet from "@/components/wabtech/stepper/IconsSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const Stepper = () => {
   const sections = [
@@ -176,6 +177,9 @@ const Stepper = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="select" nextUrl="switch" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

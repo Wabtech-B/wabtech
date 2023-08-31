@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import BottomLinks from "@/components/common/BottomLinks";
 import RightSidebar from "@/components/common/RightSidebar";
 import Alert from "@/components/wabtech/alert/Alert";
 import BadgeSnippet from "@/components/wabtech/badge/BadgeSnippet";
@@ -183,6 +184,9 @@ const Badge = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="avatar-group" nextUrl="breadcrumb" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

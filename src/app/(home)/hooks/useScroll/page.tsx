@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import HooksBottomLinks from "@/components/common/HooksBottomLinks";
 import ScrollSnippet from "@/components/wabtech/hooks/useScroll/ScrollSnippet";
 import React from "react";
 
@@ -42,6 +43,12 @@ const page = () => {
         <div className="my-8">
           <ScrollSnippet />
         </div>
+      </div>
+      <div className="mt-6 mb-10">
+        <HooksBottomLinks
+          prevUrl="/hooks/useOnClickOutside"
+          nextUrl="/hooks/useToggle"
+        />
       </div>
     </div>
   );

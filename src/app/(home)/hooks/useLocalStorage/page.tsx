@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import HooksBottomLinks from "@/components/common/HooksBottomLinks";
 import LocalStorageSnippet from "@/components/wabtech/hooks/useLocalStorage/LocalStorageSnippet";
 import React from "react";
 
@@ -44,6 +45,12 @@ const page = () => {
         <div className="my-8">
           <LocalStorageSnippet />
         </div>
+      </div>
+      <div className="mt-6 mb-10">
+        <HooksBottomLinks
+          prevUrl="/hooks/useKeyPress"
+          nextUrl="/hooks/useMediaQuery"
+        />
       </div>
     </div>
   );

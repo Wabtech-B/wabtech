@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import BottomLinks from "@/components/common/BottomLinks";
 import RightSidebar from "@/components/common/RightSidebar";
 import Alert from "@/components/wabtech/alert/Alert";
 import GradientIconSnippet from "@/components/wabtech/gradient-icons/GradientIconSnippet";
@@ -149,6 +150,9 @@ const GradientIcons = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="floating-input" nextUrl="input" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

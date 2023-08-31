@@ -7,6 +7,7 @@ import WithIconsSnippet from "@/components/wabtech/breadcrumb/WithIconsSnippet";
 import CodeSnippet from "../installation/CodeSnippet";
 import WithReactRouterDomSnippet from "@/components/wabtech/breadcrumb/WithReactRouterDomSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const Breadcrumb = () => {
   const arrowIcon = `<FiChevronRight />`;
@@ -179,6 +180,9 @@ const Breadcrumb = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="badge" nextUrl="button" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

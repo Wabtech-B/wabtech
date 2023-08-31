@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import BottomLinks from "@/components/common/BottomLinks";
 import RightSidebar from "@/components/common/RightSidebar";
 import Alert from "@/components/wabtech/alert/Alert";
 
@@ -186,6 +187,9 @@ const GettingStarted = () => {
               coding!
             </p>
           </Alert>
+        </div>
+        <div className="mt-6 mb-10">
+          <BottomLinks nextUrl="installation" />
         </div>
       </div>
       <RightSidebar sections={sections} />

@@ -3,6 +3,7 @@ import CodeSnippet from "../installation/CodeSnippet";
 import Alert from "@/components/wabtech/alert/Alert";
 import DraggableBoxesSnippet from "@/components/wabtech/draggable-box/DraggableBoxesSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const DraggableBoxes = () => {
   const sections = [
@@ -113,6 +114,9 @@ const DraggableBoxes = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="darkmode-toggle" nextUrl="draggable-list" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

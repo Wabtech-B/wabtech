@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import HooksBottomLinks from "@/components/common/HooksBottomLinks";
 import MediaQuerySnippet from "@/components/wabtech/hooks/useMediaQuery/MediaQuerySnippet";
 import React from "react";
 
@@ -44,6 +45,12 @@ const page = () => {
         <div className="my-8">
           <MediaQuerySnippet />
         </div>
+      </div>
+      <div className="mt-6 mb-10">
+        <HooksBottomLinks
+          prevUrl="/hooks/useLocalStorage"
+          nextUrl="/hooks/useOnClickOutside"
+        />
       </div>
     </div>
   );

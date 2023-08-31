@@ -7,6 +7,7 @@ import ModalSnippet from "@/components/wabtech/modal/ModalSnippet";
 import CustomStateSnippet from "@/components/wabtech/modal/CustomStateSnippet";
 import VariantsSnippet from "@/components/wabtech/modal/VariantsSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const Modal = () => {
   const sections = [
@@ -210,6 +211,9 @@ const Modal = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="kanban-board" nextUrl="multiselect" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

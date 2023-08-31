@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import BottomLinks from "@/components/common/BottomLinks";
 import RightSidebar from "@/components/common/RightSidebar";
 import AccordionSnippet from "@/components/wabtech/accordion/AccordionSnippet";
 import MultipleOpenSnippet from "@/components/wabtech/accordion/MultipleOpenSnippet";
@@ -171,6 +172,9 @@ const Accordion = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="installation" nextUrl="alert" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

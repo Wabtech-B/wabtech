@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import BottomLinks from "@/components/common/BottomLinks";
 import RightSidebar from "@/components/common/RightSidebar";
 import Alert from "@/components/wabtech/alert/Alert";
 import AutoPlaySnippet from "@/components/wabtech/slider/AutoPlaySnippet";
@@ -227,6 +228,9 @@ const Slider = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="card" nextUrl="checkbox" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

@@ -8,6 +8,7 @@ import CustomStateSnippet from "@/components/wabtech/drawer/CustomStateSnippet";
 import PositionSnippet from "@/components/wabtech/drawer/PositionSnippet";
 import SizesSnippet from "@/components/wabtech/drawer/SizesSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const Drawer = () => {
   const sections = [
@@ -225,6 +226,9 @@ const Drawer = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="draggable-list" nextUrl="dropdown" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

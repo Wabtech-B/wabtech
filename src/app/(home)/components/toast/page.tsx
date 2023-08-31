@@ -4,6 +4,7 @@ import Alert from "@/components/wabtech/alert/Alert";
 import ToastSnippet from "@/components/wabtech/toast/ToastSnippet";
 import VariantsSnippet from "@/components/wabtech/toast/VariantsSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const Toast = () => {
   const sections = [
@@ -147,6 +148,9 @@ const Toast = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="tabs" nextUrl="toggle" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

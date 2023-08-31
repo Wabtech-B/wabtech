@@ -5,6 +5,7 @@ import Alert from "@/components/wabtech/alert/Alert";
 import { Tab, Tabs } from "@/components/wabtech/tabs/Tabs";
 import { tabsComponentCodeTS, tabsPreviewCodeTS } from "@/data/codeSnippets";
 import CodeSnippet from "./CodeSnippet";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const InstallationGuide = () => {
   const installCodeReactjs = `npx create-react-app my-app 
@@ -240,6 +241,10 @@ cd my-app`;
           React project. Enjoy building elegant and feature-rich user interfaces
           with ease.
         </p>
+
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="getting-started" nextUrl="accordion" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

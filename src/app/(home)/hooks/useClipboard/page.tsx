@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import HooksBottomLinks from "@/components/common/HooksBottomLinks";
 import ClipboardSnippet from "@/components/wabtech/hooks/useClipboard/ClipboardSnippet";
 import React from "react";
 
@@ -45,6 +46,9 @@ const page = () => {
         <div className="my-8">
           <ClipboardSnippet />
         </div>
+      </div>
+      <div className="mt-6 mb-10">
+        <HooksBottomLinks prevUrl="/hooks" nextUrl="/hooks/useDarkMode" />
       </div>
     </div>
   );

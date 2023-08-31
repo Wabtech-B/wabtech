@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import HooksBottomLinks from "@/components/common/HooksBottomLinks";
 import DarkModeSnippet from "@/components/wabtech/hooks/useDarkmode/DarkModeSnippet";
 import React from "react";
 
@@ -40,11 +41,18 @@ const page = () => {
         <h1 className="text-2xl md:text-3xl font-bold">Example & Usage</h1>
         <p className="mt-2">
           This shows an example of using this hook with respective code
-          snippets.
+          snippets. To support dark mode, please set the value of the "darkMode"
+          property to "class" in tailwind.config.js
         </p>
         <div className="my-8">
           <DarkModeSnippet />
         </div>
+      </div>
+      <div className="mt-6 mb-10">
+        <HooksBottomLinks
+          prevUrl="/hooks/useClipboard"
+          nextUrl="/hooks/useFetch"
+        />
       </div>
     </div>
   );

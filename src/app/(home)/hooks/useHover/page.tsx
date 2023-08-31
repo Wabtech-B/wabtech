@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import HooksBottomLinks from "@/components/common/HooksBottomLinks";
 import HoverSnippet from "@/components/wabtech/hooks/useHover/HoverSnippet";
 import React from "react";
 
@@ -43,6 +44,12 @@ const page = () => {
         <div className="my-8">
           <HoverSnippet />
         </div>
+      </div>
+      <div className="mt-6 mb-10">
+        <HooksBottomLinks
+          prevUrl="/hooks/useFetch"
+          nextUrl="/hooks/useKeyPress"
+        />
       </div>
     </div>
   );

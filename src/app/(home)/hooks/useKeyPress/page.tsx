@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import HooksBottomLinks from "@/components/common/HooksBottomLinks";
 import KeyPressSnippet from "@/components/wabtech/hooks/useKeyPress/KeyPressSnippet";
 import React from "react";
 
@@ -42,6 +43,12 @@ const page = () => {
         <div className="my-8">
           <KeyPressSnippet />
         </div>
+      </div>
+      <div className="mt-6 mb-10">
+        <HooksBottomLinks
+          prevUrl="/hooks/useHover"
+          nextUrl="/hooks/useLocalStorage"
+        />
       </div>
     </div>
   );

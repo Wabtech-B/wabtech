@@ -6,6 +6,7 @@ import Alert from "@/components/wabtech/alert/Alert";
 import DropdownSnippet from "@/components/wabtech/dropdown/DropdownSnippet";
 import CustomDropdownSnippet from "@/components/wabtech/dropdown/CustomDropdownSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const Dropdown = () => {
   const sections = [
@@ -168,6 +169,9 @@ const Dropdown = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="drawer" nextUrl="floating-input" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

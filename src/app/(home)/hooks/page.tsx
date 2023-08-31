@@ -1,4 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
+import BottomLinks from "@/components/common/BottomLinks";
+import HooksBottomLinks from "@/components/common/HooksBottomLinks";
 import Alert from "@/components/wabtech/alert/Alert";
 import React from "react";
 
@@ -26,7 +28,7 @@ const HooksOverviewPage: React.FC = () => {
           <h1 className="text-xl font-semibold">Please note:</h1>
           <p className="mt-2">
             These hooks are supported in both pure React.js and Next.js
-            applications. See example.js for more information.
+            applications. See examples for more information.
           </p>
         </Alert>
       </div>
@@ -121,6 +123,9 @@ const HooksOverviewPage: React.FC = () => {
           your project grows, having a library of reusable hooks will become
           invaluable in maintaining a scalable and efficient codebase.
         </p>
+      </div>
+      <div className="mt-6 mb-10">
+        <HooksBottomLinks nextUrl="/hooks/useClipboard" />
       </div>
     </div>
   );

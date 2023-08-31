@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import BottomLinks from "@/components/common/BottomLinks";
 import RightSidebar from "@/components/common/RightSidebar";
 import Alert from "@/components/wabtech/alert/Alert";
 import DarkModeToggleSnippet from "@/components/wabtech/darkmode-toggle/DarkModeToggleSnippet";
@@ -117,6 +118,9 @@ const DarkModeToggle = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="checkbox" nextUrl="draggable-boxes" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>

@@ -8,6 +8,7 @@ import WithIconSnippet from "@/components/wabtech/select/WithIconSnippet";
 import InvalidFeedbackSnippet from "@/components/wabtech/select/InvalidFeedbackSnippet";
 import FormikSnippet from "@/components/wabtech/select/FormikSnippet";
 import RightSidebar from "@/components/common/RightSidebar";
+import BottomLinks from "@/components/common/BottomLinks";
 
 const Select = () => {
   const sections = [
@@ -214,6 +215,9 @@ const Select = () => {
             </div>
           </div>
         </section>
+        <div className="mt-6 mb-10">
+          <BottomLinks prevUrl="scrollable" nextUrl="stepper" />
+        </div>
       </div>
       <RightSidebar sections={sections} />
     </div>
