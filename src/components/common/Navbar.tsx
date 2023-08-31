@@ -195,6 +195,7 @@ const Navbar = () => {
                 <Link
                   href={link.url}
                   className={`${isActive ? "text-primary" : ""}`}
+                  onClick={() => setIsNavbarMenuOpen(false)}
                 >
                   {link.linkText}
                 </Link>
