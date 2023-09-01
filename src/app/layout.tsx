@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "web design",
     "web application development",
     "React.js components",
+    "Next.js components",
     "React.js reusable components components",
     "TypeScript components",
     "Tailwind CSS components",
