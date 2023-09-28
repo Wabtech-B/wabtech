@@ -6,7 +6,7 @@ const Hooks = () => {
   return (
     <div className="py-16 max-w-7xl mx-auto px-3">
       <div className="flex-align-center flex-wrap gap-10">
-        <div className="flex-1 basis-80">
+        <div className="flex-1 basis-80 order-2 sm:order-none">
           <img
             src="/hooks.png"
             alt="Hooks"

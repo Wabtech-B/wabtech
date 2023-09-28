@@ -25,13 +25,13 @@ const Navbar = () => {
         <div className="flex-align-center gap-x-10">
           <NavbarLinks />
 
-          <div className="flex-align-center gap-x-4">
+          <div className="flex-align-center">
             {/* Theme toggle */}
             <Dropdown
               general
               className="!w-[200px] !-right-20 p-4 !mt-2 dark:!border-zinc-600"
               trigger={
-                <div className="w-10 h-10 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-800 rounded-lg grid place-items-center">
+                <div className="w-10 h-10 mr-2 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-800 rounded-lg grid place-items-center">
                   <FiSun />
                 </div>
               }
