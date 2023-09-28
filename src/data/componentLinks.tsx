@@ -6,7 +6,7 @@ export interface ComponentLink {
 export const componentLinks: ComponentLink[] = [
   {
     linkText: "Overview",
-    url: "/components/getting-started",
+    url: "/components",
   },
   {
     linkText: "Installation & Usage",

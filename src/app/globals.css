@@ -21,11 +21,11 @@ body {
 }
 
 .gradient-bg {
-  @apply fixed -z-10 top-1/3 left-2/3 flex place-items-center before:absolute before:h-[400px] before:w-[580px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial  before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic  after:blur-2xl after:content-['']  before:from-transparent before:dark:to-blue-700 before:opacity-10 after:from-sky-900 after:via-[#0141ff] after:opacity-40 before:lg:h-[360px];
+  @apply fixed -z-10 top-1/3 left-2/3 flex place-items-center before:absolute before:h-[600px] before:w-[780px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial  before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic  after:blur-2xl after:content-['']  before:from-transparent before:dark:to-blue-700 before:opacity-10 after:from-sky-900 after:via-[#0141ff] after:opacity-40 before:lg:h-[360px];
 }
 
 .bg-image {
-  @apply fixed -top-28 -right-10 !bg-no-repeat !bg-right-top w-screen h-screen -z-10;
+  @apply fixed -top-52 -right-36 !bg-no-repeat !bg-right-top w-screen h-screen -z-10;
   background-size: 800px !important;
 }
 
@@ -267,6 +267,19 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px inherit inset;
   box-shadow: 0 0 0 1000px inherit inset !important;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+.arrow {
+  animation: slide 1s ease-in-out infinite forwards alternate-reverse;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(10px);
+  }
+  to {
+    transform: translateX(-10px);
+  }
 }
 
 .test-color {

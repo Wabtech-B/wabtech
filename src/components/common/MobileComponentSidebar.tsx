@@ -1,5 +1,5 @@
 "use client";
-import { FiMenu } from "react-icons/fi";
+import { FiArrowLeft, FiMenu } from "react-icons/fi";
 import { useState } from "react";
 import Drawer from "@/components/wabtech/drawer/Drawer";
 import Link from "next/link";
@@ -13,10 +13,12 @@ const MobileComponentSidebar = () => {
   return (
     <div className="lg:hidden">
       <div
-        className="fixed right-0 top-20 z-20 cursor-pointer w-10 h-10 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-800 rounded-lg grid place-items-center"
+        className="fixed left-2 border dark:border-zinc-500 shadow-lg shadow-primary/50 top-1/2 -translate-y-1/2 z-20 cursor-pointer w-10 h-10 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-800 rounded-lg grid place-items-center"
         onClick={() => setIsDrawerOpen(true)}
       >
-        <FiMenu />
+        <div className="arrow">
+          <FiArrowLeft />
+        </div>
       </div>
       <Drawer
         size="small"

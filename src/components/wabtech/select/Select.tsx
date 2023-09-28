@@ -87,6 +87,7 @@ const Select: React.FC<SelectProps> = ({
         !selectRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
+        setSearchValue("");
       }
     };
 

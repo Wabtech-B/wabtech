@@ -5,7 +5,7 @@ import RightSidebar from "@/components/common/RightSidebar";
 import Alert from "@/components/wabtech/alert/Alert";
 import AvatarGroupSnippet from "@/components/wabtech/avatar-group/AvatarGroupSnippet";
 import MaxToShowSnippet from "@/components/wabtech/avatar-group/MaxToShowSnippet";
-import SizesSnippet from "@/components/wabtech/avatar/SizesSnippet";
+import SizesSnippet from "@/components/wabtech/avatar-group/SizesSnippet";
 
 const AvatarGroup = () => {
   const sections = [
