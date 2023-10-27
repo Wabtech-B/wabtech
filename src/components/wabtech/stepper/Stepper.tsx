@@ -41,7 +41,7 @@ const Stepper: React.FC<StepperProps> = ({
 
   return (
     <div className="dark:text-slate-200">
-      <div className="mb-6">
+      <div className="mb-6 text-center">
         <div
           className={`flex mb-2 justify-between ${
             variant === "three"
@@ -67,41 +67,45 @@ const Stepper: React.FC<StepperProps> = ({
                 </>
               )}
               <div
-                className={`flex gap-x-4 items-center space-y-2 h-full ${
+                className={`flex gap-x-4 items-center justify-center space-y-2 h-full flex-1 w-full mx-auto ${
                   variant === "three" &&
                   "relative px-2 py-1 before:absolute before:w-[0.8rem] before:h-[0.8rem] before:bg-white dark:before:bg-zinc-900 before:-right-[0.5rem] before:border before:border-transparent border-r border-r-zinc-300 before:border-t-zinc-300 before:border-r-zinc-300 dark:border-r-zinc-600 dark:before:border-t-zinc-600 dark:before:border-r-zinc-600 before:rotate-45 last:before:hidden last:border-r-0"
                 } ${variant === "one" && "flex-col"}`}
               >
                 {type === "icon" ? (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{
-                      scale:
-                        currentStep === index || index < currentStep ? 1.1 : 1,
-                      backgroundColor:
-                        currentStep === index || index < currentStep
-                          ? "#0bab7c"
-                          : "#4B5563",
-                    }}
-                    className="rounded-full w-8 h-8 flex items-center justify-center transition-colors duration-300 text-white"
-                  >
-                    {index < currentStep ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-white"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    ) : (
-                      <div className="flex-shrink-0">{step.icon}</div>
-                    )}
-                  </motion.div>
+                  <div className="flex-1 w-fit">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{
+                        scale:
+                          currentStep === index || index < currentStep
+                            ? 1.1
+                            : 1,
+                        backgroundColor:
+                          currentStep === index || index < currentStep
+                            ? "#0bab7c"
+                            : "#4B5563",
+                      }}
+                      className="flex items-center justify-center w-8 h-8 text-white transition-colors duration-300 rounded-full"
+                    >
+                      {index < currentStep ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5 text-white"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      ) : (
+                        <div className="flex-shrink-0">{step.icon}</div>
+                      )}
+                    </motion.div>
+                  </div>
                 ) : (
                   <motion.div
                     initial={{ scale: 0 }}
@@ -122,7 +126,7 @@ const Stepper: React.FC<StepperProps> = ({
                     {index < currentStep ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-white"
+                        className="w-5 h-5 text-white"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >

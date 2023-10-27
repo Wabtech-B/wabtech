@@ -384,7 +384,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   }, [isOpen]);
 
   return (
-    <div className="border border-zinc-300 dark:border-zinc-600 rounded-md mb-2">
+    <div className="mb-2 border rounded-md border-zinc-300 dark:border-zinc-600">
       <div
         className="flex items-center justify-between p-4 cursor-pointer"
         onClick={onClick}
@@ -505,7 +505,7 @@ const AccordionItem = ({
   }, [isOpen]);
 
   return (
-    <div className="border border-zinc-300 dark:border-zinc-600 rounded-md mb-2">
+    <div className="mb-2 border rounded-md border-zinc-300 dark:border-zinc-600">
       <div
         className="flex items-center justify-between p-4 cursor-pointer"
         onClick={onClick}
@@ -2104,9 +2104,9 @@ const AvatarGroup: React.FC<AvatarGroupProps> = ({
       {avatars.map((avatar, index) => (
         <div
           key={index}
-          className="relative cursor-pointer transform transition-transform duration-300 ease-in-out hover:scale-110 -ml-4 rounded-full first:ml-0"
+          className="relative -ml-4 transition-transform duration-300 ease-in-out transform rounded-full cursor-pointer hover:scale-110 first:ml-0"
         >
-          <div className="border-2 rounded-full border-white dark:border-zinc-900">
+          <div className="border-2 border-white rounded-full dark:border-zinc-900">
             {React.isValidElement(avatar) &&
               React.cloneElement(avatar as ReactElement, { size })}
           </div>
@@ -2133,9 +2133,9 @@ const AvatarGroup = ({ children, size = "medium", max = 4 }) => {
       {avatars.map((avatar, index) => (
         <div
           key={index}
-          className="relative cursor-pointer transform transition-transform duration-300 ease-in-out hover:scale-110 -ml-4 rounded-full first:ml-0"
+          className="relative -ml-4 transition-transform duration-300 ease-in-out transform rounded-full cursor-pointer hover:scale-110 first:ml-0"
         >
-          <div className="border-2 rounded-full border-white dark:border-zinc-900">
+          <div className="border-2 border-white rounded-full dark:border-zinc-900">
             {React.isValidElement(avatar) &&
               React.cloneElement(avatar, { size })}
           </div>
@@ -2473,7 +2473,7 @@ const Badge: React.FC<BadgeProps> = ({
   return (
     <span className={badgeClasses}>
       {avatar && (
-        <div className="mr-1 w-8 h-8 rounded-full grid place-items-center overflow-hidden flex-shrink-0">
+        <div className="grid flex-shrink-0 w-8 h-8 mr-1 overflow-hidden rounded-full place-items-center">
           {avatar}
         </div>
       )}
@@ -2509,7 +2509,7 @@ const Badge = ({
   return (
     <span className={badgeClasses}>
       {avatar && (
-        <div className="mr-1 w-8 h-8 rounded-full grid place-items-center overflow-hidden flex-shrink-0">
+        <div className="grid flex-shrink-0 w-8 h-8 mr-1 overflow-hidden rounded-full place-items-center">
           {avatar}
         </div>
       )}
@@ -2569,7 +2569,7 @@ import Badge from "./Badge";
 
 const App = () => {
   return (
-    <div className="flex items-center gap-2 flex-wrap">
+    <div className="flex flex-wrap items-center gap-2">
       <Badge label="Avatar" avatar={<Avatar size="small" />} />
       <Badge label="Raven Kent" avatar={<img src="/1.png" alt="Avatar" />} />
       <Badge label="Jane Doe" avatar={<Avatar size="small" src="/2.png" />} />
@@ -2985,7 +2985,7 @@ const RouterBreadcrumb: React.FC<BreadcrumbProps> = ({ separator }) => {
 
   return (
     <nav className="flex" aria-label="Breadcrumb">
-      <ol className="list-none flex items-center">
+      <ol className="flex items-center list-none">
         <li className="flex items-center">
           <Link
             href="/"
@@ -3042,7 +3042,7 @@ const RouterBreadcrumb = ({ separator }) => {
 
   return (
     <nav className="flex" aria-label="Breadcrumb">
-      <ol className="list-none flex items-center">
+      <ol className="flex items-center list-none">
         <li className="flex items-center">
           <Link
             href="/"
@@ -3445,7 +3445,7 @@ const Button: React.FC<ButtonProps> = ({
       >
         {icon && !loading && <span>{icon}</span>}
         {!icon && loading && (
-          <div className="w-4 h-4 border-2 flex-shrink-0 border-slate-100 border-solid rounded-full animate-spin border-t-transparent"></div>
+          <div className="flex-shrink-0 w-4 h-4 border-2 border-solid rounded-full border-slate-100 animate-spin border-t-transparent"></div>
         )}
         {children}
       </button>
@@ -3509,7 +3509,7 @@ const Button = ({
       >
         {icon && !loading && <span>{icon}</span>}
         {!icon && loading && (
-          <div className="w-4 h-4 border-2 flex-shrink-0 border-slate-100 border-solid rounded-full animate-spin border-t-transparent"></div>
+          <div className="flex-shrink-0 w-4 h-4 border-2 border-solid rounded-full border-slate-100 animate-spin border-t-transparent"></div>
         )}
         {children}
       </button>
@@ -3865,7 +3865,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 }) => {
   return (
     <label
-      className="flex items-center gap-x-2 w-fit my-3 select-none cursor-pointer"
+      className="flex items-center my-3 cursor-pointer select-none gap-x-2 w-fit"
       htmlFor={id}
     >
       <input
@@ -4088,7 +4088,7 @@ const App: React.FC = () => {
         checked={formik.values.acceptedTerms}
       />
       {formik.errors.acceptedTerms && formik.touched.acceptedTerms && (
-        <div className="text-red-500 mt-2">{formik.errors.acceptedTerms}</div>
+        <div className="mt-2 text-red-500">{formik.errors.acceptedTerms}</div>
       )}
       <div className="mt-5">
         <button
@@ -4147,7 +4147,7 @@ const App = () => {
         checked={formik.values.acceptedTerms}
       />
       {formik.errors.acceptedTerms && formik.touched.acceptedTerms && (
-        <div className="text-red-500 mt-2">{formik.errors.acceptedTerms}</div>
+        <div className="mt-2 text-red-500">{formik.errors.acceptedTerms}</div>
       )}
       <div className="mt-5">
         <button
@@ -4187,7 +4187,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 }) => {
   return (
     <label
-      className="flex items-center gap-x-2 w-fit my-3 select-none cursor-pointer"
+      className="flex items-center my-3 cursor-pointer select-none gap-x-2 w-fit"
       htmlFor={id}
     >
       <input
@@ -4210,7 +4210,7 @@ export const checkboxComponentCodeJSNextjs = `import React from "react";
 const Checkbox = ({ label, value, id, onChange, checked }) => {
   return (
     <label
-      className="flex items-center gap-x-2 w-fit my-3 select-none cursor-pointer"
+      className="flex items-center my-3 cursor-pointer select-none gap-x-2 w-fit"
       htmlFor={id}
     >
       <input
@@ -4417,7 +4417,7 @@ const App: React.FC = () => {
         checked={formik.values.acceptedTerms}
       />
       {formik.errors.acceptedTerms && formik.touched.acceptedTerms && (
-        <div className="text-red-500 mt-2">{formik.errors.acceptedTerms}</div>
+        <div className="mt-2 text-red-500">{formik.errors.acceptedTerms}</div>
       )}
       <div className="mt-5">
         <button
@@ -4478,7 +4478,7 @@ const App = () => {
         checked={formik.values.acceptedTerms}
       />
       {formik.errors.acceptedTerms && formik.touched.acceptedTerms && (
-        <div className="text-red-500 mt-2">{formik.errors.acceptedTerms}</div>
+        <div className="mt-2 text-red-500">{formik.errors.acceptedTerms}</div>
       )}
       <div className="mt-5">
         <button
@@ -4778,7 +4778,7 @@ const App = () => {
   const { mode, handleModeChange } = useDarkMode("darkModePreference");
   return (
     <>
-      <div className="mt-3 flex items-center gap-3">
+      <div className="flex items-center gap-3 mt-3">
         {/* Dark */}
         <button
           className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
@@ -4839,7 +4839,7 @@ const App = () => {
   const { mode, handleModeChange } = useDarkMode("darkModePreference");
   return (
     <>
-      <div className="mt-3 flex items-center gap-3">
+      <div className="flex items-center gap-3 mt-3">
         {/* Dark */}
         <button
           className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
@@ -5144,7 +5144,7 @@ const DraggableBoxes: React.FC = () => {
         <Droppable droppableId="boxes" direction="horizontal">
           {(provided) => (
             <div
-              className="grid grid-cols-4 gap-4 p-4 bg-white dark:bg-zinc-800 border dark:border-0 shadow rounded-lg relative overflow-hidden"
+              className="relative grid grid-cols-4 gap-4 p-4 overflow-hidden bg-white border rounded-lg shadow dark:bg-zinc-800 dark:border-0"
               ref={provided.innerRef}
               {...provided.droppableProps}
               onMouseOver={handleDragOver}
@@ -5166,7 +5166,7 @@ const DraggableBoxes: React.FC = () => {
               ))}
               {isDraggingOver && (
                 <div
-                  className="absolute inset-0 border-2 border-dashed border-slate-300 dark:border-slate-500 rounded-lg pointer-events-none"
+                  className="absolute inset-0 border-2 border-dashed rounded-lg pointer-events-none border-slate-300 dark:border-slate-500"
                   style={{ zIndex: 9999 }}
                 ></div>
               )}
@@ -5226,7 +5226,7 @@ const DraggableBoxes = () => {
         <Droppable droppableId="boxes" direction="horizontal">
           {(provided) => (
             <div
-              className="grid grid-cols-4 gap-4 p-4 bg-white dark:bg-zinc-800 border dark:border-0 shadow rounded-lg relative overflow-hidden"
+              className="relative grid grid-cols-4 gap-4 p-4 overflow-hidden bg-white border rounded-lg shadow dark:bg-zinc-800 dark:border-0"
               ref={provided.innerRef}
               {...provided.droppableProps}
               onMouseOver={handleDragOver}
@@ -5248,7 +5248,7 @@ const DraggableBoxes = () => {
               ))}
               {isDraggingOver && (
                 <div
-                  className="absolute inset-0 border-2 border-dashed border-slate-300 dark:border-slate-500 rounded-lg pointer-events-none"
+                  className="absolute inset-0 border-2 border-dashed rounded-lg pointer-events-none border-slate-300 dark:border-slate-500"
                   style={{ zIndex: 9999 }}
                 ></div>
               )}
@@ -5400,7 +5400,7 @@ const ListItem: React.FC<ListItemProps> = ({ id, index, children }) => {
             className="p-3"
           >
             <span>
-              <CgLayoutGridSmall className="text-2xl text-zinc-400 cursor-move" />
+              <CgLayoutGridSmall className="text-2xl cursor-move text-zinc-400" />
             </span>
           </div>
           <div>{children}</div>
@@ -5640,7 +5640,7 @@ const ListItem: React.FC<ListItemProps> = ({ id, index, children }) => {
             className="p-3"
           >
             <span>
-              <CgLayoutGridSmall className="text-2xl text-zinc-400 cursor-move" />
+              <CgLayoutGridSmall className="text-2xl cursor-move text-zinc-400" />
             </span>
           </div>
           <div>{children}</div>
@@ -5679,7 +5679,7 @@ const ListItem = ({ id, index, children }) => {
             className="p-3"
           >
             <span>
-              <CgLayoutGridSmall className="text-2xl text-zinc-400 cursor-move" />
+              <CgLayoutGridSmall className="text-2xl cursor-move text-zinc-400" />
             </span>
           </div>
           <div>{children}</div>
@@ -6182,7 +6182,7 @@ export const drawerPositionsPreviewCode = `import Drawer from "./Drawer";
 const App = () => {
   return (
     <>
-      <div className="flex items-center gap-3 flex-wrap">
+      <div className="flex flex-wrap items-center gap-3">
         <Drawer
           position="left"
           openTrigger={
@@ -6239,7 +6239,7 @@ export const drawerSizesPreviewCode = `import Drawer from "./Drawer";
 const App = () => {
   return (
     <>
-      <div className="flex items-center gap-3 flex-wrap">
+      <div className="flex flex-wrap items-center gap-3">
         <Drawer
           size="small"
           openTrigger={
@@ -6295,7 +6295,7 @@ const CustomState = () => {
         Open
       </button>
       <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-        <h2 className="text-2xl font-semibold mb-2">Custom State Drawer</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Custom State Drawer</h2>
         <p>This is the content of the drawer.</p>
       </Drawer>
     </>
@@ -6414,7 +6414,7 @@ const Drawer: React.FC<DrawerProps> = ({
         <AnimatePresence>
           {(isOpen || isInternalOpen) && (
             <motion.div
-              className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/50 backdrop-blur-sm"
+              className="fixed top-0 left-0 z-50 w-screen h-screen bg-black/50 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -6599,7 +6599,7 @@ const Drawer = ({
         <AnimatePresence>
           {(isOpen || isInternalOpen) && (
             <motion.div
-              className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/50 backdrop-blur-sm"
+              className="fixed top-0 left-0 z-50 w-screen h-screen bg-black/50 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -6733,7 +6733,7 @@ export const drawerPositionsPreviewCodeNextjs = `import Drawer from "./Drawer";
 const App = () => {
   return (
     <>
-      <div className="flex items-center gap-3 flex-wrap">
+      <div className="flex flex-wrap items-center gap-3">
         <Drawer
           position="left"
           openTrigger={
@@ -6790,7 +6790,7 @@ export const drawerSizesPreviewCodeNextjs = `import Drawer from "./Drawer";
 const App = () => {
   return (
     <>
-      <div className="flex items-center gap-3 flex-wrap">
+      <div className="flex flex-wrap items-center gap-3">
         <Drawer
           size="small"
           openTrigger={
@@ -6848,7 +6848,7 @@ const App = () => {
         Open
       </button>
       <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-        <h2 className="text-2xl font-semibold mb-2">Custom State Drawer</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Custom State Drawer</h2>
         <p>This is the content of the drawer.</p>
       </Drawer>
     </>
@@ -7117,30 +7117,30 @@ const App = () => {
         general
         className="!w-[300px] p-4"
         trigger={
-          <div className="w-10 h-10 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-800 rounded-lg grid place-items-center">
+          <div className="grid w-10 h-10 rounded-lg bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-800 place-items-center">
             <FiMenu />
           </div>
         }
       >
         <div>
-          <div className="flex items-center gap-x-3 p-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-md">
+          <div className="flex items-center p-2 rounded-md cursor-pointer gap-x-3 hover:bg-slate-100 dark:hover:bg-zinc-700">
             <Avatar size="small" />
             <p>Profile settings</p>
           </div>
-          <div className="flex items-center gap-x-3 p-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-md">
+          <div className="flex items-center p-2 rounded-md cursor-pointer gap-x-3 hover:bg-slate-100 dark:hover:bg-zinc-700">
             <Avatar size="small" />
             <p>Account</p>
           </div>
-          <div className="ml-2 flex items-center gap-x-3 p-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-md">
+          <div className="flex items-center p-2 ml-2 rounded-md cursor-pointer gap-x-3 hover:bg-slate-100 dark:hover:bg-zinc-700">
             <FiSettings />
             <p>Settings</p>
           </div>
-          <div className="ml-2 flex items-center gap-x-3 p-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-md">
+          <div className="flex items-center p-2 ml-2 rounded-md cursor-pointer gap-x-3 hover:bg-slate-100 dark:hover:bg-zinc-700">
             <FiLayers />
             <p>Themes</p>
           </div>
-          <div className="border-t dark:border-t-zinc-600 mt-3">
-            <div className=" ml-2 mt-2 flex items-center gap-x-3 p-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-md">
+          <div className="mt-3 border-t dark:border-t-zinc-600">
+            <div className="flex items-center p-2 mt-2 ml-2 rounded-md cursor-pointer  gap-x-3 hover:bg-slate-100 dark:hover:bg-zinc-700">
               <FiLogOut />
               <p>Sign out</p>
             </div>
@@ -7424,30 +7424,30 @@ const App = () => {
         general
         className="!w-[300px] p-4"
         trigger={
-          <div className="w-10 h-10 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-800 rounded-lg grid place-items-center">
+          <div className="grid w-10 h-10 rounded-lg bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-800 place-items-center">
             <FiMenu />
           </div>
         }
       >
         <div>
-          <div className="flex items-center gap-x-3 p-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-md">
+          <div className="flex items-center p-2 rounded-md cursor-pointer gap-x-3 hover:bg-slate-100 dark:hover:bg-zinc-700">
             <Avatar size="small" />
             <p>Profile settings</p>
           </div>
-          <div className="flex items-center gap-x-3 p-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-md">
+          <div className="flex items-center p-2 rounded-md cursor-pointer gap-x-3 hover:bg-slate-100 dark:hover:bg-zinc-700">
             <Avatar size="small" />
             <p>Account</p>
           </div>
-          <div className="ml-2 flex items-center gap-x-3 p-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-md">
+          <div className="flex items-center p-2 ml-2 rounded-md cursor-pointer gap-x-3 hover:bg-slate-100 dark:hover:bg-zinc-700">
             <FiSettings />
             <p>Settings</p>
           </div>
-          <div className="ml-2 flex items-center gap-x-3 p-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-md">
+          <div className="flex items-center p-2 ml-2 rounded-md cursor-pointer gap-x-3 hover:bg-slate-100 dark:hover:bg-zinc-700">
             <FiLayers />
             <p>Themes</p>
           </div>
-          <div className="border-t dark:border-t-zinc-600 mt-3">
-            <div className=" ml-2 mt-2 flex items-center gap-x-3 p-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-md">
+          <div className="mt-3 border-t dark:border-t-zinc-600">
+            <div className="flex items-center p-2 mt-2 ml-2 rounded-md cursor-pointer  gap-x-3 hover:bg-slate-100 dark:hover:bg-zinc-700">
               <FiLogOut />
               <p>Sign out</p>
             </div>
@@ -7987,7 +7987,7 @@ const App = () => {
   return (
     <div>
       <form onSubmit={submit}>
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Username */}
           <div className="flex-1 w-full sm:w-fit">
             <FloatingInput
@@ -8002,7 +8002,7 @@ const App = () => {
               }
             />
             {touched.username && errors.username ? (
-              <div className="text-red-600 text-sm">{errors.username}</div>
+              <div className="text-sm text-red-600">{errors.username}</div>
             ) : null}
           </div>
 
@@ -8019,7 +8019,7 @@ const App = () => {
               invalid={touched.email && (errors.email as unknown as boolean)}
             />
             {touched.email && errors.email ? (
-              <div className="text-red-600 text-sm">{errors.email}</div>
+              <div className="text-sm text-red-600">{errors.email}</div>
             ) : null}
           </div>
         </div>
@@ -8036,11 +8036,11 @@ const App = () => {
             invalid={touched.phone && (errors.phone as unknown as boolean)}
           />
           {touched.phone && errors.phone ? (
-            <div className="text-red-600 text-sm">{errors.phone}</div>
+            <div className="text-sm text-red-600">{errors.phone}</div>
           ) : null}
         </div>
 
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Password */}
           <div className="flex-1 w-full sm:w-fit">
             <FloatingInput
@@ -8056,7 +8056,7 @@ const App = () => {
               }
             />
             {touched.password && errors.password ? (
-              <div className="text-red-600 text-sm">{errors.password}</div>
+              <div className="text-sm text-red-600">{errors.password}</div>
             ) : null}
           </div>
 
@@ -8076,7 +8076,7 @@ const App = () => {
               }
             />
             {touched.password_confirmation && errors.password_confirmation ? (
-              <div className="text-red-600 text-sm">
+              <div className="text-sm text-red-600">
                 {errors.password_confirmation}
               </div>
             ) : null}
@@ -8141,7 +8141,7 @@ const App = () => {
   return (
     <div>
       <form onSubmit={submit}>
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Username */}
           <div className="flex-1 w-full sm:w-fit">
             <FloatingInput
@@ -8154,7 +8154,7 @@ const App = () => {
               invalid={touched.username && errors.username}
             />
             {touched.username && errors.username ? (
-              <div className="text-red-600 text-sm">{errors.username}</div>
+              <div className="text-sm text-red-600">{errors.username}</div>
             ) : null}
           </div>
 
@@ -8171,7 +8171,7 @@ const App = () => {
               invalid={touched.email && errors.email}
             />
             {touched.email && errors.email ? (
-              <div className="text-red-600 text-sm">{errors.email}</div>
+              <div className="text-sm text-red-600">{errors.email}</div>
             ) : null}
           </div>
         </div>
@@ -8188,11 +8188,11 @@ const App = () => {
             invalid={touched.phone && errors.phone}
           />
           {touched.phone && errors.phone ? (
-            <div className="text-red-600 text-sm">{errors.phone}</div>
+            <div className="text-sm text-red-600">{errors.phone}</div>
           ) : null}
         </div>
 
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Password */}
           <div className="flex-1 w-full sm:w-fit">
             <FloatingInput
@@ -8206,7 +8206,7 @@ const App = () => {
               invalid={touched.password && errors.password}
             />
             {touched.password && errors.password ? (
-              <div className="text-red-600 text-sm">{errors.password}</div>
+              <div className="text-sm text-red-600">{errors.password}</div>
             ) : null}
           </div>
 
@@ -8225,7 +8225,7 @@ const App = () => {
               }
             />
             {touched.password_confirmation && errors.password_confirmation ? (
-              <div className="text-red-600 text-sm">
+              <div className="text-sm text-red-600">
                 {errors.password_confirmation}
               </div>
             ) : null}
@@ -8378,7 +8378,7 @@ const FloatingInput: React.FC<InputProps> = ({
           )}
         </div>
       </div>
-      {errorText && <p className="text-sm text-red-500 mt-2">{errorText}</p>}
+      {errorText && <p className="mt-2 text-sm text-red-500">{errorText}</p>}
     </>
   );
 };
@@ -8493,7 +8493,7 @@ const FloatingInput = ({
           )}
         </div>
       </div>
-      {errorText && <p className="text-sm text-red-500 mt-2">{errorText}</p>}
+      {errorText && <p className="mt-2 text-sm text-red-500">{errorText}</p>}
     </>
   );
 };
@@ -8793,7 +8793,7 @@ const App = () => {
   return (
     <div>
       <form onSubmit={submit}>
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Username */}
           <div className="flex-1 w-full sm:w-fit">
             <FloatingInput
@@ -8808,7 +8808,7 @@ const App = () => {
               }
             />
             {touched.username && errors.username ? (
-              <div className="text-red-600 text-sm">{errors.username}</div>
+              <div className="text-sm text-red-600">{errors.username}</div>
             ) : null}
           </div>
 
@@ -8825,7 +8825,7 @@ const App = () => {
               invalid={touched.email && (errors.email as unknown as boolean)}
             />
             {touched.email && errors.email ? (
-              <div className="text-red-600 text-sm">{errors.email}</div>
+              <div className="text-sm text-red-600">{errors.email}</div>
             ) : null}
           </div>
         </div>
@@ -8842,11 +8842,11 @@ const App = () => {
             invalid={touched.phone && (errors.phone as unknown as boolean)}
           />
           {touched.phone && errors.phone ? (
-            <div className="text-red-600 text-sm">{errors.phone}</div>
+            <div className="text-sm text-red-600">{errors.phone}</div>
           ) : null}
         </div>
 
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Password */}
           <div className="flex-1 w-full sm:w-fit">
             <FloatingInput
@@ -8862,7 +8862,7 @@ const App = () => {
               }
             />
             {touched.password && errors.password ? (
-              <div className="text-red-600 text-sm">{errors.password}</div>
+              <div className="text-sm text-red-600">{errors.password}</div>
             ) : null}
           </div>
 
@@ -8882,7 +8882,7 @@ const App = () => {
               }
             />
             {touched.password_confirmation && errors.password_confirmation ? (
-              <div className="text-red-600 text-sm">
+              <div className="text-sm text-red-600">
                 {errors.password_confirmation}
               </div>
             ) : null}
@@ -8957,7 +8957,7 @@ const App = () => {
   return (
     <div>
       <form onSubmit={submit}>
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Username */}
           <div className="flex-1 w-full sm:w-fit">
             <FloatingInput
@@ -8970,7 +8970,7 @@ const App = () => {
               invalid={touched.username && errors.username}
             />
             {touched.username && errors.username ? (
-              <div className="text-red-600 text-sm">{errors.username}</div>
+              <div className="text-sm text-red-600">{errors.username}</div>
             ) : null}
           </div>
 
@@ -8987,7 +8987,7 @@ const App = () => {
               invalid={touched.email && errors.email}
             />
             {touched.email && errors.email ? (
-              <div className="text-red-600 text-sm">{errors.email}</div>
+              <div className="text-sm text-red-600">{errors.email}</div>
             ) : null}
           </div>
         </div>
@@ -9004,11 +9004,11 @@ const App = () => {
             invalid={touched.phone && errors.phone}
           />
           {touched.phone && errors.phone ? (
-            <div className="text-red-600 text-sm">{errors.phone}</div>
+            <div className="text-sm text-red-600">{errors.phone}</div>
           ) : null}
         </div>
 
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Password */}
           <div className="flex-1 w-full sm:w-fit">
             <FloatingInput
@@ -9022,7 +9022,7 @@ const App = () => {
               invalid={touched.password && errors.password}
             />
             {touched.password && errors.password ? (
-              <div className="text-red-600 text-sm">{errors.password}</div>
+              <div className="text-sm text-red-600">{errors.password}</div>
             ) : null}
           </div>
 
@@ -9041,7 +9041,7 @@ const App = () => {
               }
             />
             {touched.password_confirmation && errors.password_confirmation ? (
-              <div className="text-red-600 text-sm">
+              <div className="text-sm text-red-600">
                 {errors.password_confirmation}
               </div>
             ) : null}
@@ -9273,7 +9273,7 @@ const App = () => {
           icon={FiLayers}
           gradientId="gradient3"
           gradientColors={["cyan", "blue"]}
-          className="text-3xl mt-2"
+          className="mt-2 text-3xl"
           stroke
         />
         <GradientIcon
@@ -9504,7 +9504,7 @@ const App = () => {
           icon={FiLayers}
           gradientId="gradient3"
           gradientColors={["cyan", "blue"]}
-          className="text-3xl mt-2"
+          className="mt-2 text-3xl"
           stroke
         />
         <GradientIcon
@@ -9997,7 +9997,7 @@ const App = () => {
   return (
     <div>
       <form onSubmit={submit}>
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Username */}
           <div className="flex-1 w-full sm:w-fit">
             <Input
@@ -10012,7 +10012,7 @@ const App = () => {
               }
             />
             {touched.username && errors.username ? (
-              <div className="text-red-600 text-sm">{errors.username}</div>
+              <div className="text-sm text-red-600">{errors.username}</div>
             ) : null}
           </div>
 
@@ -10029,7 +10029,7 @@ const App = () => {
               invalid={touched.email && (errors.email as unknown as boolean)}
             />
             {touched.email && errors.email ? (
-              <div className="text-red-600 text-sm">{errors.email}</div>
+              <div className="text-sm text-red-600">{errors.email}</div>
             ) : null}
           </div>
         </div>
@@ -10046,11 +10046,11 @@ const App = () => {
             invalid={touched.phone && (errors.phone as unknown as boolean)}
           />
           {touched.phone && errors.phone ? (
-            <div className="text-red-600 text-sm">{errors.phone}</div>
+            <div className="text-sm text-red-600">{errors.phone}</div>
           ) : null}
         </div>
 
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Password */}
           <div className="flex-1 w-full sm:w-fit">
             <Input
@@ -10066,7 +10066,7 @@ const App = () => {
               }
             />
             {touched.password && errors.password ? (
-              <div className="text-red-600 text-sm">{errors.password}</div>
+              <div className="text-sm text-red-600">{errors.password}</div>
             ) : null}
           </div>
 
@@ -10086,7 +10086,7 @@ const App = () => {
               }
             />
             {touched.password_confirmation && errors.password_confirmation ? (
-              <div className="text-red-600 text-sm">
+              <div className="text-sm text-red-600">
                 {errors.password_confirmation}
               </div>
             ) : null}
@@ -10159,7 +10159,7 @@ const FormikExample = () => {
   return (
     <div>
       <form onSubmit={submit}>
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Username */}
           <div className="flex-1 w-full sm:w-fit">
             <Input
@@ -10172,7 +10172,7 @@ const FormikExample = () => {
               invalid={touched.username && errors.username}
             />
             {touched.username && errors.username ? (
-              <div className="text-red-600 text-sm">{errors.username}</div>
+              <div className="text-sm text-red-600">{errors.username}</div>
             ) : null}
           </div>
 
@@ -10189,7 +10189,7 @@ const FormikExample = () => {
               invalid={touched.email && errors.email}
             />
             {touched.email && errors.email ? (
-              <div className="text-red-600 text-sm">{errors.email}</div>
+              <div className="text-sm text-red-600">{errors.email}</div>
             ) : null}
           </div>
         </div>
@@ -10206,11 +10206,11 @@ const FormikExample = () => {
             invalid={touched.phone && errors.phone}
           />
           {touched.phone && errors.phone ? (
-            <div className="text-red-600 text-sm">{errors.phone}</div>
+            <div className="text-sm text-red-600">{errors.phone}</div>
           ) : null}
         </div>
 
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Password */}
           <div className="flex-1 w-full sm:w-fit">
             <Input
@@ -10224,7 +10224,7 @@ const FormikExample = () => {
               invalid={touched.password && errors.password}
             />
             {touched.password && errors.password ? (
-              <div className="text-red-600 text-sm">{errors.password}</div>
+              <div className="text-sm text-red-600">{errors.password}</div>
             ) : null}
           </div>
 
@@ -10243,7 +10243,7 @@ const FormikExample = () => {
               }
             />
             {touched.password_confirmation && errors.password_confirmation ? (
-              <div className="text-red-600 text-sm">
+              <div className="text-sm text-red-600">
                 {errors.password_confirmation}
               </div>
             ) : null}
@@ -10375,7 +10375,7 @@ const Input: React.FC<InputProps> = ({
           />
         )}
       </div>
-      {errorText && <p className="text-sm text-red-500 mt-2">{errorText}</p>}
+      {errorText && <p className="mt-2 text-sm text-red-500">{errorText}</p>}
     </>
   );
 };
@@ -10467,7 +10467,7 @@ const Input = ({
           />
         )}
       </div>
-      {errorText && <p className="text-sm text-red-500 mt-2">{errorText}</p>}
+      {errorText && <p className="mt-2 text-sm text-red-500">{errorText}</p>}
     </>
   );
 };
@@ -10758,7 +10758,7 @@ const App = () => {
   return (
     <div>
       <form onSubmit={submit}>
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Username */}
           <div className="flex-1 w-full sm:w-fit">
             <Input
@@ -10773,7 +10773,7 @@ const App = () => {
               }
             />
             {touched.username && errors.username ? (
-              <div className="text-red-600 text-sm">{errors.username}</div>
+              <div className="text-sm text-red-600">{errors.username}</div>
             ) : null}
           </div>
 
@@ -10790,7 +10790,7 @@ const App = () => {
               invalid={touched.email && (errors.email as unknown as boolean)}
             />
             {touched.email && errors.email ? (
-              <div className="text-red-600 text-sm">{errors.email}</div>
+              <div className="text-sm text-red-600">{errors.email}</div>
             ) : null}
           </div>
         </div>
@@ -10807,11 +10807,11 @@ const App = () => {
             invalid={touched.phone && (errors.phone as unknown as boolean)}
           />
           {touched.phone && errors.phone ? (
-            <div className="text-red-600 text-sm">{errors.phone}</div>
+            <div className="text-sm text-red-600">{errors.phone}</div>
           ) : null}
         </div>
 
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Password */}
           <div className="flex-1 w-full sm:w-fit">
             <Input
@@ -10827,7 +10827,7 @@ const App = () => {
               }
             />
             {touched.password && errors.password ? (
-              <div className="text-red-600 text-sm">{errors.password}</div>
+              <div className="text-sm text-red-600">{errors.password}</div>
             ) : null}
           </div>
 
@@ -10847,7 +10847,7 @@ const App = () => {
               }
             />
             {touched.password_confirmation && errors.password_confirmation ? (
-              <div className="text-red-600 text-sm">
+              <div className="text-sm text-red-600">
                 {errors.password_confirmation}
               </div>
             ) : null}
@@ -10922,7 +10922,7 @@ const App = () => {
   return (
     <div>
       <form onSubmit={submit}>
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Username */}
           <div className="flex-1 w-full sm:w-fit">
             <Input
@@ -10935,7 +10935,7 @@ const App = () => {
               invalid={touched.username && errors.username}
             />
             {touched.username && errors.username ? (
-              <div className="text-red-600 text-sm">{errors.username}</div>
+              <div className="text-sm text-red-600">{errors.username}</div>
             ) : null}
           </div>
 
@@ -10952,7 +10952,7 @@ const App = () => {
               invalid={touched.email && errors.email}
             />
             {touched.email && errors.email ? (
-              <div className="text-red-600 text-sm">{errors.email}</div>
+              <div className="text-sm text-red-600">{errors.email}</div>
             ) : null}
           </div>
         </div>
@@ -10969,11 +10969,11 @@ const App = () => {
             invalid={touched.phone && errors.phone}
           />
           {touched.phone && errors.phone ? (
-            <div className="text-red-600 text-sm">{errors.phone}</div>
+            <div className="text-sm text-red-600">{errors.phone}</div>
           ) : null}
         </div>
 
-        <div className="flex items-center flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col items-center gap-4 mt-6 sm:flex-row">
           {/* Password */}
           <div className="flex-1 w-full sm:w-fit">
             <Input
@@ -10987,7 +10987,7 @@ const App = () => {
               invalid={touched.password && errors.password}
             />
             {touched.password && errors.password ? (
-              <div className="text-red-600 text-sm">{errors.password}</div>
+              <div className="text-sm text-red-600">{errors.password}</div>
             ) : null}
           </div>
 
@@ -11006,7 +11006,7 @@ const App = () => {
               }
             />
             {touched.password_confirmation && errors.password_confirmation ? (
-              <div className="text-red-600 text-sm">
+              <div className="text-sm text-red-600">
                 {errors.password_confirmation}
               </div>
             ) : null}
@@ -11472,7 +11472,7 @@ const KanbanBoard: React.FC = () => {
 
             {addingBoard ? (
               <div className="flex flex-col w-[350px] mx-4">
-                <div className="p-4 rounded-lg shadow bg-white dark:bg-zinc-800">
+                <div className="p-4 bg-white rounded-lg shadow dark:bg-zinc-800">
                   <input
                     autoFocus
                     value={newBoardTitle}
@@ -11922,7 +11922,7 @@ const KanbanBoard = () => {
 
             {addingBoard ? (
               <div className="flex flex-col w-[350px] mx-4">
-                <div className="p-4 rounded-lg shadow bg-white dark:bg-zinc-800">
+                <div className="p-4 bg-white rounded-lg shadow dark:bg-zinc-800">
                   <input
                     autoFocus
                     value={newBoardTitle}
@@ -12263,7 +12263,7 @@ const KanbanBoard: React.FC = () => {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            className="flex justify-center md:justify-start mt-8 bg-white border dark:border-0 dark:bg-zinc-700 p-8 flex-wrap gap-y-4 overflow-hidden rounded-lg"
+            className="flex flex-wrap justify-center p-8 mt-8 overflow-hidden bg-white border rounded-lg md:justify-start dark:border-0 dark:bg-zinc-700 gap-y-4"
           >
             {Object.values(columns).map((column, columnIndex) => (
               <div className="flex flex-col w-[350px] mx-4" key={column.id}>
@@ -12276,7 +12276,7 @@ const KanbanBoard: React.FC = () => {
                     >
                       <div
                         {...provided.dragHandleProps}
-                        className="text-xl font-semibold mb-4 cursor-move text-zinc-400"
+                        className="mb-4 text-xl font-semibold cursor-move text-zinc-400"
                       >
                         {editingBoard === column.id ? (
                           <input
@@ -12297,13 +12297,13 @@ const KanbanBoard: React.FC = () => {
                               {column.title}
                             </div>
                             <div className="flex items-center">
-                              <div className="p-2 group cursor-pointer">
+                              <div className="p-2 cursor-pointer group">
                                 <FiEdit
                                   className="text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-white"
                                   onClick={() => handleEditBoard(column.id)}
                                 />
                               </div>
-                              <div className="p-2 group cursor-pointer">
+                              <div className="p-2 cursor-pointer group">
                                 <FiTrash
                                   className="text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-white"
                                   onClick={() => handleDeleteBoard(column.id)}
@@ -12337,7 +12337,7 @@ const KanbanBoard: React.FC = () => {
                                     <div
                                       {...provided.draggableProps}
                                       ref={provided.innerRef}
-                                      className="bg-white border dark:border-0 dark:bg-zinc-700 p-4 rounded-md shadow"
+                                      className="p-4 bg-white border rounded-md shadow dark:border-0 dark:bg-zinc-700"
                                     >
                                       {editingTask === task!.id ? (
                                         <input
@@ -12365,17 +12365,17 @@ const KanbanBoard: React.FC = () => {
                                         >
                                           {task!.content}
                                           <div className="flex items-center gap-x-2">
-                                            <div className="cursor-pointer p-1 group">
+                                            <div className="p-1 cursor-pointer group">
                                               <FiEdit
-                                                className=" text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600  dark:group-hover:text-zinc-100"
+                                                className=" text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-100"
                                                 onClick={() =>
                                                   handleEditTask(task!.id)
                                                 }
                                               />
                                             </div>
-                                            <div className="cursor-pointer p-1 group">
+                                            <div className="p-1 cursor-pointer group">
                                               <FiTrash
-                                                className=" text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600  dark:group-hover:text-zinc-100"
+                                                className=" text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-100"
                                                 onClick={() =>
                                                   handleDeleteTask(task!.id)
                                                 }
@@ -12408,7 +12408,7 @@ const KanbanBoard: React.FC = () => {
                       ) : (
                         <button
                           onClick={() => handleAddTask(column.id)}
-                          className="py-2 w-full mt-3 rounded-lg text-gray-500 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-100 border border-zinc-300 dark:border-zinc-500 border-dashed"
+                          className="w-full py-2 mt-3 text-gray-500 border border-dashed rounded-lg dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-100 border-zinc-300 dark:border-zinc-500"
                         >
                           + Add a task
                         </button>
@@ -12421,14 +12421,14 @@ const KanbanBoard: React.FC = () => {
 
             {addingBoard ? (
               <div className="flex flex-col w-[350px] mx-4">
-                <div className="rounded-lg p-4 bg-white dark:bg-zinc-800 shadow">
+                <div className="p-4 bg-white rounded-lg shadow dark:bg-zinc-800">
                   <input
                     autoFocus
                     value={newBoardTitle}
                     onChange={(e) => setNewBoardTitle(e.target.value)}
                     onKeyDown={handleBoardInputKeyDown}
                     placeholder="Board title"
-                    className="rounded-lg p-2 mt-2 w-full dark:bg-zinc-600 outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full p-2 mt-2 rounded-lg outline-none dark:bg-zinc-600 focus:ring-2 focus:ring-indigo-500"
                     onBlur={() => setAddingBoard(false)}
                   />
                 </div>
@@ -12715,7 +12715,7 @@ const KanbanBoard = () => {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            className="flex justify-center md:justify-start mt-8 bg-white border dark:border-0 dark:bg-zinc-700 p-8 flex-wrap gap-y-4 overflow-hidden rounded-lg"
+            className="flex flex-wrap justify-center p-8 mt-8 overflow-hidden bg-white border rounded-lg md:justify-start dark:border-0 dark:bg-zinc-700 gap-y-4"
           >
             {Object.values(columns).map((column, columnIndex) => (
               <div className="flex flex-col w-[350px] mx-4" key={column.id}>
@@ -12728,7 +12728,7 @@ const KanbanBoard = () => {
                     >
                       <div
                         {...provided.dragHandleProps}
-                        className="text-xl font-semibold mb-4 cursor-move text-zinc-400"
+                        className="mb-4 text-xl font-semibold cursor-move text-zinc-400"
                       >
                         {editingBoard === column.id ? (
                           <input
@@ -12749,13 +12749,13 @@ const KanbanBoard = () => {
                               {column.title}
                             </div>
                             <div className="flex items-center">
-                              <div className="p-2 group cursor-pointer">
+                              <div className="p-2 cursor-pointer group">
                                 <FiEdit
                                   className="text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-white"
                                   onClick={() => handleEditBoard(column.id)}
                                 />
                               </div>
-                              <div className="p-2 group cursor-pointer">
+                              <div className="p-2 cursor-pointer group">
                                 <FiTrash
                                   className="text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-white"
                                   onClick={() => handleDeleteBoard(column.id)}
@@ -12789,7 +12789,7 @@ const KanbanBoard = () => {
                                     <div
                                       {...provided.draggableProps}
                                       ref={provided.innerRef}
-                                      className="bg-white border dark:border-0 dark:bg-zinc-700 p-4 rounded-md shadow"
+                                      className="p-4 bg-white border rounded-md shadow dark:border-0 dark:bg-zinc-700"
                                     >
                                       {editingTask === task.id ? (
                                         <input
@@ -12817,17 +12817,17 @@ const KanbanBoard = () => {
                                         >
                                           {task.content}
                                           <div className="flex items-center gap-x-2">
-                                            <div className="cursor-pointer p-1 group">
+                                            <div className="p-1 cursor-pointer group">
                                               <FiEdit
-                                                className=" text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600  dark:group-hover:text-zinc-100"
+                                                className=" text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-100"
                                                 onClick={() =>
                                                   handleEditTask(task.id)
                                                 }
                                               />
                                             </div>
-                                            <div className="cursor-pointer p-1 group">
+                                            <div className="p-1 cursor-pointer group">
                                               <FiTrash
-                                                className=" text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600  dark:group-hover:text-zinc-100"
+                                                className=" text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-100"
                                                 onClick={() =>
                                                   handleDeleteTask(task.id)
                                                 }
@@ -12860,7 +12860,7 @@ const KanbanBoard = () => {
                       ) : (
                         <button
                           onClick={() => handleAddTask(column.id)}
-                          className="py-2 w-full mt-3 rounded-lg text-gray-500 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-100 border border-zinc-300 dark:border-zinc-500 border-dashed"
+                          className="w-full py-2 mt-3 text-gray-500 border border-dashed rounded-lg dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-100 border-zinc-300 dark:border-zinc-500"
                         >
                           + Add a task
                         </button>
@@ -12873,14 +12873,14 @@ const KanbanBoard = () => {
 
             {addingBoard ? (
               <div className="flex flex-col w-[350px] mx-4">
-                <div className="rounded-lg p-4 bg-white dark:bg-zinc-800 shadow">
+                <div className="p-4 bg-white rounded-lg shadow dark:bg-zinc-800">
                   <input
                     autoFocus
                     value={newBoardTitle}
                     onChange={(e) => setNewBoardTitle(e.target.value)}
                     onKeyDown={handleBoardInputKeyDown}
                     placeholder="Board title"
-                    className="rounded-lg p-2 mt-2 w-full dark:bg-zinc-600 outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full p-2 mt-2 rounded-lg outline-none dark:bg-zinc-600 focus:ring-2 focus:ring-indigo-500"
                     onBlur={() => setAddingBoard(false)}
                   />
                 </div>
@@ -13302,7 +13302,7 @@ export const modalVariantsPreviewCode = `import Modal from "./Modal";
 const App = () => {
   return (
     <>
-      <div className="flex items-center gap-3 flex-wrap">
+      <div className="flex flex-wrap items-center gap-3">
         <Modal
           title="Modal Title"
           variant="small"
@@ -13519,7 +13519,7 @@ const Modal: React.FC<ModalProps> = ({
       <AnimatePresence>
         {(isOpen || isInternalOpen) && (
           <motion.div
-            className="fixed w-full h-full left-0 top-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm"
+            className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -13534,12 +13534,12 @@ const Modal: React.FC<ModalProps> = ({
               onClick={(e) => e.stopPropagation()}
             >
               {title && (
-                <div className="flex items-center justify-between mb-6 pb-2 border-b border-b-zinc-300 dark:border-b-zinc-600">
+                <div className="flex items-center justify-between pb-2 mb-6 border-b border-b-zinc-300 dark:border-b-zinc-600">
                   <h2 className="text-lg font-semibold text-slate-500 dark:text-slate-200">
                     {title}
                   </h2>
                   <button
-                    className=" text-slate-500 dark:text-slate-200 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-zinc-600"
+                    className="p-2 rounded-full  text-slate-500 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-zinc-600"
                     onClick={handleCloseButtonClick}
                   >
                     <svg
@@ -13683,7 +13683,7 @@ const Modal = ({
       <AnimatePresence>
         {(isOpen || isInternalOpen) && (
           <motion.div
-            className="fixed w-full h-full left-0 top-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm"
+            className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -13698,12 +13698,12 @@ const Modal = ({
               onClick={(e) => e.stopPropagation()}
             >
               {title && (
-                <div className="flex items-center justify-between mb-6 pb-2 border-b border-b-zinc-300 dark:border-b-zinc-600">
+                <div className="flex items-center justify-between pb-2 mb-6 border-b border-b-zinc-300 dark:border-b-zinc-600">
                   <h2 className="text-lg font-semibold text-slate-500 dark:text-slate-200">
                     {title}
                   </h2>
                   <button
-                    className=" text-slate-500 dark:text-slate-200 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-zinc-600"
+                    className="p-2 rounded-full  text-slate-500 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-zinc-600"
                     onClick={handleCloseButtonClick}
                   >
                     <svg
@@ -13807,7 +13807,7 @@ export const modalVariantsPreviewCodeNextjs = `import Modal from "./Modal";
 const App = () => {
   return (
     <>
-      <div className="flex items-center gap-3 flex-wrap">
+      <div className="flex flex-wrap items-center gap-3">
         <Modal
           title="Modal Title"
           variant="small"
@@ -14572,7 +14572,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} checkbox />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -14626,7 +14626,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} checkbox />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -14691,7 +14691,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -14756,7 +14756,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -14835,7 +14835,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -14914,7 +14914,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -14970,7 +14970,7 @@ const App = () => {
         }
       />
       {formik.errors.selectedOptions && formik.touched.selectedOptions && (
-        <div className="text-red-500 mt-2">
+        <div className="mt-2 text-red-500">
           {formik.errors.selectedOptions as string}
         </div>
       )}
@@ -15033,7 +15033,7 @@ const App = () => {
         }
       />
       {formik.errors.selectedOptions && formik.touched.selectedOptions && (
-        <div className="text-red-500 mt-2">{formik.errors.selectedOptions}</div>
+        <div className="mt-2 text-red-500">{formik.errors.selectedOptions}</div>
       )}
       <div className="mt-5">
         <button
@@ -15207,11 +15207,11 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
             {selectedOptions?.map((option) => (
               <div
                 key={option.value}
-                className="flex items-center justify-center px-2 py-1 text-sm text-slate-500 dark:text-slate-200 bg-slate-200 dark:bg-zinc-700 rounded-full"
+                className="flex items-center justify-center px-2 py-1 text-sm rounded-full text-slate-500 dark:text-slate-200 bg-slate-200 dark:bg-zinc-700"
               >
                 {option.label}
                 <BsX
-                  className="ml-1 cursor-pointer hover:bg-slate-300 dark:hover:bg-zinc-500 rounded-full"
+                  className="ml-1 rounded-full cursor-pointer hover:bg-slate-300 dark:hover:bg-zinc-500"
                   onClick={() => handleRemoveOption(option)}
                 />
               </div>
@@ -15233,10 +15233,10 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
           variants={dropdownVariants}
         >
           <div className="relative">
-            <BsSearch className="mr-2 text-zinc-400 absolute top-1/2 -translate-y-1/2 left-2" />
+            <BsSearch className="absolute mr-2 -translate-y-1/2 text-zinc-400 top-1/2 left-2" />
             <input
               type="text"
-              className="w-full p-2 text-slate-400 dark:text-slate-200 bg-transparent border-b pl-10 border-zinc-300 dark:border-zinc-600 focus:outline-none"
+              className="w-full p-2 pl-10 bg-transparent border-b text-slate-400 dark:text-slate-200 border-zinc-300 dark:border-zinc-600 focus:outline-none"
               placeholder="Search options..."
               value={searchValue}
               onChange={handleInputChange}
@@ -15444,11 +15444,11 @@ const MultiSelect = ({ options, onSelect, checkbox = false }) => {
             {selectedOptions?.map((option) => (
               <div
                 key={option.value}
-                className="flex items-center justify-center px-2 py-1 text-sm text-slate-500 dark:text-slate-200 bg-slate-200 dark:bg-zinc-700 rounded-full"
+                className="flex items-center justify-center px-2 py-1 text-sm rounded-full text-slate-500 dark:text-slate-200 bg-slate-200 dark:bg-zinc-700"
               >
                 {option.label}
                 <BsX
-                  className="ml-1 cursor-pointer hover:bg-slate-300 dark:hover:bg-zinc-500 rounded-full"
+                  className="ml-1 rounded-full cursor-pointer hover:bg-slate-300 dark:hover:bg-zinc-500"
                   onClick={() => handleRemoveOption(option)}
                 />
               </div>
@@ -15470,10 +15470,10 @@ const MultiSelect = ({ options, onSelect, checkbox = false }) => {
           variants={dropdownVariants}
         >
           <div className="relative">
-            <BsSearch className="mr-2 text-zinc-400 absolute top-1/2 -translate-y-1/2 left-2" />
+            <BsSearch className="absolute mr-2 -translate-y-1/2 text-zinc-400 top-1/2 left-2" />
             <input
               type="text"
-              className="w-full p-2 text-slate-400 dark:text-slate-200 bg-transparent border-b pl-10 border-zinc-300 dark:border-zinc-600 focus:outline-none"
+              className="w-full p-2 pl-10 bg-transparent border-b text-slate-400 dark:text-slate-200 border-zinc-300 dark:border-zinc-600 focus:outline-none"
               placeholder="Search options..."
               value={searchValue}
               onChange={handleInputChange}
@@ -15596,7 +15596,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -15652,7 +15652,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -15709,7 +15709,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} checkbox />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -15766,7 +15766,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} checkbox />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -15833,7 +15833,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -15900,7 +15900,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -16020,7 +16020,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -16140,7 +16140,7 @@ const App = () => {
   return (
     <>
       <MultiSelect options={options} onSelect={handleMultiSelect} />
-      <div className="mt-3 flex items-center gap-x-4">
+      <div className="flex items-center mt-3 gap-x-4">
         Selected Values:{" "}
         {selectedValues.length > 0 ? selectedValues.join(", ") : "None"}
       </div>
@@ -16198,7 +16198,7 @@ const App = () => {
         }
       />
       {formik.errors.selectedOptions && formik.touched.selectedOptions && (
-        <div className="text-red-500 mt-2">
+        <div className="mt-2 text-red-500">
           {formik.errors.selectedOptions as string}
         </div>
       )}
@@ -16263,7 +16263,7 @@ const App = () => {
         }
       />
       {formik.errors.selectedOptions && formik.touched.selectedOptions && (
-        <div className="text-red-500 mt-2">{formik.errors.selectedOptions}</div>
+        <div className="mt-2 text-red-500">{formik.errors.selectedOptions}</div>
       )}
       <div className="mt-5">
         <button
@@ -17835,7 +17835,7 @@ const Radio: React.FC<RadioButtonProps> = ({
   onChange,
 }) => {
   return (
-    <label className="flex items-center gap-x-2 mt-2 w-fit my-3 select-none cursor-pointer">
+    <label className="flex items-center my-3 mt-2 cursor-pointer select-none gap-x-2 w-fit">
       <input
         type="radio"
         className="appearance-none w-5 h-5 border border-zinc-300 shadow-sm dark:border-zinc-600 rounded-full checked:bg-[#0bab7c] checked:border-2 checked:border-white dark:checked:border-[#1e1e1e] relative checked:before:absolute checked:before:w-6 checked:before:top-1/2 checked:before:left-1/2 checked:before:-translate-y-1/2 checked:before:-translate-x-1/2 checked:before:h-6 checked:before:border-2 checked:before:border-[#0bab7c] checked:before:rounded-full"
@@ -17856,7 +17856,7 @@ export const radioComponentCodeJSNextjs = `import React from "react";
 
 const Radio = ({ label, checked, value, id, name, onChange }) => {
   return (
-    <label className="flex items-center gap-x-2 mt-2 w-fit my-3 select-none cursor-pointer">
+    <label className="flex items-center my-3 mt-2 cursor-pointer select-none gap-x-2 w-fit">
       <input
         type="radio"
         className="appearance-none w-5 h-5 border border-zinc-300 shadow-sm dark:border-zinc-600 rounded-full checked:bg-[#0bab7c] checked:border-2 checked:border-white dark:checked:border-[#1e1e1e] relative checked:before:absolute checked:before:w-6 checked:before:top-1/2 checked:before:left-1/2 checked:before:-translate-y-1/2 checked:before:-translate-x-1/2 checked:before:h-6 checked:before:border-2 checked:before:border-[#0bab7c] checked:before:rounded-full"
@@ -17885,7 +17885,7 @@ const App = () => {
   console.log(selectedGender);
   return (
     <>
-      <h1 className="text-xl mb-3">What's your gender</h1>
+      <h1 className="mb-3 text-xl">What's your gender</h1>
       <Radio
         label="Male"
         value="Male"
@@ -17915,7 +17915,7 @@ const App = () => {
   console.log(selectedGender);
   return (
     <>
-      <h1 className="text-xl mb-3">What's your gender</h1>
+      <h1 className="mb-3 text-xl">What's your gender</h1>
       <Radio
         label="Male"
         value="Male"
@@ -17973,7 +17973,7 @@ const App = () => {
       <form onSubmit={formik.handleSubmit}>
         {/* Gender */}
         <div className="mt-6">
-          <h1 className="text-xl mb-3">What's your gender</h1>
+          <h1 className="mb-3 text-xl">What's your gender</h1>
           <Radio
             label="Male"
             id="male"
@@ -18046,7 +18046,7 @@ const App = () => {
       <form onSubmit={formik.handleSubmit}>
         {/* Gender */}
         <div className="mt-6">
-          <h1 className="text-xl mb-3">What's your gender</h1>
+          <h1 className="mb-3 text-xl">What's your gender</h1>
           <Radio
             label="Male"
             id="male"
@@ -18525,7 +18525,7 @@ const Scrollable: React.FC<ScrollableProps> = ({
   };
   return (
     <div>
-      <div className="mt-6 relative">
+      <div className="relative mt-6">
         {/* Custom Controls */}
         <div className="flex items-center justify-end space-x-3">
           <div
@@ -18569,7 +18569,7 @@ const Scrollable: React.FC<ScrollableProps> = ({
 
         {/* Scrollable Content */}
         <div
-          className="flex overflow-x-auto space-x-4 p-2 hide-scrollbar scroll-smooth"
+          className="flex p-2 space-x-4 overflow-x-auto hide-scrollbar scroll-smooth"
           ref={listRef}
         >
           {children}
@@ -18633,7 +18633,7 @@ const Scrollable = ({
   };
   return (
     <div>
-      <div className="mt-6 relative">
+      <div className="relative mt-6">
         {/* Custom Controls */}
         <div className="flex items-center justify-end space-x-3">
           <div
@@ -18677,7 +18677,7 @@ const Scrollable = ({
 
         {/* Scrollable Content */}
         <div
-          className="flex overflow-x-auto space-x-4 p-2 hide-scrollbar scroll-smooth"
+          className="flex p-2 space-x-4 overflow-x-auto hide-scrollbar scroll-smooth"
           ref={listRef}
         >
           {children}
@@ -19810,10 +19810,10 @@ const Select: React.FC<SelectProps> = ({
           variants={dropdownVariants}
         >
           <div className="relative">
-            <BsSearch className="mr-2 text-zinc-500 absolute top-1/2 -translate-y-1/2 left-2" />
+            <BsSearch className="absolute mr-2 -translate-y-1/2 text-zinc-500 top-1/2 left-2" />
             <input
               type="text"
-              className="w-full p-2 pl-10 text-slate-500 dark:text-slate-200 bg-transparent border-b border-zinc-300 dark:border-zinc-600 focus:outline-none"
+              className="w-full p-2 pl-10 bg-transparent border-b text-slate-500 dark:text-slate-200 border-zinc-300 dark:border-zinc-600 focus:outline-none"
               placeholder="Search options..."
               value={searchValue}
               onChange={handleInputChange}
@@ -20002,10 +20002,10 @@ const Select = ({
           variants={dropdownVariants}
         >
           <div className="relative">
-            <BsSearch className="mr-2 text-zinc-500 absolute top-1/2 -translate-y-1/2 left-2" />
+            <BsSearch className="absolute mr-2 -translate-y-1/2 text-zinc-500 top-1/2 left-2" />
             <input
               type="text"
-              className="w-full p-2 pl-10 text-slate-500 dark:text-slate-200 bg-transparent border-b border-zinc-300 dark:border-zinc-600 focus:outline-none"
+              className="w-full p-2 pl-10 bg-transparent border-b text-slate-500 dark:text-slate-200 border-zinc-300 dark:border-zinc-600 focus:outline-none"
               placeholder="Search options..."
               value={searchValue}
               onChange={handleInputChange}
@@ -20324,7 +20324,7 @@ const App = () => {
             invalid={!values.role && touched.role}
           />
           {!values.role && touched.role && (
-            <div className="text-red-600 text-sm mt-2">Role is requied</div>
+            <div className="mt-2 text-sm text-red-600">Role is requied</div>
           )}
         </div>
         <button
@@ -20412,7 +20412,7 @@ const App = () => {
             invalid={!values.role && touched.role}
           />
           {!values.role && touched.role && (
-            <div className="text-red-600 text-sm mt-2">Role is requied</div>
+            <div className="mt-2 text-sm text-red-600">Role is requied</div>
           )}
         </div>
         <button
@@ -20958,7 +20958,7 @@ const Slider: React.FC<SliderProps> & {
         </div>
       )}
       {showDots && (
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 flex items-center gap-x-2">
+        <div className="absolute z-20 flex items-center -translate-x-1/2 bottom-2 left-1/2 gap-x-2">
           {items.map((_, i) => (
             <div
               className={\`w-4 h-4 bg-white rounded-full drop-shadow cursor-pointer opacity-40 \${
@@ -21053,7 +21053,7 @@ const Slider = ({
         </div>
       )}
       {showDots && (
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 flex items-center gap-x-2">
+        <div className="absolute z-20 flex items-center -translate-x-1/2 bottom-2 left-1/2 gap-x-2">
           {items.map((_, i) => (
             <div
               className={\`w-4 h-4 bg-white rounded-full drop-shadow cursor-pointer opacity-40 \${
@@ -21130,21 +21130,21 @@ const App = () => {
           <img
             src="/photo (65).jpg"
             alt="Image 1"
-            className="w-full h-full object-cover rounded-lg"
+            className="object-cover w-full h-full rounded-lg"
           />
         </Slider.Item>
         <Slider.Item className="h-full">
           <img
             src="/photo (66).jpg"
             alt="Image 1"
-            className="w-full h-full object-cover rounded-lg"
+            className="object-cover w-full h-full rounded-lg"
           />
         </Slider.Item>
         <Slider.Item className="h-full">
           <img
             src="/photo (77).jpg"
             alt="Image 1"
-            className="w-full h-full object-cover rounded-lg"
+            className="object-cover w-full h-full rounded-lg"
           />
         </Slider.Item>
       </Slider>
@@ -21350,7 +21350,7 @@ const Stepper: React.FC<StepperProps> = ({
 
   return (
     <div className="dark:text-slate-200">
-      <div className="mb-6">
+      <div className="mb-6 text-center">
         <div
           className={\`flex mb-2 justify-between \${
             variant === "three"
@@ -21376,41 +21376,45 @@ const Stepper: React.FC<StepperProps> = ({
                 </>
               )}
               <div
-                className={\`flex gap-x-4 items-center space-y-2 h-full \${
+                className={\`flex gap-x-4 items-center justify-center space-y-2 h-full flex-1 w-full mx-auto \${
                   variant === "three" &&
                   "relative px-2 py-1 before:absolute before:w-[0.8rem] before:h-[0.8rem] before:bg-white dark:before:bg-zinc-900 before:-right-[0.5rem] before:border before:border-transparent border-r border-r-zinc-300 before:border-t-zinc-300 before:border-r-zinc-300 dark:border-r-zinc-600 dark:before:border-t-zinc-600 dark:before:border-r-zinc-600 before:rotate-45 last:before:hidden last:border-r-0"
                 } \${variant === "one" && "flex-col"}\`}
               >
                 {type === "icon" ? (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{
-                      scale:
-                        currentStep === index || index < currentStep ? 1.1 : 1,
-                      backgroundColor:
-                        currentStep === index || index < currentStep
-                          ? "#0bab7c"
-                          : "#4B5563",
-                    }}
-                    className="flex items-center justify-center w-8 h-8 text-white transition-colors duration-300 rounded-full"
-                  >
-                    {index < currentStep ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-5 h-5 text-white"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    ) : (
-                      <div className="flex-shrink-0">{step.icon}</div>
-                    )}
-                  </motion.div>
+                  <div className="flex-1 w-fit">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{
+                        scale:
+                          currentStep === index || index < currentStep
+                            ? 1.1
+                            : 1,
+                        backgroundColor:
+                          currentStep === index || index < currentStep
+                            ? "#0bab7c"
+                            : "#4B5563",
+                      }}
+                      className="flex items-center justify-center w-8 h-8 text-white transition-colors duration-300 rounded-full"
+                    >
+                      {index < currentStep ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5 text-white"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      ) : (
+                        <div className="flex-shrink-0">{step.icon}</div>
+                      )}
+                    </motion.div>
+                  </div>
                 ) : (
                   <motion.div
                     initial={{ scale: 0 }}
@@ -21519,7 +21523,7 @@ const Stepper = ({ steps, type = "numbered", variant = "one"  }) => {
 
   return (
     <div className="dark:text-slate-200">
-      <div className="mb-6">
+      <div className="mb-6 text-center">
         <div
           className={\`flex mb-2 justify-between \${
             variant === "three"
@@ -21545,41 +21549,45 @@ const Stepper = ({ steps, type = "numbered", variant = "one"  }) => {
                 </>
               )}
               <div
-                className={\`flex gap-x-4 items-center space-y-2 h-full \${
+                className={\`flex gap-x-4 items-center justify-center space-y-2 h-full flex-1 w-full mx-auto \${
                   variant === "three" &&
                   "relative px-2 py-1 before:absolute before:w-[0.8rem] before:h-[0.8rem] before:bg-white dark:before:bg-zinc-900 before:-right-[0.5rem] before:border before:border-transparent border-r border-r-zinc-300 before:border-t-zinc-300 before:border-r-zinc-300 dark:border-r-zinc-600 dark:before:border-t-zinc-600 dark:before:border-r-zinc-600 before:rotate-45 last:before:hidden last:border-r-0"
                 } \${variant === "one" && "flex-col"}\`}
               >
                 {type === "icon" ? (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{
-                      scale:
-                        currentStep === index || index < currentStep ? 1.1 : 1,
-                      backgroundColor:
-                        currentStep === index || index < currentStep
-                          ? "#0bab7c"
-                          : "#4B5563",
-                    }}
-                    className="flex items-center justify-center w-8 h-8 text-white transition-colors duration-300 rounded-full"
-                  >
-                    {index < currentStep ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-5 h-5 text-white"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    ) : (
-                      <div className="flex-shrink-0">{step.icon}</div>
-                    )}
-                  </motion.div>
+                  <div className="flex-1 w-fit">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{
+                        scale:
+                          currentStep === index || index < currentStep
+                            ? 1.1
+                            : 1,
+                        backgroundColor:
+                          currentStep === index || index < currentStep
+                            ? "#0bab7c"
+                            : "#4B5563",
+                      }}
+                      className="flex items-center justify-center w-8 h-8 text-white transition-colors duration-300 rounded-full"
+                    >
+                      {index < currentStep ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5 text-white"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      ) : (
+                        <div className="flex-shrink-0">{step.icon}</div>
+                      )}
+                    </motion.div>
+                  </div>
                 ) : (
                   <motion.div
                     initial={{ scale: 0 }}
@@ -21885,7 +21893,7 @@ const Stepper: React.FC<StepperProps> = ({
 
   return (
     <div className="dark:text-slate-200">
-      <div className="mb-6">
+      <div className="mb-6 text-center">
         <div
           className={\`flex mb-2 justify-between \${
             variant === "three"
@@ -21911,41 +21919,45 @@ const Stepper: React.FC<StepperProps> = ({
                 </>
               )}
               <div
-                className={\`flex gap-x-4 items-center space-y-2 h-full \${
+                className={\`flex gap-x-4 items-center justify-center space-y-2 h-full flex-1 w-full mx-auto \${
                   variant === "three" &&
                   "relative px-2 py-1 before:absolute before:w-[0.8rem] before:h-[0.8rem] before:bg-white dark:before:bg-zinc-900 before:-right-[0.5rem] before:border before:border-transparent border-r border-r-zinc-300 before:border-t-zinc-300 before:border-r-zinc-300 dark:border-r-zinc-600 dark:before:border-t-zinc-600 dark:before:border-r-zinc-600 before:rotate-45 last:before:hidden last:border-r-0"
                 } \${variant === "one" && "flex-col"}\`}
               >
                 {type === "icon" ? (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{
-                      scale:
-                        currentStep === index || index < currentStep ? 1.1 : 1,
-                      backgroundColor:
-                        currentStep === index || index < currentStep
-                          ? "#0bab7c"
-                          : "#4B5563",
-                    }}
-                    className="rounded-full w-8 h-8 flex items-center justify-center transition-colors duration-300 text-white"
-                  >
-                    {index < currentStep ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-white"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    ) : (
-                      <div className="flex-shrink-0">{step.icon}</div>
-                    )}
-                  </motion.div>
+                  <div className="flex-1 w-fit">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{
+                        scale:
+                          currentStep === index || index < currentStep
+                            ? 1.1
+                            : 1,
+                        backgroundColor:
+                          currentStep === index || index < currentStep
+                            ? "#0bab7c"
+                            : "#4B5563",
+                      }}
+                      className="flex items-center justify-center w-8 h-8 text-white transition-colors duration-300 rounded-full"
+                    >
+                      {index < currentStep ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5 text-white"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      ) : (
+                        <div className="flex-shrink-0">{step.icon}</div>
+                      )}
+                    </motion.div>
+                  </div>
                 ) : (
                   <motion.div
                     initial={{ scale: 0 }}
@@ -21966,7 +21978,7 @@ const Stepper: React.FC<StepperProps> = ({
                     {index < currentStep ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-white"
+                        className="w-5 h-5 text-white"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -22056,7 +22068,7 @@ const Stepper = ({ steps, type = "numbered", variant = "one" }) => {
 
   return (
     <div className="dark:text-slate-200">
-      <div className="mb-6">
+      <div className="mb-6 text-center">
         <div
           className={\`flex mb-2 justify-between \${
             variant === "three"
@@ -22082,41 +22094,45 @@ const Stepper = ({ steps, type = "numbered", variant = "one" }) => {
                 </>
               )}
               <div
-                className={\`flex gap-x-4 items-center space-y-2 h-full \${
+                className={\`flex gap-x-4 items-center justify-center space-y-2 h-full flex-1 w-full mx-auto \${
                   variant === "three" &&
                   "relative px-2 py-1 before:absolute before:w-[0.8rem] before:h-[0.8rem] before:bg-white dark:before:bg-zinc-900 before:-right-[0.5rem] before:border before:border-transparent border-r border-r-zinc-300 before:border-t-zinc-300 before:border-r-zinc-300 dark:border-r-zinc-600 dark:before:border-t-zinc-600 dark:before:border-r-zinc-600 before:rotate-45 last:before:hidden last:border-r-0"
                 } \${variant === "one" && "flex-col"}\`}
               >
                 {type === "icon" ? (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{
-                      scale:
-                        currentStep === index || index < currentStep ? 1.1 : 1,
-                      backgroundColor:
-                        currentStep === index || index < currentStep
-                          ? "#0bab7c"
-                          : "#4B5563",
-                    }}
-                    className="rounded-full w-8 h-8 flex items-center justify-center transition-colors duration-300 text-white"
-                  >
-                    {index < currentStep ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-white"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    ) : (
-                      <div className="flex-shrink-0">{step.icon}</div>
-                    )}
-                  </motion.div>
+                  <div className="flex-1 w-fit">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{
+                        scale:
+                          currentStep === index || index < currentStep
+                            ? 1.1
+                            : 1,
+                        backgroundColor:
+                          currentStep === index || index < currentStep
+                            ? "#0bab7c"
+                            : "#4B5563",
+                      }}
+                      className="flex items-center justify-center w-8 h-8 text-white transition-colors duration-300 rounded-full"
+                    >
+                      {index < currentStep ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5 text-white"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      ) : (
+                        <div className="flex-shrink-0">{step.icon}</div>
+                      )}
+                    </motion.div>
+                  </div>
                 ) : (
                   <motion.div
                     initial={{ scale: 0 }}
@@ -22137,7 +22153,7 @@ const Stepper = ({ steps, type = "numbered", variant = "one" }) => {
                     {index < currentStep ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-white"
+                        className="w-5 h-5 text-white"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -22933,7 +22949,7 @@ const App = () => {
   console.log(isChecked);
 
   return (
-    <div className="flex items-center gap-x-4 flex-wrap">
+    <div className="flex flex-wrap items-center gap-x-4">
       <Switch checked={isChecked} onChange={handleSwitchChange} />
       <Switch
         checked={isChecked}
@@ -22975,7 +22991,7 @@ const App = () => {
   console.log(isChecked);
 
   return (
-    <div className="flex items-center gap-x-4 flex-wrap">
+    <div className="flex flex-wrap items-center gap-x-4">
       <Switch checked={isChecked} onChange={handleSwitchChange} />
       <Switch
         checked={isChecked}
@@ -23017,7 +23033,7 @@ const App = () => {
   console.log(isChecked);
 
   return (
-    <div className="flex items-center gap-x-4 flex-wrap">
+    <div className="flex flex-wrap items-center gap-x-4">
       <Switch
         checked={isChecked}
         onChange={handleSwitchChange}
@@ -23056,7 +23072,7 @@ const App = () => {
   console.log(isChecked);
 
   return (
-    <div className="flex items-center gap-x-4 flex-wrap">
+    <div className="flex flex-wrap items-center gap-x-4">
       <Switch
         checked={isChecked}
         onChange={handleSwitchChange}
@@ -24096,7 +24112,7 @@ const Trello: React.FC = () => {
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <div className="flex flex-col md:flex-row justify-center gap-4 p-8 bg-white border rounded-md dark:border-0 dark:bg-zinc-700/80">
+      <div className="flex flex-col justify-center gap-4 p-8 bg-white border rounded-md md:flex-row dark:border-0 dark:bg-zinc-700/80">
         {columns.map((column, index) => (
           <TrelloColumn
             key={column.id}
@@ -24562,7 +24578,7 @@ const initialColumns: ColumnData[] = [
         id: "card-1",
         content: (
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
+            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
             <span>Buy groceries</span>
           </div>
         ),
@@ -24571,7 +24587,7 @@ const initialColumns: ColumnData[] = [
         id: "card-2",
         content: (
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
+            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
             <span>Finish homework</span>
           </div>
         ),
@@ -24580,7 +24596,7 @@ const initialColumns: ColumnData[] = [
         id: "card-3",
         content: (
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
+            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
             <span>Eat food</span>
           </div>
         ),
@@ -24589,7 +24605,7 @@ const initialColumns: ColumnData[] = [
         id: "card-4",
         content: (
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
+            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
             <span>Do workouts</span>
           </div>
         ),
@@ -24691,7 +24707,7 @@ const Trello: React.FC = () => {
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <div className="flex flex-col md:flex-row bg-white border dark:border-0 dark:bg-zinc-700/80 gap-4 justify-center p-8 rounded-md">
+      <div className="flex flex-col justify-center gap-4 p-8 bg-white border rounded-md md:flex-row dark:border-0 dark:bg-zinc-700/80">
         {columns.map((column, index) => (
           <TrelloColumn
             key={column.id}
@@ -24724,7 +24740,7 @@ const initialColumns = [
         id: "card-1",
         content: (
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
+            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
             <span>Buy groceries</span>
           </div>
         ),
@@ -24733,7 +24749,7 @@ const initialColumns = [
         id: "card-2",
         content: (
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
+            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
             <span>Finish homework</span>
           </div>
         ),
@@ -24742,7 +24758,7 @@ const initialColumns = [
         id: "card-3",
         content: (
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
+            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
             <span>Eat food</span>
           </div>
         ),
@@ -24751,7 +24767,7 @@ const initialColumns = [
         id: "card-4",
         content: (
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
+            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
             <span>Do workouts</span>
           </div>
         ),
@@ -24853,7 +24869,7 @@ const Trello = () => {
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <div className="flex flex-col md:flex-row bg-white border dark:border-0 dark:bg-zinc-700/80 gap-4 justify-center p-8 rounded-md">
+      <div className="flex flex-col justify-center gap-4 p-8 bg-white border rounded-md md:flex-row dark:border-0 dark:bg-zinc-700/80">
         {columns.map((column, index) => (
           <TrelloColumn
             key={column.id}
@@ -24910,8 +24926,8 @@ const TrelloColumn: React.FC<ColumnProps> = ({ id, index, title, cards }) => {
           {!isCollapsed && title}
         </h3>
         {isCollapsed && (
-          <div className=" -rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <h3 className="text-zinc-400 text-xl font-semibold whitespace-nowrap">
+          <div className="absolute -rotate-90 -translate-x-1/2 -translate-y-1/2  top-1/2 left-1/2">
+            <h3 className="text-xl font-semibold text-zinc-400 whitespace-nowrap">
               {title}
             </h3>
           </div>
@@ -24950,8 +24966,8 @@ const TrelloColumn: React.FC<ColumnProps> = ({ id, index, title, cards }) => {
               </div>
               {provided.placeholder}
               {cards.length === 0 && !snapshot.isDraggingOver && (
-                <div className="mt-20 text-center flex flex-col gap-y-2 items-center justify-center">
-                  <h1 className="text-zinc-200 text-2xl opacity-50">
+                <div className="flex flex-col items-center justify-center mt-20 text-center gap-y-2">
+                  <h1 className="text-2xl opacity-50 text-zinc-200">
                     Drop cards here
                   </h1>
                   <span>
@@ -24998,8 +25014,8 @@ const TrelloColumn = ({ id, index, title, cards }) => {
           {!isCollapsed && title}
         </h3>
         {isCollapsed && (
-          <div className=" -rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <h3 className="text-zinc-400 text-xl font-semibold whitespace-nowrap">
+          <div className="absolute -rotate-90 -translate-x-1/2 -translate-y-1/2  top-1/2 left-1/2">
+            <h3 className="text-xl font-semibold text-zinc-400 whitespace-nowrap">
               {title}
             </h3>
           </div>
@@ -25038,8 +25054,8 @@ const TrelloColumn = ({ id, index, title, cards }) => {
               </div>
               {provided.placeholder}
               {cards.length === 0 && !snapshot.isDraggingOver && (
-                <div className="mt-20 text-center flex flex-col gap-y-2 items-center justify-center">
-                  <h1 className="text-zinc-200 text-2xl opacity-50">
+                <div className="flex flex-col items-center justify-center mt-20 text-center gap-y-2">
+                  <h1 className="text-2xl opacity-50 text-zinc-200">
                     Drop cards here
                   </h1>
                   <span>
@@ -26852,7 +26868,7 @@ const App = () => {
   const { mode, handleModeChange } = useDarkMode("darkModePreference");
   return (
     <>
-      <div className="mt-3 flex items-center gap-3">
+      <div className="flex items-center gap-3 mt-3">
         {/* Dark */}
         <button
           className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
@@ -26912,7 +26928,7 @@ const App = () => {
   const { mode, handleModeChange } = useDarkMode("darkModePreference");
   return (
     <>
-      <div className="mt-3 flex items-center gap-3">
+      <div className="flex items-center gap-3 mt-3">
         {/* Dark */}
         <button
           className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
@@ -27049,7 +27065,7 @@ const App = () => {
   const { mode, handleModeChange } = useDarkMode("darkModePreference");
   return (
     <>
-      <div className="mt-3 flex items-center gap-3">
+      <div className="flex items-center gap-3 mt-3">
         {/* Dark */}
         <button
           className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
@@ -27110,7 +27126,7 @@ const App = () => {
   const { mode, handleModeChange } = useDarkMode("darkModePreference");
   return (
     <>
-      <div className="mt-3 flex items-center gap-3">
+      <div className="flex items-center gap-3 mt-3">
         {/* Dark */}
         <button
           className={\`px-6 py-2 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-600 dark:text-slate-200 dark:bg-zinc-700 hover:dark:bg-zinc-600 flex items-center justify-center gap-x-2 \${
@@ -27274,7 +27290,7 @@ const App: React.FC = () => {
         {posts?.map((post) => (
           <div
             key={post.id}
-            className="p-4 rounded-lg border dark:border-zinc-600 my-2"
+            className="p-4 my-2 border rounded-lg dark:border-zinc-600"
           >
             <h1 className="text-2xl font-semibold">{post.title}</h1>
             <p className="mt-2">{post.body}</p>
@@ -27319,7 +27335,7 @@ const App = () => {
         {posts?.map((post) => (
           <div
             key={post.id}
-            className="p-4 rounded-lg border dark:border-zinc-600 my-2"
+            className="p-4 my-2 border rounded-lg dark:border-zinc-600"
           >
             <h1 className="text-2xl font-semibold">{post.title}</h1>
             <p className="mt-2">{post.body}</p>
@@ -27450,7 +27466,7 @@ const App: React.FC = () => {
         {posts?.map((post) => (
           <div
             key={post.id}
-            className="p-4 rounded-lg border dark:border-zinc-600 my-2"
+            className="p-4 my-2 border rounded-lg dark:border-zinc-600"
           >
             <h1 className="text-2xl font-semibold">{post.title}</h1>
             <p className="mt-2">{post.body}</p>
@@ -27497,7 +27513,7 @@ const App = () => {
         {posts?.map((post) => (
           <div
             key={post.id}
-            className="p-4 rounded-lg border dark:border-zinc-600 my-2"
+            className="p-4 my-2 border rounded-lg dark:border-zinc-600"
           >
             <h1 className="text-2xl font-semibold">{post.title}</h1>
             <p className="mt-2">{post.body}</p>
@@ -27744,10 +27760,10 @@ const App = () => {
 
   return (
     <>
-      <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      <div className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
         {isKeyPressed ? <p>Enter key pressed</p> : <p>Press Enter key</p>}
       </div>
-      <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      <div className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
         {isControlKeyPressed && isMKeyPressed ? (
           <p>
             <span className="code !bg-slate-300 dark:!bg-zinc-800">
@@ -27780,10 +27796,10 @@ const App = () => {
 
   return (
     <>
-      <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      <div className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
         {isKeyPressed ? <p>Enter key pressed</p> : <p>Press Enter key</p>}
       </div>
-      <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      <div className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
         {isControlKeyPressed && isMKeyPressed ? (
           <p>
             <span className="code !bg-slate-300 dark:!bg-zinc-800">
@@ -27888,10 +27904,10 @@ const App = () => {
 
   return (
     <>
-      <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      <div className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
         {isKeyPressed ? <p>Enter key pressed</p> : <p>Press Enter key</p>}
       </div>
-      <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      <div className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
         {isControlKeyPressed && isMKeyPressed ? (
           <p>
             <span className="code !bg-slate-300 dark:!bg-zinc-800">
@@ -27926,10 +27942,10 @@ const App = () => {
 
   return (
     <>
-      <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      <div className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
         {isKeyPressed ? <p>Enter key pressed</p> : <p>Press Enter key</p>}
       </div>
-      <div className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+      <div className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
         {isControlKeyPressed && isMKeyPressed ? (
           <p>
             <span className="code !bg-slate-300 dark:!bg-zinc-800">
@@ -28519,7 +28535,7 @@ const App = () => {
   useOnClickOutside(ref, handleClickOutside);
 
   return (
-    <div ref={ref} className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+    <div ref={ref} className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
       Click outside me and watch the console
     </div>
   );
@@ -28540,7 +28556,7 @@ const App = () => {
   useOnClickOutside(ref, handleClickOutside);
 
   return (
-    <div ref={ref} className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+    <div ref={ref} className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
       Click outside me and watch the console
     </div>
   );
@@ -28616,7 +28632,7 @@ const App = () => {
   useOnClickOutside(ref, handleClickOutside);
 
   return (
-    <div ref={ref} className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+    <div ref={ref} className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
       Click outside me and watch the console
     </div>
   );
@@ -28639,7 +28655,7 @@ const App = () => {
   useOnClickOutside(ref, handleClickOutside);
 
   return (
-    <div ref={ref} className="p-3 bg-slate-100 dark:bg-zinc-700 mt-5">
+    <div ref={ref} className="p-3 mt-5 bg-slate-100 dark:bg-zinc-700">
       Click outside me and watch the console
     </div>
   );
@@ -28703,7 +28719,7 @@ const App = () => {
   const { scrollY, scrollX } = useScroll();
   return (
     <>
-      <div className="fixed p-4 right-0 top-16 bg-white border dark:border-zinc-600 dark:bg-zinc-700 z-40">
+      <div className="fixed right-0 z-40 p-4 bg-white border top-16 dark:border-zinc-600 dark:bg-zinc-700">
         <div>
           <p>Scroll Y: {scrollY}</p>
           <p>Scroll X: {scrollX}</p>
@@ -28726,7 +28742,7 @@ const App = () => {
   const { scrollY, scrollX } = useScroll();
   return (
     <>
-      <div className="fixed p-4 right-0 top-16 bg-white border dark:border-zinc-600 dark:bg-zinc-700 z-40">
+      <div className="fixed right-0 z-40 p-4 bg-white border top-16 dark:border-zinc-600 dark:bg-zinc-700">
         <div>
           <p>Scroll Y: {scrollY}</p>
           <p>Scroll X: {scrollX}</p>
@@ -28803,7 +28819,7 @@ const App = () => {
   const { scrollY, scrollX } = useScroll();
   return (
     <>
-      <div className="fixed p-4 right-0 top-16 bg-white border dark:border-zinc-600 dark:bg-zinc-700 z-40">
+      <div className="fixed right-0 z-40 p-4 bg-white border top-16 dark:border-zinc-600 dark:bg-zinc-700">
         <div>
           <p>Scroll Y: {scrollY}</p>
           <p>Scroll X: {scrollX}</p>
@@ -28828,7 +28844,7 @@ const App = () => {
   const { scrollY, scrollX } = useScroll();
   return (
     <>
-      <div className="fixed p-4 right-0 top-16 bg-white border dark:border-zinc-600 dark:bg-zinc-700 z-40">
+      <div className="fixed right-0 z-40 p-4 bg-white border top-16 dark:border-zinc-600 dark:bg-zinc-700">
         <div>
           <p>Scroll Y: {scrollY}</p>
           <p>Scroll X: {scrollX}</p>
