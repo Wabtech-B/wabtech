@@ -14,7 +14,7 @@ cd my-app`;
   const installCodeNextjs = `npx create-next-app@latest my-app 
   
 cd my-app`;
-  const extraPackages = `npm classnames install @types/react-beautiful-dnd @types/react-transition-group`;
+  const extraPackages = `npm install classnames @types/react-beautiful-dnd @types/react-transition-group`;
 
   const installDeps = `npm install react-icons framer-motion react-transition-group`;
 
