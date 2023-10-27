@@ -11,12 +11,12 @@ export const navbarLinks = [
   //   linkText: "Templates",
   //   url: "/templates",
   // },
-  {
-    linkText: "Blog",
-    url: "/blog",
-  },
-  {
-    linkText: "Contact",
-    url: "/contact",
-  },
+  // {
+  //   linkText: "Blog",
+  //   url: "/blog",
+  // },
+  // {
+  //   linkText: "Contact",
+  //   url: "/contact",
+  // },
 ];
