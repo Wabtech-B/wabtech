@@ -36,7 +36,7 @@ cd my-app`;
             the library. Since our components are built with Tailwind CSS, make
             sure it's installed. You can follow the installation guide on their{" "}
             <a
-              href="https://www.tailwindcss.com/install"
+              href="https://tailwindcss.com/"
               target="_blank"
               className="underline text-primary"
             >
