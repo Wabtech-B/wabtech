@@ -14,6 +14,7 @@ cd my-app`;
   const installCodeNextjs = `npx create-next-app@latest my-app 
   
 cd my-app`;
+  const extraPackages = `npm classnames install @types/react-beautiful-dnd @types/react-transition-group`;
 
   const installDeps = `npm install react-icons framer-motion react-transition-group`;
 
@@ -26,10 +27,10 @@ cd my-app`;
     <div className="grid grid-cols-1 md:grid-cols-auto-200">
       <div>
         <section id="deps">
-          <h2 className="text-4xl font-semibold mb-4">
+          <h2 className="mb-4 text-4xl font-semibold">
             Installation & Usage Guide
           </h2>
-          <p className="text-lg mb-6">
+          <p className="mb-6 text-lg">
             To start using our components in your React/Next.js project, follow
             these simple steps to install the required dependencies and set up
             the library. Since our components are built with Tailwind CSS, make
@@ -42,9 +43,9 @@ cd my-app`;
               official website.
             </a>
           </p>
-          <div className="bg-zinc-100 dark:bg-zinc-800 rounded-md p-6 mb-6">
-            <h2 className="text-2xl font-semibold mb-4">Dependencies</h2>
-            <p className="text-lg mb-4">
+          <div className="p-6 mb-6 rounded-md bg-zinc-100 dark:bg-zinc-800">
+            <h2 className="mb-4 text-2xl font-semibold">Dependencies</h2>
+            <p className="mb-4 text-lg">
               While our components do not require any installation, some
               components do rely on external libraries for specific
               functionality. Here are the only dependency installations
@@ -87,20 +88,40 @@ cd my-app`;
               intend to use the relevant components.
             </p>
           </div>
+
+          <div className="mt-4">
+            <h2 className="mb-4 text-xl font-semibold">Note:</h2>
+            <p className="mt-3 text-lg">
+              If you are using Next.js and Typescript, add the following
+              packages, they are light-weight so no need to worry. Only add them
+              if your using <span className="code">Tooltip</span>,{" "}
+              <span className="code">Switch</span>,{" "}
+              <span className="code">Badge</span>,{" "}
+              <span className="code">GradientIcon</span> components and any
+              other component that uses drag and drop.
+            </p>
+
+            <div className="relative p-2 mt-3 border rounded-lg bg-zinc-950 border-zinc-700">
+              <CodeSnippet snippet={extraPackages} />
+              <div className="absolute top-5 right-4">
+                <CopyIcon text={extraPackages} />
+              </div>
+            </div>
+          </div>
         </section>
         <div className="my-5">
-          <Alert>
-            Please when using the components in Next.js 13.4 or later, use{" "}
-            <span className="code">"use client"</span> for components that rely
-            on browser APIs and react hooks
+          <Alert title="For Next.js">
+            Please note that we use Nextjs 13.4 so most components are marked
+            with <span className="code">"use client"</span> directive to support
+            hooks and browser APIs
           </Alert>
         </div>
         <section id="guide">
           <div>
-            <h3 className="text-xl font-semibold mb-4">Installation</h3>
+            <h3 className="mb-4 text-xl font-semibold">Installation</h3>
             <div className="my-2">
-              <h1 className="text-xl mb-4">Create a React.js/Next.js App:</h1>
-              <div className="bg-zinc-950 border border-zinc-700 p-2 rounded-lg">
+              <h1 className="mb-4 text-xl">Create a React.js/Next.js App:</h1>
+              <div className="p-2 border rounded-lg bg-zinc-950 border-zinc-700">
                 <Tabs>
                   <Tab title="React.js">
                     <CodeSnippet snippet={installCodeReactjs} />
@@ -117,35 +138,35 @@ cd my-app`;
                   </Tab>
                 </Tabs>
               </div>
-              <p className="text-lg mb-4">
+              <p className="mb-4 text-lg">
                 Replace my-app with your preferred project name.
               </p>
             </div>
             <div className="my-4">
-              <h1 className="text-xl mb-4">
+              <h1 className="mb-4 text-xl">
                 Install Required Dependencies (Optional):
               </h1>
-              <div className="bg-zinc-950 border border-zinc-700 p-2 rounded-lg relative">
+              <div className="relative p-2 border rounded-lg bg-zinc-950 border-zinc-700">
                 <CodeSnippet snippet={installDeps} />
                 <div className="absolute top-5 right-4">
                   <CopyIcon text={installDeps} />
                 </div>
               </div>
-              <p className="text-lg mb-4">
+              <p className="mb-4 text-lg">
                 These dependencies are used by some of our components
               </p>
             </div>
             <div className="my-2">
-              <h1 className="text-xl mb-4">Copy Component Code:</h1>
-              <p className="text-lg mb-4">
+              <h1 className="mb-4 text-xl">Copy Component Code:</h1>
+              <p className="mb-4 text-lg">
                 Browse the official documentation to find the components you
                 want to use. Copy the component code snippets provided in the
                 documentation.
               </p>
             </div>
             <div className="my-2">
-              <h1 className="text-xl mb-4">Paste and Customize:</h1>
-              <p className="text-lg mb-4">
+              <h1 className="mb-4 text-xl">Paste and Customize:</h1>
+              <p className="mb-4 text-lg">
                 Inside your React components, paste the copied code snippets.
                 Customize the code as needed to match your project's design and
                 requirements. You can adjust labels, styles, and other
@@ -155,7 +176,7 @@ cd my-app`;
                 Tab Component <span className="code tsx-lg">Tabs.tsx</span>
               </h1>
               <div className="mt-4">
-                <div className="bg-zinc-950 border border-zinc-700 p-2 rounded-lg relative">
+                <div className="relative p-2 border rounded-lg bg-zinc-950 border-zinc-700">
                   <CodeSnippet
                     snippet={tabsComponentCodeTS}
                     showLines
@@ -168,15 +189,15 @@ cd my-app`;
               </div>
             </div>
             <div className="mt-5">
-              <h1 className="text-xl mb-4">
+              <h1 className="mb-4 text-xl">
                 Import Component: <span className="code tsx-lg">App.tsx</span>
               </h1>
-              <p className="text-lg mb-4">
+              <p className="mb-4 text-lg">
                 Make sure to import the necessary components at the beginning of
                 your file using:
               </p>
               <div className="mt-4">
-                <div className="bg-zinc-950 border border-zinc-700 p-2 rounded-lg relative">
+                <div className="relative p-2 border rounded-lg bg-zinc-950 border-zinc-700">
                   <CodeSnippet
                     snippet={tabsPreviewCodeTS}
                     showLines
@@ -189,8 +210,8 @@ cd my-app`;
               </div>
             </div>
             <div className="mt-4">
-              <h1 className="text-xl mb-4">Start the Development Server:</h1>
-              <div className="bg-zinc-950 border border-zinc-700 p-2 rounded-lg">
+              <h1 className="mb-4 text-xl">Start the Development Server:</h1>
+              <div className="p-2 border rounded-lg bg-zinc-950 border-zinc-700">
                 <Tabs>
                   <Tab title="React.js">
                     <CodeSnippet snippet="npm start" />
@@ -224,13 +245,13 @@ cd my-app`;
             </div>
           </div>
         </section>
-        <p className="text-lg mb-6">
+        <p className="mb-6 text-lg">
           For more detailed information, usage examples, and customization
           options, refer to the official documentation. If you encounter any
           issues or have questions, feel free to email us at{" "}
           <a
             href="mailto:wabtech.tech@gmail.com"
-            className="text-primary underline"
+            className="underline text-primary"
           >
             wabtech.tech@gmail.com
           </a>{" "}

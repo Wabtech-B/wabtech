@@ -62,14 +62,14 @@ const GettingStarted = () => {
                 heavily on external dependencies.
               </li>
               <li className="mb-2">
-                <span className="font-semibold">Built with TypeScript:</span>{" "}
-                The components are built using TypeScript, providing type safety
+                <span className="font-semibold">TypeScript Support:</span> The
+                components support TypeScript by default, providing type safety
                 and improved developer experience.
               </li>
               <li className="mb-2">
                 <span className="font-semibold">Next.js Compatible:</span> If
-                you're using Next.js, you'll find it easy to integrate the
-                components into your projects.
+                you're using Next.js, especially Next.js 13 with App Router,
+                then we've got you covered.
               </li>
             </ul>
           </div>
@@ -137,7 +137,7 @@ const GettingStarted = () => {
               <li className="mb-2">
                 <strong>Copy and Paste:</strong> To use a component, find the
                 code snippet provided in the documentation. Copy the snippet and
-                paste it into your React application's codebase.
+                paste it into your React/Next.js application's codebase.
               </li>
               <li className="mb-2">
                 <strong>Customize:</strong> Customize the copied code to match
