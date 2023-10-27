@@ -3,6 +3,8 @@
 import BottomLinks from "@/components/common/BottomLinks";
 import RightSidebar from "@/components/common/RightSidebar";
 import Alert from "@/components/wabtech/alert/Alert";
+import Link from "next/link";
+import { FiArrowRight } from "react-icons/fi";
 
 const GettingStarted = () => {
   const sections = [
@@ -189,7 +191,22 @@ const GettingStarted = () => {
           </Alert>
         </div>
         <div className="mt-6 mb-10">
-          <BottomLinks nextUrl="/components/installation" />
+          <div className="flex justify-end">
+            <Link
+              href="/components/installation"
+              className="flex justify-end w-full p-3 border rounded-lg sm:w-fit dark:border-zinc-700 group sm:justify-start"
+            >
+              <div className="flex gap-x-2">
+                <div>
+                  <span>Next</span>
+                  <p className="mt-1 capitalize text-primary">installation</p>
+                </div>
+                <div className="group-hover:translate-x-1 transition-a">
+                  <FiArrowRight />
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
       <RightSidebar sections={sections} />
