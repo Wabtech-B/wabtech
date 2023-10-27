@@ -14,10 +14,10 @@ const GettingStarted = () => {
     <div className="grid grid-cols-1 md:grid-cols-auto-200">
       <div>
         <section id="getting_started">
-          <h1 className="text-4xl font-semibold mb-4">
+          <h1 className="mb-4 text-4xl font-semibold">
             Getting Started with our components
           </h1>
-          <p className="text-lg mb-6">
+          <p className="mb-6 text-lg">
             Welcome to our components, a collection of reusable and customizable
             UI components designed to make your web development process smoother
             and more efficient. These components are responsive, support dark
@@ -27,15 +27,15 @@ const GettingStarted = () => {
             with{" "}
             <a
               href="https://tailwindcss.com/"
-              className="text-primary underline"
+              className="underline text-primary"
               target="_blank"
             >
               tailwindcss
             </a>
           </p>
-          <div className="bg-zinc-100 dark:bg-zinc-800 border dark:border-zinc-700 rounded-md p-6 mb-6">
-            <h2 className="text-2xl font-semibold mb-4">Features</h2>
-            <ul className="list-disc ml-6">
+          <div className="p-6 mb-6 border rounded-md bg-zinc-100 dark:bg-zinc-800 dark:border-zinc-700">
+            <h2 className="mb-4 text-2xl font-semibold">Features</h2>
+            <ul className="ml-6 list-disc">
               <li className="mb-2">
                 <span className="font-semibold">Reusability:</span> Each
                 component is designed to be easily reused across your
@@ -76,8 +76,8 @@ const GettingStarted = () => {
         </section>
         <section id="deps">
           <div className="my-8">
-            <h2 className="text-2xl font-semibold mb-4">Dependencies</h2>
-            <p className="text-lg mb-4">
+            <h2 className="mb-4 text-2xl font-semibold">Dependencies</h2>
+            <p className="mb-4 text-lg">
               While our components do not require any installation, some
               components do rely on external libraries for specific
               functionality. Here are the only dependency installations
@@ -122,13 +122,13 @@ const GettingStarted = () => {
           </div>
         </section>
         <section id="how_to_use">
-          <div className="gradient-box p-4 rounded-lg mb-6">
-            <h2 className="text-2xl font-semibold mb-4">How to Use</h2>
-            <p className="text-lg mb-4">
+          <div className="p-4 mb-6 rounded-lg gradient-box">
+            <h2 className="mb-4 text-2xl font-semibold">How to Use</h2>
+            <p className="mb-4 text-lg">
               Using the components is as simple as copying and pasting code
               snippets into your React application. Here's how to get started:
             </p>
-            <ol className="list-decimal ml-6">
+            <ol className="ml-6 list-decimal">
               <li className="mb-2">
                 <strong>Explore Components:</strong> Browse through the
                 documentation to discover the available components and their
@@ -151,16 +151,16 @@ const GettingStarted = () => {
             </ol>
           </div>
         </section>
-        <p className="text-lg mb-6">
+        <p className="mb-6 text-lg">
           For detailed information about each component, usage examples,
           customization options, and more, refer to the components' official
           documentation.
         </p>
-        <div className="bg-zinc-100 dark:bg-zinc-800 rounded-md p-6 mb-6">
-          <h2 className="text-2xl font-semibold mb-4">
+        <div className="p-6 mb-6 rounded-md bg-zinc-100 dark:bg-zinc-800">
+          <h2 className="mb-4 text-2xl font-semibold">
             Contributions and Support
           </h2>
-          <p className="text-lg mb-4">
+          <p className="mb-4 text-lg">
             For the time being, no contributions are allowed since it's not a
             fully fledged library. But we intend to make it open source for
             other developers to contribute.
@@ -179,7 +179,7 @@ const GettingStarted = () => {
               If you have any questions, feel free to email us at{" "}
               <a
                 href="mailto:wabtech.tech@gmail.com"
-                className="text-slate-500 dark:text-white underline"
+                className="underline text-slate-500 dark:text-white"
               >
                 wabtech.tech@gmail.com
               </a>{" "}
@@ -189,7 +189,7 @@ const GettingStarted = () => {
           </Alert>
         </div>
         <div className="mt-6 mb-10">
-          <BottomLinks nextUrl="installation" />
+          <BottomLinks nextUrl="/components/installation" />
         </div>
       </div>
       <RightSidebar sections={sections} />
