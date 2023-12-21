@@ -40,7 +40,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" href="/favicon.png" sizes="any" />
-      <meta name="google-site-verification" content="cI3upoyb-xrIsFoaawJNZdNBJkXjY4Ta-s2bicZSJQo" />
+      <head>
+         <meta name="google-site-verification" content="cI3upoyb-xrIsFoaawJNZdNBJkXjY4Ta-s2bicZSJQo" />
+      </head>
       <body suppressHydrationWarning={true}>
         <BackToTopButton />
         <Toaster
