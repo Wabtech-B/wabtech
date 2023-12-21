@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     "nextjs",
     "react",
   ],
+   verification: {
+    google: "cI3upoyb-xrIsFoaawJNZdNBJkXjY4Ta-s2bicZSJQo",
+  },
 };
 
 export default function RootLayout({
