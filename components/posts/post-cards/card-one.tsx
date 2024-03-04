@@ -75,7 +75,7 @@ const CardOne = ({
               className="!bg-brand !text-slate-100"
             />
           </div>
-          <span className="text-sm text-muted-foreground ml-2">
+          <span className="text-sm text-muted-foreground ml-2 flex-1 shrink-0 truncate">
             {formatRelativeTime(post.datePublished)}
           </span>
         </div>
