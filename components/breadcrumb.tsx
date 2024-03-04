@@ -42,7 +42,7 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({ separator }) => {
                       href={`/${filteredPaths.slice(0, index + 1).join("/")}`}
                       className="text-brand hover:underline capitalize text-sm px-2 py-[3px] rounded hover:bg-gray-100 dark:hover:bg-gray-900"
                     >
-                      {path.replace(/[-]+/g, " ")}
+                      {decodeURI(path.replace(/[-]+/g, " "))}
                     </Link>
                     <span>
                       {index < filteredPaths.length - 1 && (
@@ -52,7 +52,7 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({ separator }) => {
                   </>
                 ) : (
                   <div className="capitalize text-sm shrink-0  ml-2">
-                    {path.replace(/[-]+/g, " ")}
+                    {decodeURI(path.replace(/[-]+/g, " "))}
                   </div>
                 )}
               </li>
