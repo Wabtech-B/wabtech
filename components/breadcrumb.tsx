@@ -12,7 +12,7 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({ separator }) => {
   const pathname = usePathname();
   const pathSegments = pathname
     .split("/")
-    .filter((segment) => segment !== "" && segment !== "/categories");
+    .filter((segment) => segment !== "" && segment === "/categories");
 
   // Exclude UUIDs from the breadcrumb
   const excludePaths = (path: string) =>
