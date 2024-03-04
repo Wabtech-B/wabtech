@@ -22,6 +22,7 @@ const BlogPosts = async () => {
   const collections: Collection[] = await getCollections();
 
   const getListType = (displayType: string, posts: TTPost[]) => {
+    console.log(displayType, posts);
     switch (displayType) {
       case "simple_image_grid":
         return (
@@ -120,7 +121,7 @@ const BlogPosts = async () => {
       <div className="max-w-7xl mx-auto px-3">
         {collections.slice(0, 1).map((collection) => (
           <div key={collection.id} className="mt-14 first:mt-0">
-            <h1 className="text-2xl md:text-3xl font-bold my-2">
+            <h1 className="text-2xl md:text-3xl font-bold my-2 mb-4">
               {collection.name}
             </h1>
             <div
@@ -138,7 +139,7 @@ const BlogPosts = async () => {
         <Categories />
         {collections.slice(1, collections.length).map((collection) => (
           <div key={collection.id} className="mt-14 first:mt-0">
-            <h1 className="text-2xl md:text-3xl font-bold my-2">
+            <h1 className="text-2xl md:text-3xl font-bold my-2 mb-4">
               {collection.name}
             </h1>
             <div

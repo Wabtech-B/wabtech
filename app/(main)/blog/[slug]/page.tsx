@@ -45,7 +45,7 @@ export async function generateMetadata({
 const PostDetails = async ({ params }: { params: { slug: string } }) => {
   const { post, relatedPosts }: { post: TTPost; relatedPosts: TTPost[] } =
     await getPost(params.slug);
-  const shareUrl = `https://wabtech-main.vercel.app/${post.slug}`;
+  const shareUrl = `https://wabtech-main.vercel.app/blog/${post.slug}`;
 
   // UPDATE POST VIEWS WHENEVER SOMEONVE VISITS A POST
   // const views = await updatePostViews(post!.slug);

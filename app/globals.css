@@ -151,9 +151,9 @@ input[type="radio"]:checked {
 
 /* Post Content */
 .post-content h1,
-h2,
-h3 {
-  @apply font-bold mb-3;
+.post-content h2,
+.post-content h3 {
+  @apply font-bold !my-3;
 }
 
 .post-content h1 {
@@ -168,20 +168,29 @@ h3 {
   @apply text-xl;
 }
 
-.post-content ul {
-  @apply list-disc !ml-4;
+.post-content ul,
+.post-content ol {
+  @apply !ml-6;
 }
 
-.post-content ul li {
-  @apply !ml-4 my-1;
+.post-content ul {
+  @apply list-disc;
+}
+
+.post-content ul li ul,
+.post-content ul ul,
+.post-content ol li ul,
+.post-content ul li ol,
+.post-content ol li ol {
+  @apply !ml-4;
 }
 
 .post-content ol {
-  @apply list-decimal !ml-4;
+  @apply list-decimal;
 }
 
 .post-content ol li {
-  @apply !ml-4 my-1;
+  @apply my-1;
 }
 
 .post-content code {
