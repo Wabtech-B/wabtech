@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -11,11 +11,17 @@ import { auth } from "@/auth";
 import localFont from "next/font/local";
 import AOSWrapper from "@/components/aos-wrapper";
 
+export const viewport: Viewport = {
+  themeColor: "#0bab7c",
+};
+
 export const metadata: Metadata = {
   title: {
     template: "Wabtech | %s",
     default: "Wabtech - Web Development Re-imagined",
   },
+
+  manifest: "/manifest.json",
 
   description:
     "Revolutionize your online presence with Wabtech - your ultimate hub for cutting-edge web design, dynamic web application development, and a treasure trove of resources.We are dedicated to creating visually stunning, user-centric websites that captivate and engage. From sleek templates to powerful web applications, empower your business with our expertise and elevate your digital footprint today",

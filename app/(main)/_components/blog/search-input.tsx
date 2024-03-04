@@ -34,7 +34,7 @@ const SearchInput = () => {
         </div>
         <Input
           placeholder="Search for posts..."
-          className="pl-8 bg-white h-12 rounded-full w-full text-foreground"
+          className="pl-8 bg-white h-12 rounded-full w-full text-gray-600"
           type="search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
