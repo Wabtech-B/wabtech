@@ -21,8 +21,6 @@ const getCollections = async () => {
 const BlogPosts = async () => {
   const collections: Collection[] = await getCollections();
 
-  console.log(collections);
-
   const getListType = (displayType: string, posts: TTPost[]) => {
     switch (displayType) {
       case "simple_image_grid":

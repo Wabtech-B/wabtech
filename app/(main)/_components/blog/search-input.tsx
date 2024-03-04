@@ -6,10 +6,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useCallback, useState } from "react";
 
 const SearchInput = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-
   const router = useRouter();
   const searchParams = useSearchParams();
+  const search = searchParams.get("q") || "";
+  const [searchTerm, setSearchTerm] = useState(search);
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
