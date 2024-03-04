@@ -18,7 +18,7 @@ const getCollections = async () => {
   return res.json();
 };
 
-const Blog = async () => {
+const BlogPosts = async () => {
   const collections: Collection[] = await getCollections();
 
   const getListType = (displayType: string, posts: TTPost[]) => {
@@ -136,7 +136,7 @@ const Blog = async () => {
         ))}
         {/* Categories */}
         <Categories />
-        {collections.slice(1, 2).map((collection) => (
+        {collections.slice(1, collections.length).map((collection) => (
           <div key={collection.id} className="mt-14 first:mt-0">
             <h1 className="text-2xl md:text-3xl font-bold my-2">
               {collection.name}
@@ -157,4 +157,4 @@ const Blog = async () => {
   );
 };
 
-export default Blog;
+export default BlogPosts;

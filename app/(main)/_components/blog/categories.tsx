@@ -22,7 +22,7 @@ const Categories = async () => {
             {categories.map((category) => (
               <Link
                 key={category.id}
-                href={`/categories/${category.name}`}
+                href={`/blog/categories/${category.name}`}
                 className="px-5 py-1 border bg-background shadow-sm rounded-lg hover:text-brand"
               >
                 {category.name} ({category._count.posts})
