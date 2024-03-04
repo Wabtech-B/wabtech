@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import RelatedPosts from "../../_components/blog/related-posts";
 import Image from "next/image";
 import ShareButtons from "../../_components/blog/share-buttons";
+import Breadcrumbs from "@/components/breadcrumb";
 hljs.configure({});
 
 // Get Post
@@ -52,6 +53,9 @@ const PostDetails = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-3 pt-20">
+      <div className="my-2 flex justify-end">
+        <Breadcrumbs separator="/" />
+      </div>
       <div className="mt-4">
         <div className="relative h-[200px] sm:h-[300px] w-full">
           <Image

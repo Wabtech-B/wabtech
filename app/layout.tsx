@@ -13,7 +13,7 @@ import AOSWrapper from "@/components/aos-wrapper";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Wabtech",
+    template: "Wabtech | %s",
     default: "Wabtech - Web Development Re-imagined",
   },
 

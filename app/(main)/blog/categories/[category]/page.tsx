@@ -6,14 +6,6 @@ import { Metadata } from "next";
 import SearchInput from "@/app/(main)/_components/blog/search-input";
 import Breadcrumbs from "@/components/breadcrumb";
 
-const getCategory = async (category: string) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts/categories/${category}`,
-    { cache: "no-store" }
-  );
-  return res.json();
-};
-
 const getPostsByCategory = async (
   category: string,
   { page, limit }: { page: number; limit: number }
@@ -25,14 +17,13 @@ const getPostsByCategory = async (
   return res.json();
 };
 
-export async function generateMetadata({
+export function generateMetadata({
   params,
 }: {
   params: { category: string };
-}): Promise<Metadata> {
-  const category = await getCategory(decodeURI(params.category));
+}): Metadata {
   return {
-    title: category?.name,
+    title: decodeURI(params.category),
   };
 }
 
@@ -76,8 +67,8 @@ const CategoryPage = async ({ params, searchParams }: Params) => {
           <CardOne
             key={post.id}
             post={post}
-            showAuthor={true}
-            showTags={true}
+            showAuthor={false}
+            showTags={false}
             showCommentCount={false}
             showLikes={false}
             showDescription={true}

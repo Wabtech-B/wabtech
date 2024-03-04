@@ -17,8 +17,8 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed w-full top-0 left-0  z-20 bg-background/60 backdrop-blur-sm",
-        pathname === "/templates" && "bg-white dark:bg-background/60"
+        "fixed w-full top-0 left-0  z-20 bg-background/80 backdrop-blur-sm",
+        pathname === "/templates" && "bg-white dark:bg-background/80"
       )}
     >
       <nav className="flex-center-between py-2 max-w-7xl mx-auto px-3 ">

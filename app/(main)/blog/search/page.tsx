@@ -67,8 +67,8 @@ const SearchPage = async ({ searchParams }: SearchParams) => {
           <CardOne
             key={post.id}
             post={post}
-            showAuthor={true}
-            showTags={true}
+            showAuthor={false}
+            showTags={false}
             showCommentCount={false}
             showLikes={false}
             showDescription={true}

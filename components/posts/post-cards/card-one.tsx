@@ -79,7 +79,7 @@ const CardOne = ({
             {formatRelativeTime(post.datePublished)}
           </span>
         </div>
-        <h1 className="text-xl md:text-2xl group-hover:text-brand transition-colors capitalize mt-4 line-clamp-1">
+        <h1 className="text-lg md:text-xl group-hover:text-brand transition-colors capitalize mt-4 line-clamp-2">
           {post.title}
         </h1>
         {showDescription && (

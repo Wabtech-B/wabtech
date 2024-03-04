@@ -10,6 +10,10 @@ import { cn } from "@/lib/utils";
 import Categories from "../_components/blog/categories";
 import PostBanner from "../_components/blog/post-banner";
 
+export const metadata = {
+  title: "Blog",
+};
+
 const getCollections = async () => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/posts/collections`,
