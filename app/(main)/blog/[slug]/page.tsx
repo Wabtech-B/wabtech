@@ -7,7 +7,7 @@ import { formatRelativeTime } from "@/lib/utils";
 import { Metadata } from "next";
 import RelatedPosts from "../../_components/blog/related-posts";
 import Image from "next/image";
-import ShareButtons from "../../_components/blog/post-share";
+import ShareButtons from "../../_components/blog/share-buttons";
 hljs.configure({});
 
 // Get Post

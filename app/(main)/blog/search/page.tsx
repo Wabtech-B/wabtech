@@ -20,7 +20,7 @@ const getPostsBySearch = async ({
   limit: number;
 }) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts?search=${search}&page=${page}&limit=${limit}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/posts?search=${search}`,
     { cache: "no-store" }
   );
   return res.json();

@@ -17,7 +17,7 @@ const getPostsByCategory = async (
   { page, limit }: { page: number; limit: number }
 ) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts/categories/${category}?page=${page}&limit=${limit}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/posts/categories/${category}`,
     { cache: "no-store" }
   );
   return res.json();

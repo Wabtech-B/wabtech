@@ -8,7 +8,7 @@ import TwoGrid from "@/components/posts/two-grid";
 import TwoImageGrid from "@/components/posts/two-image-grid";
 import { cn } from "@/lib/utils";
 import Categories from "../_components/blog/categories";
-import PostBanner from "../_components/blog/banner";
+import PostBanner from "../_components/blog/post-banner";
 
 const getCollections = async () => {
   const res = await fetch(
@@ -21,8 +21,9 @@ const getCollections = async () => {
 const BlogPosts = async () => {
   const collections: Collection[] = await getCollections();
 
+  console.log(collections);
+
   const getListType = (displayType: string, posts: TTPost[]) => {
-    console.log(displayType, posts);
     switch (displayType) {
       case "simple_image_grid":
         return (
@@ -121,7 +122,7 @@ const BlogPosts = async () => {
       <div className="max-w-7xl mx-auto px-3">
         {collections.slice(0, 1).map((collection) => (
           <div key={collection.id} className="mt-14 first:mt-0">
-            <h1 className="text-2xl md:text-3xl font-bold my-2 mb-4">
+            <h1 className="text-2xl md:text-3xl font-bold mt-2 mb-4">
               {collection.name}
             </h1>
             <div
@@ -139,7 +140,7 @@ const BlogPosts = async () => {
         <Categories />
         {collections.slice(1, collections.length).map((collection) => (
           <div key={collection.id} className="mt-14 first:mt-0">
-            <h1 className="text-2xl md:text-3xl font-bold my-2 mb-4">
+            <h1 className="text-2xl md:text-3xl font-bold mt-2 mb-4">
               {collection.name}
             </h1>
             <div
