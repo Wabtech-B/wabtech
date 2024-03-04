@@ -168,25 +168,14 @@ input[type="radio"]:checked {
   @apply text-xl;
 }
 
-.post-content ul,
-.post-content ol {
-  @apply !ml-6;
-}
 
 .post-content ul {
-  @apply list-disc;
+  @apply list-disc !ml-10;
 }
 
-.post-content ul li ul,
-.post-content ul ul,
-.post-content ol li ul,
-.post-content ul li ol,
-.post-content ol li ol {
-  @apply !ml-4;
-}
 
 .post-content ol {
-  @apply list-decimal;
+  @apply list-decimal !ml-6;
 }
 
 .post-content li {

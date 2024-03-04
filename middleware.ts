@@ -1,5 +1,5 @@
-import NextAuth from "next-auth";
-import authConfig from "@/auth.config";
+import { auth } from "@/auth";
+import { NextRequest } from "next/server";
 import {
   DEFAULT_LOGIN_REDIRECT_URL,
   apiAuthPrefix,
@@ -7,11 +7,14 @@ import {
   protectedRoutes,
 } from "@/routes";
 
-export const { auth } = NextAuth(authConfig);
+export const config = {
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+};
 
-export default auth((req) => {
+export default async function middleware(req: NextRequest) {
   const { nextUrl } = req;
-  const isLoggedIn = !!req.auth;
+  const session = await auth();
+  const isLoggedIn = !!session;
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isProtectedRoute = protectedRoutes.includes(nextUrl.pathname);
@@ -33,8 +36,4 @@ export default auth((req) => {
   }
 
   return null;
-});
-
-export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
-};
+}

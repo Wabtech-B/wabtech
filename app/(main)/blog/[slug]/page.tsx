@@ -9,6 +9,7 @@ import RelatedPosts from "../../_components/blog/related-posts";
 import Image from "next/image";
 import ShareButtons from "../../_components/blog/share-buttons";
 import Breadcrumbs from "@/components/breadcrumb";
+import { notFound } from "next/navigation";
 hljs.configure({});
 
 // Get Post
@@ -36,16 +37,21 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const slug = params.slug;
-  const { post }: { post: TTPost } = await getPost(slug);
-  return {
-    title: post?.title,
-    description: post?.description,
-  };
+  try {
+    const { post }: { post: TTPost } = await getPost(slug);
+    return {
+      title: post?.title,
+      description: post?.description,
+    };
+  } catch (error) {
+    return notFound();
+  }
 }
 
 const PostDetails = async ({ params }: { params: { slug: string } }) => {
   const { post, relatedPosts }: { post: TTPost; relatedPosts: TTPost[] } =
     await getPost(params.slug);
+
   const shareUrl = `https://wabtech-main.vercel.app/blog/${post.slug}`;
 
   // UPDATE POST VIEWS WHENEVER SOMEONVE VISITS A POST

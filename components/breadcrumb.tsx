@@ -53,7 +53,7 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({ separator }) => {
                     </span>
                   </>
                 ) : (
-                  <div className="capitalize text-sm shrink-0  ml-2">
+                  <div className="capitalize text-sm shrink-0 ml-2 w-[150px] truncate">
                     {decodeURI(path.replace(/[-]+/g, " "))}
                   </div>
                 )}
