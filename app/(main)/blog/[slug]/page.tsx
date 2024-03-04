@@ -7,6 +7,7 @@ import { formatRelativeTime } from "@/lib/utils";
 import { Metadata } from "next";
 import RelatedPosts from "../../_components/blog/related-posts";
 import Image from "next/image";
+import ShareButtons from "../../_components/blog/post-share";
 hljs.configure({});
 
 // Get Post
@@ -44,9 +45,10 @@ export async function generateMetadata({
 const PostDetails = async ({ params }: { params: { slug: string } }) => {
   const { post, relatedPosts }: { post: TTPost; relatedPosts: TTPost[] } =
     await getPost(params.slug);
+  const shareUrl = `https://wabtech-main.vercel.app/${post.slug}`;
 
   // UPDATE POST VIEWS WHENEVER SOMEONVE VISITS A POST
-  const views = await updatePostViews(post!.slug);
+  // const views = await updatePostViews(post!.slug);
 
   return (
     <div className="max-w-7xl mx-auto px-3 pt-20">
@@ -61,8 +63,11 @@ const PostDetails = async ({ params }: { params: { slug: string } }) => {
         </div>
         <div className="mt-5">
           <h1 className="text-3xl md:text-4xl font-bold my-3">{post!.title}</h1>
-          <div className="text-sm py-[3px] px-3 bg-brand/20 text-brand rounded-full ml-3">
-            {post!.category.name}
+          <div className="flex-center-between">
+            <div className="text-sm py-[3px] px-3 bg-brand/20 text-brand rounded-full w-fit">
+              {post!.category.name}
+            </div>
+            <ShareButtons shareUrl={shareUrl} title={post.title} />
           </div>
         </div>
         <div className="my-2 flex-align-center flex-wrap gap-x-2">
@@ -91,7 +96,7 @@ const PostDetails = async ({ params }: { params: { slug: string } }) => {
           </div>
         </div>
 
-        <div className="mt-4 post-content">
+        <div className="mt-6 post-content">
           <div dangerouslySetInnerHTML={{ __html: post!.content }} />
         </div>
       </div>
