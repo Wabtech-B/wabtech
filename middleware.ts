@@ -14,7 +14,7 @@ export const config = {
 export default async function middleware(req: NextRequest) {
   const { nextUrl } = req;
   const session = await auth();
-  const isLoggedIn = !!session;
+  const isLoggedIn = session !== null;
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isProtectedRoute = protectedRoutes.includes(nextUrl.pathname);
