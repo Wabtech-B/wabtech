@@ -15,7 +15,7 @@ const Services = () => {
           Explore some of our services in depth
         </p>
       </div>
-      <div className="max-w-7xl px-3 mx-auto relative">
+      <div className="max-w-7xl px-3 mx-auto relative overflow-x-hidden">
         <div className="absolute -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity:30 dark:opacity-10" />
         <div className="mt-8 max-w-3xl mx-auto">
           <div className="relative before:absolute before:h-full before:w-[2px] before:bg-gray-300 before:dark:bg-gray-700 before:top-0 before:left-4">
