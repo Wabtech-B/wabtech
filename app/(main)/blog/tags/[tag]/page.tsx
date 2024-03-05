@@ -11,7 +11,7 @@ const getPostsByTag = async (
   { page, limit }: { page: number; limit: number }
 ) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts/categories/${tag}/posts?page=${page}&limit=${limit}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/posts/tags/${tag}/posts?page=${page}&limit=${limit}`,
     { cache: "no-store" }
   );
   return res.json();

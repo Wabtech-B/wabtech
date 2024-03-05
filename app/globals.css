@@ -160,8 +160,9 @@ input[type="radio"]:checked {
   @apply text-3xl;
 }
 
-.post-content h2 {
-  @apply text-2xl;
+.post-content h2,
+.ql-size-large {
+  @apply text-2xl text-foreground;
 }
 
 .post-content h3 {

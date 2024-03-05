@@ -11,6 +11,7 @@ import RelatedTemplates from "../../_components/template-details/related-templat
 import Screenshots from "../../_components/template-details/screenshots";
 import Techstack from "../../_components/template-details/techstack";
 import PreviewModal from "../../_components/templates/preview-modal";
+import Features from "../../_components/templates/features";
 
 export async function generateMetadata({
   params,
@@ -77,7 +78,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
         </div>
       </section>
       <div className="relative overflow-x-hidden">
-        <div className="absolute -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] dark:opacity-30" />
+        <div className="absolute -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] dark:opacity-20" />
         <section className="mt-14 max-w-7xl mx-auto px-3">
           <div>
             <h1
@@ -87,13 +88,6 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
             >
               {template.name}
             </h1>
-            <p
-              className="mt-2 text-lg text-center"
-              data-aos="fade-up"
-              data-aos-delay="150"
-            >
-              {template.description || "No description"}
-            </p>
             <div
               className="p-4 border rounded-xl w-fit mx-auto shadow-sm mt-6"
               data-aos="fade-up"
@@ -114,10 +108,24 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
                 </Link>
               </Button>
             </div>
+            {template.content ? (
+              <div className="mt-6 post-content !text-left max-w-4xl mx-auto">
+                <div dangerouslySetInnerHTML={{ __html: template!.content }} />
+              </div>
+            ) : (
+              "No description"
+            )}
           </div>
         </section>
         <section className="mt-14 max-w-7xl mx-auto px-3">
           <BuiltWith languages={template.languages} />
+        </section>
+        <section className="mt-20 max-w-7xl mx-auto px-3">
+          <Pill text="Features" />
+          <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
+            Features
+          </h1>
+          <Features features={template.features} />
         </section>
         <section className="mt-20 max-w-7xl mx-auto px-3">
           <Pill text="Screenshots" />

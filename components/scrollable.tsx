@@ -91,7 +91,7 @@ const Scrollable: React.FC<ScrollableProps> = ({
             } bg-gradient-to-r from-white dark:from-background via-white dark:via-background to-transparent h-full w-28 items-center justify-start  absolute left-0 top-1/2 -translate-y-1/2 z-20`}
             onClick={handleBack}
           >
-            <div className="w-10 h-10 flex-center-center rounded-full bg-gray-900 text-brand">
+            <div className="w-10 h-10 flex-center-center rounded-full bg-white dark:bg-gray-900 box-shadow border text-brand">
               <BsChevronLeft className="text-xl" />
             </div>
           </button>
@@ -117,7 +117,7 @@ const Scrollable: React.FC<ScrollableProps> = ({
             } bg-gradient-to-l from-white dark:from-background via-white dark:via-background to-transparent h-full w-28  items-center justify-end absolute right-0 top-1/2 -translate-y-1/2 z-20`}
             onClick={handleNext}
           >
-            <div className="w-10 h-10 flex-center-center rounded-full bg-gray-900 text-brand">
+            <div className="w-10 h-10 flex-center-center rounded-full bg-white dark:bg-gray-900 box-shadow border text-brand">
               <BsChevronRight className="text-xl" />
             </div>
           </button>
