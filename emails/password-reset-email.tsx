@@ -20,7 +20,7 @@ export const PasswordResetEmail = ({ url }: { url: string }) => {
           fontFamily="Questrial"
           fallbackFontFamily="Verdana"
           webFont={{
-            url: "https://fonts.googleapis.com/css2?family=Questrial&display=swap",
+            url: "https://db.onlinewebfonts.com/t/7800b61e9285dbd9d87245c1e0ed4b1d.woff2",
             format: "woff2",
           }}
           fontWeight={400}

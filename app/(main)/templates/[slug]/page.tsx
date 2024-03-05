@@ -72,7 +72,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
               <span>
                 <Download className="w-4 h-4" />
               </span>
-              <span className="ml-2">Download</span>
+              <span className="ml-2">Buy</span>
             </Link>
           </Button>
         </div>
@@ -104,7 +104,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
                   <span>
                     <Download className="w-4 h-4" />
                   </span>
-                  <span className="ml-2">Download</span>
+                  <span className="ml-2">Buy</span>
                 </Link>
               </Button>
             </div>

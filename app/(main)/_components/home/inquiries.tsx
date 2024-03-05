@@ -1,11 +1,35 @@
+"use client";
+
 import Pill from "@/components/pill";
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "react-hot-toast";
+import axios from "axios";
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 const Inquiry = () => {
+  const [email, setEmail] = useState("");
+  const [body, setBody] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const onSend = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const res = await axios.post("/api/emails/inquiry", { email, body });
+      toast.success(res.data);
+      setEmail("");
+      setBody("");
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="mt-28 pb-16 relative">
       <div className="absolute w-full h-full bg-pattern-bg -z-10 -top-10 opacity-10 dark:opacity-100" />
@@ -31,13 +55,27 @@ const Inquiry = () => {
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          <form>
-            <Input placeholder="Email" />
+          <form onSubmit={onSend}>
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+            />
             <Textarea
               placeholder="What are you inquiring about?"
               className="min-h-[100px] mt-4"
+              required
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
             />
-            <Button className="mt-4 w-full">Send</Button>
+            <Button
+              className="mt-4 w-full"
+              disabled={loading || !email || !body}
+            >
+              {loading ? "Sending..." : "Send"}
+            </Button>
           </form>
         </div>
       </div>

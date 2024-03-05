@@ -1,8 +1,6 @@
 import BgGradient from "@/components/bg-gradient";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Mail } from "lucide-react";
+import ContactForm from "../_components/contact/contact-form";
 
 export const metadata = {
   title: "Contact",
@@ -35,12 +33,7 @@ const Contact = () => {
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            <form action="">
-              <Input placeholder="Email" />
-              <Input placeholder="Subject" className="mt-4" />
-              <Textarea placeholder="Message" className="min-h-[100px] mt-4" />
-              <Button className="mt-4 w-full">Send</Button>
-            </form>
+            <ContactForm />
           </div>
           <div className="mt-16">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center">
@@ -48,8 +41,8 @@ const Contact = () => {
             </h1>
             <p className="text-2xl text-center">Email Us today at</p>
             <div className="border w-max mx-auto p-2 rounded-lg flex-center-center gap-2 mt-2">
-              <Mail className="w-5 h-5" />
-              <p>support@wabtech.com</p>
+              <Mail className="w-5 h-5 text-muted-foreground" />
+              <p>wabtech.tech@gmail.com</p>
             </div>
           </div>
         </div>
