@@ -58,7 +58,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
       <section className="pt-16">
         <div className="relative">
           <img
-            src={`/images/preview2.png`}
+            src={template.coverImage}
             alt={template.name}
             className="h-auto w-full"
           />
