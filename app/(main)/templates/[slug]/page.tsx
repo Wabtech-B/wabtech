@@ -99,7 +99,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
               </h1>
             </div>
             <div className="flex-center-center mt-6">
-              <PreviewModal url={`https://istudy-main.vercel.app`} />
+              <PreviewModal url={template.previewUrl} />
               <Button asChild className="ml-4">
                 <Link href="/buy">
                   <span>
