@@ -64,7 +64,7 @@ const TemplateCard = ({
       </div>
       <div className="mt-2 flex-center-between">
         <div className="flex-align-center gap-x-2">
-          {techStacks.map((stack, index) => (
+          {techStacks.slice(0, 4).map((stack, index) => (
             <Image
               src={stack.image}
               alt={stack.name}
