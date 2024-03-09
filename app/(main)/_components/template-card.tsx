@@ -43,7 +43,7 @@ const TemplateCard = ({
     >
       <div className="w-full h-[200px] md:h-[300px] overflow-hidden rounded-xl relative">
         <Image
-          src={`/images/preview2.png`}
+          src={image}
           alt={name}
           fill
           className="object-cover object-left"
