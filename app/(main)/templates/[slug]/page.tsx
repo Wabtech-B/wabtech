@@ -26,6 +26,7 @@ export async function generateMetadata({
 
   return {
     title: template.name,
+    description: template.description,
   };
 }
 
@@ -66,7 +67,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
       </section>
       <section>
         <div className=" mt-6 absolute right-2 top-14 p-2 bg-background rounded-xl border hidden md:flex-align-center">
-          <PreviewModal url={`https://istudy-main.vercel.app`} />
+          <PreviewModal url={template.previewUrl} />
           <Button asChild className="ml-4">
             <Link href="/buy">
               <span>
