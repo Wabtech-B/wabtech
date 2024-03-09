@@ -1,5 +1,5 @@
-import { auth } from "@/auth";
-import { NextRequest } from "next/server";
+import NextAuth from "next-auth";
+import authConfig from "@/auth.config";
 import {
   DEFAULT_LOGIN_REDIRECT_URL,
   apiAuthPrefix,
@@ -7,33 +7,34 @@ import {
   protectedRoutes,
 } from "@/routes";
 
+export const { auth } = NextAuth(authConfig);
+
 export const config = {
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };
 
-export default async function middleware(req: NextRequest) {
+export default auth((req) => {
   const { nextUrl } = req;
-  const session = await auth();
-  const isLoggedIn = session !== null;
+  const isLoggedIn = !!req.auth;
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isProtectedRoute = protectedRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
   if (isApiAuthRoute) {
-    return null;
+    return;
   }
 
   if (isAuthRoute) {
     if (isLoggedIn) {
       return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT_URL, nextUrl));
     }
-    return null;
+    return;
   }
 
   if (!isLoggedIn && isProtectedRoute) {
     return Response.redirect(new URL("/sign-in", nextUrl));
   }
 
-  return null;
-}
+  return;
+});
