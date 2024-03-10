@@ -52,10 +52,7 @@ const PostDetails = async ({ params }: { params: { slug: string } }) => {
   const { post, relatedPosts }: { post: TTPost; relatedPosts: TTPost[] } =
     await getPost(params.slug);
 
-  const shareUrl = `https://wabtech-main.vercel.app/blog/${post.slug}`;
-
-  // UPDATE POST VIEWS WHENEVER SOMEONVE VISITS A POST
-  // const views = await updatePostViews(post!.slug);
+  const shareUrl = `https://www.wabtech.tech/blog/${post.slug}`;
 
   return (
     <div className="max-w-7xl mx-auto px-3 pt-20">

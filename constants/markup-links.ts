@@ -6,7 +6,7 @@ export const schemaMarkup = {
       "@type": "ListItem",
       position: 1,
       item: {
-        "@id": "https://www.wabtech.com",
+        "@id": "https://www.wabtech.tech",
         name: "Home",
       },
     },
@@ -14,7 +14,7 @@ export const schemaMarkup = {
       "@type": "ListItem",
       position: 2,
       item: {
-        "@id": "https://www.wabtech.com/templates",
+        "@id": "https://www.wabtech.tech/templates",
         name: "Templates",
       },
     },
@@ -22,7 +22,7 @@ export const schemaMarkup = {
       "@type": "ListItem",
       position: 3,
       item: {
-        "@id": "https://www.wabtech.com/faqs",
+        "@id": "https://www.wabtech.tech/faqs",
         name: "FAQs",
       },
     },
@@ -30,7 +30,7 @@ export const schemaMarkup = {
       "@type": "ListItem",
       position: 4,
       item: {
-        "@id": "https://www.wabtech.com/blog",
+        "@id": "https://www.wabtech.tech/blog",
         name: "Blog",
       },
     },
@@ -38,7 +38,7 @@ export const schemaMarkup = {
       "@type": "ListItem",
       position: 5,
       item: {
-        "@id": "https://www.wabtech.com/contact",
+        "@id": "https://www.wabtech.tech/contact",
         name: "Contact",
       },
     },

@@ -46,7 +46,7 @@ export const PasswordResetEmail = ({ url }: { url: string }) => {
         >
           <Text className="text-2xl font-bold my-2">Password Reset</Text>
           <Img
-            src="https://wabtech-admin.vercel.app/logo.png"
+            src="https://www.wabtech.tech/logo.png"
             alt="Wabtech Logo"
             height="60"
             width="60"

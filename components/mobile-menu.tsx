@@ -47,7 +47,7 @@ const MobileMenu = () => {
       </Button>
       <div
         ref={mobileWrapperRef}
-        className="absolute w-full overflow-hidden top-full left-0 bg-white dark:bg-gray-900 transition-a"
+        className="absolute w-full overflow-hidden h-0 top-full left-0 bg-white dark:bg-gray-900 transition-a"
       >
         <div
           ref={mobileNavRef}

@@ -209,3 +209,10 @@ input[type="radio"]:checked {
 .post-content iframe {
   @apply w-full h-auto sm:h-[400px] object-cover my-2 md:my-4;
 }
+
+.text-gradient {
+  background: linear-gradient(to right, #0bab7c, #f9c51b 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
