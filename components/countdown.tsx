@@ -33,10 +33,10 @@ const Countdown: React.FC = () => {
     number < 10 ? `0${number}` : `${number}`;
 
   return (
-    <div className="relative min-h-screen flex-center-center  text-center overflow-x-hidden bg-gray-950 !text-slate-100">
+    <div className="relative min-h-screen flex-center-center text-center overflow-x-hidden bg-gray-950 !text-slate-100">
       <BgGradient />
       <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-3">
+        <div className="max-w-7xl mx-auto px-3 py-4">
           <h1 className="mb-4 text-4xl font-bold md:text-6xl text-gradient">
             Wabtech
           </h1>
