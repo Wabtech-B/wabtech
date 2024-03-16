@@ -37,7 +37,7 @@ const Countdown: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 w-screen h-screen overflow-y-auto z-[9999]">
+    <div className="fixed inset-0 w-screen h-screen overflow-y-auto hide-scrollbar z-[9999]">
       <div className="relative min-h-screen over flex-center-center text-center overflow-x-hidden bg-gray-950 !text-slate-100">
         <BgGradient />
         <div className="relative z-10">
