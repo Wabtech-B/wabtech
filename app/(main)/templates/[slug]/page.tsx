@@ -80,7 +80,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
       </section>
       <div className="relative">
         <div className="absolute -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] dark:opacity-20" />
-        <section className="mt-14 max-w-7xl mx-auto px-3">
+        <section className="mt-14 max-w-6xl mx-auto px-3">
           <div>
             <h1
               className="text-2xl md:text-4xl font-semibold text-center"
@@ -118,31 +118,31 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
             )}
           </div>
         </section>
-        <section className="mt-14 max-w-7xl mx-auto px-3">
+        <section className="mt-14 max-w-6xl mx-auto px-3">
           <BuiltWith languages={template.languages} />
         </section>
-        <section className="mt-20 max-w-7xl mx-auto px-3">
+        <section className="mt-20 max-w-6xl mx-auto px-3">
           <Pill text="Features" />
           <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
             Features
           </h1>
           <Features features={template.features} />
         </section>
-        <section className="mt-20 max-w-7xl mx-auto px-3">
+        <section className="mt-20 max-w-6xl mx-auto px-3">
           <Pill text="Screenshots" />
           <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
             Screenshots
           </h1>
           <Screenshots screenshots={template.screenshots} />
         </section>
-        <section className="mt-20 max-w-7xl mx-auto px-3">
+        <section className="mt-20 max-w-6xl mx-auto px-3">
           <Pill text="Techstacks" />
           <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
             Techstacks
           </h1>
           <Techstack techstacks={template.techstacks} />
         </section>
-        <section className="mt-20 max-w-7xl mx-auto px-3">
+        <section className="mt-20 max-w-6xl mx-auto px-3">
           <Pill text="Changelog" />
           <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
             Changelog
@@ -150,7 +150,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
           <Changelog changelogs={template.changelogs} />
         </section>
         <section className="mt-28">
-          <div className="max-w-7xl mx-auto px-3">
+          <div className="max-w-6xl mx-auto px-3">
             <h1 className="text-2xl md:text-3xl font-semibold">
               Related Templates
             </h1>
