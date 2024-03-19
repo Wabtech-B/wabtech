@@ -55,7 +55,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
     (template) => template.slug !== params.slug
   );
   return (
-    <div className="overflow-x-hidden">
+    <div>
       <section className="pt-16">
         <div className="relative">
           <img
