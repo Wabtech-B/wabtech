@@ -55,7 +55,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
     (template) => template.slug !== params.slug
   );
   return (
-    <>
+    <div className="overflow-x-hidden">
       <section className="pt-16">
         <div className="relative">
           <img
@@ -69,7 +69,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
         <div className=" mt-6 absolute right-2 top-14 p-2 bg-background rounded-xl border hidden md:flex-align-center">
           <PreviewModal url={template.previewUrl} />
           <Button asChild className="ml-4">
-            <Link href="/buy">
+            <Link href="#">
               <span>
                 <Download className="w-4 h-4" />
               </span>
@@ -78,7 +78,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
           </Button>
         </div>
       </section>
-      <div className="relative overflow-x-hidden">
+      <div className="relative">
         <div className="absolute -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] dark:opacity-20" />
         <section className="mt-14 max-w-7xl mx-auto px-3">
           <div>
@@ -101,7 +101,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
             <div className="flex-center-center mt-6">
               <PreviewModal url={template.previewUrl} />
               <Button asChild className="ml-4">
-                <Link href="/buy">
+                <Link href="#">
                   <span>
                     <Download className="w-4 h-4" />
                   </span>
@@ -163,7 +163,7 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
           </div>
         </section>
       </div>
-    </>
+    </div>
   );
 };
 
