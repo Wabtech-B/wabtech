@@ -5,7 +5,7 @@ import Navbar from "@/components/navbar";
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      {/* <Countdown /> */}
+      <Countdown />
       <Navbar />
       <main className="min-h-[90vh]">{children}</main>
       <Footer />
