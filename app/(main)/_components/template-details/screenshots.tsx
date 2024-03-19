@@ -17,7 +17,7 @@ const Screenshots = ({ screenshots }: { screenshots: Screenshot[] }) => {
             src={screenshot.image}
             alt={screenshot.url}
             fill
-            className="object-cover object-top md:group-hover:scale-150 transition-a rounded-xl"
+            className="object-cover object-top md:group-hover:scale-150 transition-a rounded-xl border-4 border-brand"
           />
         </a>
       ))}
