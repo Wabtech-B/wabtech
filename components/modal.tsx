@@ -91,7 +91,7 @@ const Modal: React.FC<ModalProps> = ({
       case "full":
         return "max-w-full h-full !w-full !rounded-none";
       case "scrollable":
-        return "max-w-[600px] h-[80%] overflow-y-auto";
+        return "max-w-[600px] h-[85%] overflow-y-auto";
       default:
         return "max-w-[600px]";
     }
@@ -107,7 +107,7 @@ const Modal: React.FC<ModalProps> = ({
       <AnimatePresence>
         {(isOpen || isInternalOpen) && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm"
+            className="fixed inset-0 z-[999] flex items-center justify-center bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -115,7 +115,7 @@ const Modal: React.FC<ModalProps> = ({
           >
             <motion.div
               ref={modalRef}
-              className={`bg-white dark:bg-gray-900 shadow rounded-lg ${modalSizeClass} mx-auto relative w-[98%]`}
+              className={`bg-white dark:bg-background border border-border shadow rounded-lg ${modalSizeClass} mx-auto relative w-[98%]`}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}

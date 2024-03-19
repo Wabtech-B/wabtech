@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import React from "react";
 
 interface AvatarProps {
@@ -43,7 +43,7 @@ const Avatar: React.FC<AvatarProps> = ({
     );
   };
 
-  const avatarClasses = `rounded-full ${
+  const avatarClasses = `rounded-full shrink-0 relative ${
     size === "small"
       ? "h-8 w-8 text-sm"
       : size === "medium"
@@ -54,9 +54,10 @@ const Avatar: React.FC<AvatarProps> = ({
   return (
     <div className={avatarClasses}>
       {src ? (
-        <img
+        <Image
           src={src}
           alt={name || "Avatar"}
+          fill
           className="rounded-full w-full h-full"
         />
       ) : (

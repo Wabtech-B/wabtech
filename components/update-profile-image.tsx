@@ -35,10 +35,6 @@ const UpdateProfileImage = ({
   };
 
   const handleSubmit = async () => {
-    if (!image) {
-      toast.error("Please select an image");
-      return;
-    }
     try {
       setLoading(true);
       await update({ image });
@@ -61,7 +57,8 @@ const UpdateProfileImage = ({
       setImage("");
       toast.success("Image deleted");
     } catch (error: any) {
-      toast.error(error.message);
+      toast.error("Can't delete image, just proceed with update");
+      setImage("");
       console.log(error);
     } finally {
       setDeleting(false);
