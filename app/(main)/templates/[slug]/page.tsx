@@ -154,12 +154,14 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
             <h1 className="text-2xl md:text-3xl font-semibold">
               Related Templates
             </h1>
-            {relatedTemplates.length < 1 && (
+            {relatedTemplates.length === 0 && (
               <NoResults title="Related Templates" />
             )}
-            <div className="mt-6">
-              <RelatedTemplates templates={relatedTemplates} />
-            </div>
+            {relatedTemplates.length !== 0 && (
+              <div className="mt-6">
+                <RelatedTemplates templates={relatedTemplates} />
+              </div>
+            )}
           </div>
         </section>
       </div>
