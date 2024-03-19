@@ -10,7 +10,7 @@ const Navbar = () => {
         <nav className="flex-center-between px-2 mt:px-3">
           <Link href="/" scroll={false}>
             <div className="flex-align-center gap-x-2">
-              <Image src="/logo2.png" alt="Logo" width={30} height={30} />
+              <Image src="/logo.png" alt="Logo" width={30} height={30} />
               <h1 className="text-xl font-semibold hidden md:block">Wabtech</h1>
             </div>
           </Link>
