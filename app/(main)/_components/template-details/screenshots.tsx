@@ -2,11 +2,11 @@ import Image from "next/image";
 
 const Screenshots = ({ screenshots }: { screenshots: Screenshot[] }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
       {screenshots?.map((screenshot, index) => (
         <a
           href={screenshot.url}
-          className="w-full shrink-0 h-[200px] md:h-[300px] relative overflow-hidden rounded-xl box-shadow group"
+          className="w-full shrink-0 h-[300px] md:h-[400px] relative overflow-hidden rounded-xl box-shadow group"
           key={screenshot.id}
           target="_blank"
           referrerPolicy="no-referrer"
@@ -17,7 +17,7 @@ const Screenshots = ({ screenshots }: { screenshots: Screenshot[] }) => {
             src={screenshot.image}
             alt={screenshot.url}
             fill
-            className="object-cover group-hover:scale-105 transition-a"
+            className="object-cover md:group-hover:scale-150 transition-a"
           />
         </a>
       ))}
