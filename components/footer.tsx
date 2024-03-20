@@ -17,6 +17,11 @@ const Footer = () => {
             <Links isFooter className="gap-2 flex-wrap justify-center" />
           </div>
         </div>
+        <div className="mt-4 flex-center-center text-center">
+          <Link href="/privacy-policy" className="underline text-brand">
+            Privacy Policy
+          </Link>
+        </div>
         <div className="mt-6 text-center">
           <p>Copyright ©{new Date().getFullYear()} Wabtech</p>
         </div>
