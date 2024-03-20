@@ -10,6 +10,8 @@ import Screenshots from "../../_components/template-details/screenshots";
 import Techstack from "../../_components/template-details/techstack";
 import Features from "../../_components/templates/features";
 import PreviewModal from "../../_components/templates/preview-modal";
+import { auth } from "@/auth";
+import Link from "next/link";
 
 export async function generateMetadata({
   params,
@@ -52,6 +54,9 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
   const relatedTemplates = templates.filter(
     (template) => template.slug !== params.slug
   );
+
+  const session = await auth();
+
   return (
     <div>
       <section className="pt-16">
@@ -90,19 +95,27 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
             </div>
             <div className="flex-center-center mt-6">
               <div>
-                <PreviewModal url={template.previewUrl} />
+                <div className="flex-align-center">
+                  <PreviewModal url={template.previewUrl} />
+                </div>
                 <div className="mt-8">
                   <h1 className="text-2xl font-bold text-center mb-3">
                     Pay With
                   </h1>
-                  <PPButtons
-                    item={{
-                      templateId: template.id,
-                      name: template.name,
-                      price: template.price.toString(),
-                      image: template.coverImage,
-                    }}
-                  />
+                  {!session ? (
+                    <Link href="/sign-in" className="text-brand">
+                      Please First Login
+                    </Link>
+                  ) : (
+                    <PPButtons
+                      item={{
+                        templateId: template.id,
+                        name: template.name,
+                        price: template.price.toString(),
+                        image: template.coverImage,
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </div>

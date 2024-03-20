@@ -80,7 +80,7 @@ const PPButtons = ({ item }: PPButtonsProps) => {
         templatePrice: item.price,
         templateImage: item.image,
       });
-      window.location.assign("/dashboard/templates");
+      window.location.assign("/dashboard");
     } catch (error: any) {
       console.log(error.message);
     }
