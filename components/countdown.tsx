@@ -48,7 +48,7 @@ const Countdown: React.FC = () => {
             <blockquote className="max-w-lg pl-4 mx-auto mb-8 text-lg italic text-left border-l-4 border-gray-300">
               We are making some big changes. The components can now be found at{" "}
               <a
-                href="https://sleekcomponents.vercel.app"
+                href="https://components.wabtech.tech"
                 target="_blank"
                 className="text-brand"
               >

@@ -11,6 +11,7 @@ import { auth } from "@/auth";
 import localFont from "next/font/local";
 import AOSWrapper from "@/components/aos-wrapper";
 import { EdgeStoreProvider } from "../lib/edgestore";
+import PayPalProvider from "@/components/paypal-provider";
 
 export const viewport: Viewport = {
   themeColor: "#0bab7c",
@@ -79,25 +80,27 @@ export default async function RootLayout({
         />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <body className={thicccboi.className}>
-          <EdgeStoreProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-              storageKey="wabtech-theme"
-            >
-              <BackToTopButton />
-              <Toaster
-                toastOptions={{
-                  className: "bg-white dark:bg-slate-800 dark:text-slate-200",
-                  duration: 3000,
-                }}
-              />
-              <ProgressProvider />
-              <AOSWrapper>{children}</AOSWrapper>
-            </ThemeProvider>
-          </EdgeStoreProvider>
+          <PayPalProvider>
+            <EdgeStoreProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+                storageKey="wabtech-theme"
+              >
+                <BackToTopButton />
+                <Toaster
+                  toastOptions={{
+                    className: "bg-white dark:bg-slate-800 dark:text-slate-200",
+                    duration: 3000,
+                  }}
+                />
+                <ProgressProvider />
+                <AOSWrapper>{children}</AOSWrapper>
+              </ThemeProvider>
+            </EdgeStoreProvider>
+          </PayPalProvider>
         </body>
       </html>
     </SessionProvider>

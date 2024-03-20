@@ -19,6 +19,14 @@ const Inquiry = () => {
     try {
       setLoading(true);
       const res = await axios.post("/api/emails/inquiry", { email, body });
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/templates/inquiries`,
+        {
+          email,
+          subject: "Inquiry",
+          inquiry: body,
+        }
+      );
       toast.success(res.data);
       setEmail("");
       setBody("");

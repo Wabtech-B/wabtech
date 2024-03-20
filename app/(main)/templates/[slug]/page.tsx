@@ -1,17 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import NoResults from "@/components/no-results";
+import PPButtons from "@/components/paypal-buttons";
 import Pill from "@/components/pill";
-import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
 import { Metadata } from "next";
-import Link from "next/link";
 import BuiltWith from "../../_components/template-details/built-with";
 import Changelog from "../../_components/template-details/changelog";
 import RelatedTemplates from "../../_components/template-details/related-templates";
 import Screenshots from "../../_components/template-details/screenshots";
 import Techstack from "../../_components/template-details/techstack";
-import PreviewModal from "../../_components/templates/preview-modal";
 import Features from "../../_components/templates/features";
+import PreviewModal from "../../_components/templates/preview-modal";
 
 export async function generateMetadata({
   params,
@@ -68,14 +66,6 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
       <section>
         <div className=" mt-6 absolute right-2 top-14 p-2 bg-background rounded-xl border hidden md:flex-align-center">
           <PreviewModal url={template.previewUrl} />
-          <Button asChild className="ml-4">
-            <Link href="#">
-              <span>
-                <Download className="w-4 h-4" />
-              </span>
-              <span className="ml-2">Buy</span>
-            </Link>
-          </Button>
         </div>
       </section>
       <div className="relative">
@@ -99,15 +89,22 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
               </h1>
             </div>
             <div className="flex-center-center mt-6">
-              <PreviewModal url={template.previewUrl} />
-              <Button asChild className="ml-4">
-                <Link href="#">
-                  <span>
-                    <Download className="w-4 h-4" />
-                  </span>
-                  <span className="ml-2">Buy</span>
-                </Link>
-              </Button>
+              <div>
+                <PreviewModal url={template.previewUrl} />
+                <div className="mt-8">
+                  <h1 className="text-2xl font-bold text-center mb-3">
+                    Pay With
+                  </h1>
+                  <PPButtons
+                    item={{
+                      templateId: template.id,
+                      name: template.name,
+                      price: template.price.toString(),
+                      image: template.coverImage,
+                    }}
+                  />
+                </div>
+              </div>
             </div>
             {template.content ? (
               <div className="mt-6 post-content !text-left max-w-4xl mx-auto">

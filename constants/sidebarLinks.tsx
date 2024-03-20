@@ -1,5 +1,5 @@
+import { BiUserCircle } from "react-icons/bi";
 import { BsGrid } from "react-icons/bs";
-import { BiMoneyWithdraw, BiUserCircle } from "react-icons/bi";
 import { HiOutlineTemplate } from "react-icons/hi";
 
 export const sidebarLinks = [
@@ -12,11 +12,6 @@ export const sidebarLinks = [
     linkText: "My Templates",
     icon: <HiOutlineTemplate />,
     url: "/dashboard/templates",
-  },
-  {
-    linkText: "My Purhases",
-    icon: <BiMoneyWithdraw />,
-    url: "/dashboard/purchases",
   },
   {
     linkText: "Profile",

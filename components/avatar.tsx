@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import React from "react";
 
@@ -54,10 +55,9 @@ const Avatar: React.FC<AvatarProps> = ({
   return (
     <div className={avatarClasses}>
       {src ? (
-        <Image
+        <img
           src={src}
           alt={name || "Avatar"}
-          fill
           className="rounded-full w-full h-full"
         />
       ) : (

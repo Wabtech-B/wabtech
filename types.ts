@@ -20,6 +20,32 @@ type Template = {
   updatedAt: Date;
 };
 
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  emailVerified: boolean | null;
+  isEmailVerified: boolean;
+  image: string;
+  password: string | null;
+  resetToken: string | null;
+  resetTokenExpiry: string | null;
+  verificationCode: string | null;
+  role: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type UserTemplate = {
+  id: string;
+  userId: string;
+  templateId: string;
+  createdAt: string;
+  updatedAt: string;
+  user: User;
+  template: Template;
+};
+
 type TemplateCategory = {
   id: string;
   name: string;

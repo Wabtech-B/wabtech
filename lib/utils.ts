@@ -29,3 +29,12 @@ export const formatDateTime = (dateObject: Date): string => {
   const formattedDate = format(dateObject, "dd MMM, yyyy");
   return formattedDate;
 };
+
+export const formatFileSize = (sizeInKBs: number): string => {
+  if (sizeInKBs < 1024 * 1024) {
+    return `${(sizeInKBs / 1024).toFixed(0)} KB`;
+  } else {
+    const sizeInMb: number = sizeInKBs / (1024 * 1024);
+    return `${sizeInMb.toFixed(2)} MB`;
+  }
+};

@@ -23,6 +23,10 @@ const Links = ({
       url: "/services",
     },
     {
+      linkText: "Components",
+      url: "https://components.wabtech.tech",
+    },
+    {
       linkText: "Blog",
       url: "/blog",
     },
@@ -44,18 +48,36 @@ const Links = ({
           pathname === link.url ||
           (pathname.startsWith(link.url) && link.url !== "/");
         return (
-          <Link
-            href={link.url}
-            key={link.linkText}
-            className={cn(
-              isFooter &&
-                "px-4 py-2 flex-1 basis-[8rem] border flex-grow text-center rounded-lg shadow-sm",
-              isActive && "text-brand",
-              isActive && isFooter && "border-brand"
+          <>
+            {link.linkText !== "Components" ? (
+              <Link
+                href={link.url}
+                key={link.linkText}
+                className={cn(
+                  isFooter &&
+                    "px-4 py-2 flex-1 basis-[8rem] border flex-grow text-center rounded-lg shadow-sm",
+                  isActive && "text-brand",
+                  isActive && isFooter && "border-brand"
+                )}
+              >
+                {link.linkText}
+              </Link>
+            ) : (
+              <a
+                href={link.url}
+                key={link.linkText}
+                target="_blank"
+                className={cn(
+                  isFooter &&
+                    "px-4 py-2 flex-1 basis-[8rem] border flex-grow text-center rounded-lg shadow-sm",
+                  isActive && "text-brand",
+                  isActive && isFooter && "border-brand"
+                )}
+              >
+                {link.linkText}
+              </a>
             )}
-          >
-            {link.linkText}
-          </Link>
+          </>
         );
       })}
     </div>

@@ -26,7 +26,7 @@ const PreviewModal = ({ url }: { url: string }) => {
         openTrigger={
           <Button
             asChild
-            className="bg-transparent border border-brand text-brand hover:bg-transparent active:bg-transparent"
+            className="px-4 h-14 shadow-xl shadow-brand/40 rounded-full w-full"
           >
             <div className="cursor-pointer">
               <span>
