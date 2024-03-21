@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import BgGradient from "./bg-gradient";
 
 const Countdown: React.FC = () => {
-  const targetDate = new Date("2024-04-15T23:59:00"); // April 15th, 2024, 11:59 PM
+  const targetDate = new Date("2024-03-23T23:59:00"); // Mar 23th, 2024, 11:59 PM
 
   const [countdown, setCountdown] = useState<number>(0);
 
