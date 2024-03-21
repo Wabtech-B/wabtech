@@ -13,6 +13,8 @@ type Template = {
   previewUrl: string;
   templateFile: string;
   templateFileSize: number;
+  docsString: string;
+  docsOutline: string;
   techstacks: Techstack[];
   screenshots: Screenshot[];
   changelogs: Changelog[];

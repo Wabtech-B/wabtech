@@ -12,6 +12,9 @@ import Features from "../../_components/templates/features";
 import PreviewModal from "../../_components/templates/preview-modal";
 import { auth } from "@/auth";
 import Link from "next/link";
+import Alert from "@/components/alert";
+import { FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export async function generateMetadata({
   params,
@@ -95,16 +98,39 @@ const TemplateDetails = async ({ params }: { params: { slug: string } }) => {
             </div>
             <div className="flex-center-center mt-6">
               <div>
-                <div className="flex-align-center">
+                <div className="flex-center-center gap-2">
                   <PreviewModal url={template.previewUrl} />
+                  {template.docsString && (
+                    <Button
+                      asChild
+                      className="px-4 h-14 shadow-xl shadow-brand/20 rounded-full bg-transparent border border-brand text-brand hover:bg-transparent active:bg-transparent"
+                    >
+                      <Link
+                        href={`/templates/${template.slug}/docs`}
+                        className="cursor-pointer"
+                      >
+                        <span>
+                          <FileText className="w-4 h-4" />
+                        </span>
+                        <span className="ml-2">Documentation</span>
+                      </Link>
+                    </Button>
+                  )}
                 </div>
-                <div className="mt-8">
+                <div className="mt-8 flex-center-center flex-col">
                   <h1 className="text-2xl font-bold text-center mb-3">
                     Pay With
                   </h1>
+                  <Alert title="About Payment" removable>
+                    For now we only support Paypal but you can contact us incase
+                    you want to pay with another method.
+                  </Alert>
                   {!session ? (
-                    <Link href="/sign-in" className="text-brand">
-                      Please First Login
+                    <Link
+                      href="/sign-in"
+                      className="text-brand underline text-lg"
+                    >
+                      Login to proceed with the payment.
                     </Link>
                   ) : (
                     <PPButtons

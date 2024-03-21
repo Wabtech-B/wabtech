@@ -55,32 +55,34 @@ const PPButtons = ({ item }: PPButtonsProps) => {
 
       const orderDetails = await response.json();
 
-      toast.success("Thank you, your payment was successful!");
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/templates/purchases`,
-        {
-          userId: currentUser?.id!,
-          templateId: item.templateId,
-          status: "SUCCESS",
-        }
-      );
+      if (orderDetails.status === "COMPLETED") {
+        toast.success("Thank you, your payment was successful!");
+        await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/templates/purchases`,
+          {
+            userId: currentUser?.id!,
+            templateId: item.templateId,
+            status: "SUCCESS",
+          }
+        );
 
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/templates/user-templates`,
-        {
-          userId: currentUser?.id!,
-          templateId: item.templateId,
-        }
-      );
+        await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/templates/user-templates`,
+          {
+            userId: currentUser?.id!,
+            templateId: item.templateId,
+          }
+        );
 
-      await axios.post("/api/emails/order", {
-        orderId: orderDetails.id,
-        email: currentUser?.email,
-        templateName: item.name,
-        templatePrice: item.price,
-        templateImage: item.image,
-      });
-      window.location.assign("/dashboard");
+        window.location.assign("/dashboard");
+        await axios.post("/api/emails/order", {
+          orderId: orderDetails.id,
+          email: currentUser?.email,
+          templateName: item.name,
+          templatePrice: item.price,
+          templateImage: item.image,
+        });
+      }
     } catch (error: any) {
       console.log(error.message);
     }
