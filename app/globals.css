@@ -208,7 +208,7 @@ input[type="radio"]:checked {
 
 .post-content img,
 .post-content iframe {
-  @apply w-full h-auto sm:h-[400px] object-cover my-2 md:my-4;
+  @apply w-auto h-auto sm:h-[400px] object-cover my-2 md:my-4;
 }
 
 .text-gradient {
