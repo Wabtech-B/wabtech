@@ -10,6 +10,7 @@ import Image from "next/image";
 import ShareButtons from "../../_components/blog/share-buttons";
 import Breadcrumbs from "@/components/breadcrumb";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 hljs.configure({});
 
 // Get Post
@@ -79,12 +80,13 @@ const PostDetails = async ({ params }: { params: { slug: string } }) => {
         </div>
         <div className="my-2 flex-align-center flex-wrap gap-x-2">
           {post!.tags.map((tag) => (
-            <span
+            <Link
+              href={`/blog/tags/${tag}`}
               key={tag}
               className="mt-3 sm:mt-0 text-sm py-[3px] px-3 bg-slate-100 dark:bg-slate-900 rounded-full"
             >
               {tag}
-            </span>
+            </Link>
           ))}
         </div>
         <div className="mt-6 flex-align-center gap-x-2">
