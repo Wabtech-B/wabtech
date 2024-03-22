@@ -60,7 +60,7 @@ const PostDetails = async ({ params }: { params: { slug: string } }) => {
         <Breadcrumbs separator="/" />
       </div>
       <div className="mt-4">
-        <div className="relative h-[200px] sm:h-[300px] w-full">
+        <div className="relative h-[200px] sm:h-[400px] w-full">
           <Image
             src={post!.coverImage}
             alt={post!.title}
