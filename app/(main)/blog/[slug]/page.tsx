@@ -56,7 +56,7 @@ const PostDetails = async ({ params }: { params: { slug: string } }) => {
   const shareUrl = `https://www.wabtech.tech/blog/${post.slug}`;
 
   return (
-    <div className="max-w-7xl mx-auto px-3 pt-20">
+    <div className="max-w-6xl mx-auto px-3 pt-20">
       <div className="my-2 flex justify-end">
         <Breadcrumbs separator="/" />
       </div>
