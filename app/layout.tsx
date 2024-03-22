@@ -49,9 +49,9 @@ export const metadata: Metadata = {
     "nextjs",
     "react",
   ],
-  // verification: {
-  //   google: "cI3upoyb-xrIsFoaawJNZdNBJkXjY4Ta-s2bicZSJQo",
-  // },
+  verification: {
+    google: "cI3upoyb-xrIsFoaawJNZdNBJkXjY4Ta-s2bicZSJQo",
+  },
 };
 
 const thicccboi = localFont({
